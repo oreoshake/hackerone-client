@@ -37,7 +37,7 @@ module HackerOne
 
         data = JSON.parse(response.body, :symbolize_names => true)[:data]
         if data.nil?
-          raise RuntimeException, "Expected data attribute in response: #{response.body}"
+          raise RuntimeError, "Expected data attribute in response: #{response.body}"
         end
 
         data.map do |report|

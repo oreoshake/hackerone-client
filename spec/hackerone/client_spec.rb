@@ -34,7 +34,7 @@ RSpec.describe HackerOne::Client do
     it "returns reports for a default program" do
       begin
         HackerOne::Client.program = "github"
-        VCR.use_cassette(:report_list, record: :new_episodes) do
+        VCR.use_cassette(:report_list) do
           expect(HackerOne::Client::Api.new.reports).to_not be_empty
         end
       ensure
@@ -43,7 +43,7 @@ RSpec.describe HackerOne::Client do
     end
 
     it "returns reports for a given program" do
-      VCR.use_cassette(:report_list, record: :new_episodes) do
+      VCR.use_cassette(:report_list) do
         expect(api.reports).to_not be_empty
       end
     end

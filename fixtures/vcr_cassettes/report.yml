@@ -1,0 +1,425 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hackerone.com/v1/reports/200
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic nope=
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 15 Feb 2017 00:50:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=123; expires=Thu, 15-Feb-18
+        00:50:01 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - 345
+      Etag:
+      - W/"8dfc97642d70f82b560e989d44e19eac"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - default-src 'none'; connect-src 'self' www.google-analytics.com errors.hackerone.net;
+        font-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'
+        'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=123
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3314c3653e302126-LAX
+    body:
+      encoding: ASCII-8BIT
+      string: '{
+        "data": {
+          "id": "200",
+          "type": "report",
+          "attributes": {
+            "title": "Sweet Vuln",
+            "state": "triaged",
+            "created_at": "2017-01-21T00:20:37.966Z",
+            "vulnerability_information": "some kind of description",
+            "triaged_at": "2017-01-21T17:15:20.272Z",
+            "closed_at": null,
+            "last_reporter_activity_at": "2017-02-02T06:31:09.905Z",
+            "first_program_activity_at": "2017-01-21T17:15:20.272Z",
+            "last_program_activity_at": "2017-02-02T06:28:10.594Z",
+            "bounty_awarded_at": "2017-02-02T06:27:53.522Z",
+            "swag_awarded_at": "2017-02-02T06:28:10.594Z",
+            "disclosed_at": null,
+            "last_activity_at": "2017-02-02T06:31:09.905Z",
+            "issue_tracker_reference_id": "67650",
+            "issue_tracker_reference_url": "https://github.com/internal/repo/issues/123456"
+          },
+          "relationships": {
+            "reporter": {
+              "data": {
+                "attributes": {
+                  "reputation": 433,
+                  "signal": 2.45454545454545,
+                  "impact": 18.3333333333333,
+                  "username": "made-up-user",
+                  "name": "",
+                  "disabled": false,
+                  "created_at": "2014-02-03T20:51:12.261Z",
+                  "profile_picture": {
+                    "62x62": "/assets/avatars/default-123.png",
+                    "82x82": "/assets/avatars/default-123.png",
+                    "110x110": "/assets/avatars/default-123.png",
+                    "260x260": "/assets/avatars/default-123.png"
+                  }
+                },
+                "id": "2463",
+                "type": "user"
+              }
+            },
+            "assignee": {
+              "data": {
+                "type": "user",
+                "id": "57690",
+                "attributes": {
+                  "username": "ndm-github",
+                  "name": "Neil         Matatall",
+                  "disabled": false,
+                  "created_at": "2016-02-24T01:33:01.258Z",
+                  "profile_picture": {
+                    "62x62": "https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487",
+                    "82x82": "https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487",
+                    "110x110": "https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487",
+                    "260x260": "https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"
+                  }
+                }
+              }
+            },
+            "program": {
+              "data": {
+                "id": "1894",
+                "type": "program",
+                "attributes": {
+                  "handle": "github",
+                  "created_at": "2015-05-29T20:12:03.091Z",
+                  "updated_at": "2017-02-14T18:45:11.035Z"
+                }
+              }
+            },
+            "severity": {
+              "data": {
+                "id": "20763",
+                "type": "severity",
+                "attributes": {
+                  "rating": "medium",
+                  "author_type": "User",
+                  "user_id": 2463,
+                  "created_at": "2017-01-21T00:20:38.061Z",
+                  "score": 6.5,
+                  "attack_complexity": "high",
+                  "attack_vector": "network",
+                  "availability": "low",
+                  "confidentiality": "low",
+                  "integrity": "low",
+                  "privileges_required": "none",
+                  "user_interaction": "none",
+                  "scope": "changed"
+                }
+              }
+            },
+            "swag": {
+              "data": [
+                {
+                  "id": "1645",
+                  "type": "swag",
+                  "attributes": {
+                    "sent": false,
+                    "created_at": "2017-02-02T06:28:10.563Z"
+                  },
+                  "relationships": {
+                    "address": {
+                      "data": {
+                        "id": "809",
+                        "type": "address",
+                        "attributes": {
+                          "name": "Reporter",
+                          "street": "123 Main St",
+                          "city": "America Town",
+                          "postal_code": "12345",
+                          "state": "California",
+                          "country": "United States",
+                          "created_at": "2017-01-31T11:14:41.803Z",
+                          "tshirt_size": "Large",
+                          "phone_number": "+1234565789"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "attachments": {
+              "data": [
+
+              ]
+            },
+            "vulnerability_types": {
+              "data": [
+
+              ]
+            },
+            "activities": {
+              "data": [
+                {
+                  "type": "activity-swag-awarded",
+                  "id": "1457842",
+                  "attributes": {
+                    "message": "",
+                    "created_at": "2017-02-02T06:28:10.594Z",
+                    "updated_at": "2017-02-02T06:28:10.594Z",
+                    "internal": false
+                  },
+                  "relationships": {
+                    "actor": {
+                      "data": {
+                        "type": "program",
+                        "id": "1894",
+                        "attributes": {
+                          "handle": "github",
+                          "created_at": "2015-05-29T20:12:03.091Z",
+                          "updated_at": "2017-02-14T18:45:11.035Z"
+                        }
+                      }
+                    },
+                    "swag": {
+                      "data": {
+                        "id": "1645",
+                        "type": "swag",
+                        "attributes": {
+                          "sent": false,
+                          "created_at": "2017-02-02T06:28:10.563Z"
+                        },
+                        "relationships": {
+                          "address": {
+                            "data": {
+                              "id": "809",
+                              "type": "address",
+                              "attributes": {
+                                "name": "Reporter",
+                                "street": "123 Main St",
+                                "city": "America Town",
+                                "postal_code": "12345",
+                                "state": "California",
+                                "country": "United States",
+                                "created_at": "2017-01-31T11:14:41.803Z",
+                                "tshirt_size": "Large",
+                                "phone_number": "+1234565789"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "activity-bounty-awarded",
+                  "id": "1457841",
+                  "attributes": {
+                    "message": "The         security team has had a chance to assess the severity and impact of this vulnerability         and we would like to offer you a $500 USD reward and send you some swag. While         the header injection risk was real, we feel that this was not actually exploitable         in any way. The header values are joined by a `,` reducing the risk of any         path traversals. If you are able to produce an exploit leading to data leakage         or worse, we can revisit this. \n\nThanks,\nNeil\n",
+                    "created_at": "2017-02-02T06:27:53.522Z",
+                    "updated_at": "2017-02-02T06:27:53.522Z",
+                    "internal": false,
+                    "bounty_amount": "500"
+                  },
+                  "relationships": {
+                    "actor": {
+                      "data": {
+                        "type": "user",
+                        "id": "57690",
+                        "attributes": {
+                          "username": "ndm-github",
+                          "name": "Neil         Matatall",
+                          "disabled": false,
+                          "created_at": "2016-02-24T01:33:01.258Z",
+                          "profile_picture": {
+                            "62x62": "https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487",
+                            "82x82": "https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487",
+                            "110x110": "https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487",
+                            "260x260": "https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "activity-user-assigned-to-bug",
+                  "id": "1434860",
+                  "attributes": {
+                    "message": "",
+                    "created_at": "2017-01-21T17:15:34.351Z",
+                    "updated_at": "2017-01-21T17:15:34.351Z",
+                    "internal": true
+                  },
+                  "relationships": {
+                    "actor": {
+                      "data": {
+                        "type": "user",
+                        "id": "57690",
+                        "attributes": {
+                          "username": "ndm-github",
+                          "name": "Neil         Matatall",
+                          "disabled": false,
+                          "created_at": "2016-02-24T01:33:01.258Z",
+                          "profile_picture": {
+                            "62x62": "https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487",
+                            "82x82": "https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487",
+                            "110x110": "https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487",
+                            "260x260": "https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"
+                          }
+                        }
+                      }
+                    },
+                    "assigned_user": {
+                      "data": {
+                        "id": "57690",
+                        "type": "user",
+                        "attributes": {
+                          "username": "ndm-github",
+                          "name": "Neil         Matatall",
+                          "disabled": false,
+                          "created_at": "2016-02-24T01:33:01.258Z",
+                          "profile_picture": {
+                            "62x62": "https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487",
+                            "82x82": "https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487",
+                            "110x110": "https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487",
+                            "260x260": "https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "activity-bug-triaged",
+                  "id": "1434859",
+                  "attributes": {
+                    "message": "Thanks         for the report. I''ve escalated this to the appropriate team for validation.",
+                    "created_at": "2017-01-21T17:15:20.272Z",
+                    "updated_at": "2017-01-21T17:15:20.272Z",
+                    "internal": false
+                  },
+                  "relationships": {
+                    "actor": {
+                      "data": {
+                        "type": "user",
+                        "id": "57690",
+                        "attributes": {
+                          "username": "ndm-github",
+                          "name": "Neil         Matatall",
+                          "disabled": false,
+                          "created_at": "2016-02-24T01:33:01.258Z",
+                          "profile_picture": {
+                            "62x62": "https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487",
+                            "82x82": "https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487",
+                            "110x110": "https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487",
+                            "260x260": "https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "activity-reference-id-added",
+                  "id": "1434858",
+                  "attributes": {
+                    "message": "",
+                    "created_at": "2017-01-21T17:15:20.240Z",
+                    "updated_at": "2017-01-21T17:15:20.240Z",
+                    "internal": true,
+                    "reference": "67650",
+                    "reference_url": "https://github.com/internal/repo/issues/67650"
+                  },
+                  "relationships": {
+                    "actor": {
+                      "data": {
+                        "type": "user",
+                        "id": "57690",
+                        "attributes": {
+                          "username": "ndm-github",
+                          "name": "Neil         Matatall",
+                          "disabled": false,
+                          "created_at": "2016-02-24T01:33:01.258Z",
+                          "profile_picture": {
+                            "62x62": "https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487",
+                            "82x82": "https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487",
+                            "110x110": "https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487",
+                            "260x260": "https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "bounties": {
+              "data": [
+                {
+                  "id": "41216",
+                  "type": "bounty",
+                  "attributes": {
+                    "amount": "500.00",
+                    "bonus_amount": "0.00",
+                    "awarded_amount": "500.00",
+                    "awarded_bonus_amount": "0.00",
+                    "awarded_currency": "USD",
+                    "created_at": "2017-02-02T06:27:53.511Z"
+                  }
+                }
+              ]
+            },
+            "summaries": {
+              "data": [
+
+              ]
+            }
+          }
+        }
+      }'
+    http_version:
+  recorded_at: Wed, 15 Feb 2017 00:50:01 GMT
+recorded_with: VCR 3.0.3

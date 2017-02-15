@@ -2,6 +2,7 @@ require "spec_helper"
 
 RSpec.describe HackerOne::Client do
   let(:api) { HackerOne::Client::Api.new("github") }
+  let(:point_in_time) { DateTime.parse("2017-02-11T16:00:44-10:00") }
   it "has a version number" do
     expect(Hackerone::Client::VERSION).not_to be nil
   end
@@ -48,8 +49,8 @@ RSpec.describe HackerOne::Client do
     end
 
     it "returns an empty array if no reports are found" do
-      VCR.use_cassette(:empty_report_list, record: :new_episodes) do
-        expect(api.reports).to be_empty
+      VCR.use_cassette(:empty_report_list) do
+        expect(api.reports(since: point_in_time)).to be_empty
       end
     end
   end

@@ -35,7 +35,12 @@ module HackerOne
           req.url "reports", options
         end
 
-        JSON.parse(response.body, :symbolize_names => true)[:data].map do |report|
+        data = JSON.parse(response.body, :symbolize_names => true)[:data]
+        if data.nil?
+          raise RuntimeException, "Expected data attribute in response: #{response.body}"
+        end
+
+        data.map do |report|
           Report.new(report)
         end
       end

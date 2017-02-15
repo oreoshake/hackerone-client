@@ -1,6 +1,9 @@
 # Hackerone::Client
 
-A limited client library for interacting with HackerOne.
+A limited client library for interacting with HackerOne. Currently only supports two endpoints:
+
+* `/reports` returns all reports in the "new" state for a given program
+* `/report/{id}` returns report data for a given report
 
 ## Usage
 

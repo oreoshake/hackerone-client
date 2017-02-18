@@ -196,7 +196,15 @@ http_interactions:
             },
             "vulnerability_types": {
               "data": [
-
+                {
+                  "id": "25110",
+                  "type": "vulnerability-type",
+                  "attributes": {
+                    "name": "Information Disclosure",
+                    "description": "Exposure of system information, sensitive or private information, fingerprinting, etc.\n",
+                    "created_at": "2016-01-28T13:34:08.945Z"
+                  }
+                }
               ]
             },
             "activities": {
@@ -262,6 +270,37 @@ http_interactions:
                     "updated_at": "2017-02-02T06:27:53.522Z",
                     "internal": false,
                     "bounty_amount": "500"
+                  },
+                  "relationships": {
+                    "actor": {
+                      "data": {
+                        "type": "user",
+                        "id": "57690",
+                        "attributes": {
+                          "username": "ndm-github",
+                          "name": "Neil         Matatall",
+                          "disabled": false,
+                          "created_at": "2016-02-24T01:33:01.258Z",
+                          "profile_picture": {
+                            "62x62": "https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487",
+                            "82x82": "https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487",
+                            "110x110": "https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487",
+                            "260x260": "https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "activity-bounty-awarded",
+                  "id": "1457841",
+                  "attributes": {
+                    "message": "The here''s an extra payout",
+                    "created_at": "2017-02-02T06:27:53.522Z",
+                    "updated_at": "2017-02-02T06:27:53.522Z",
+                    "internal": false,
+                    "bounty_amount": "250"
                   },
                   "relationships": {
                     "actor": {

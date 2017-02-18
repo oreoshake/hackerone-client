@@ -1,5 +1,3 @@
-require "pry"
-
 module HackerOne
   module Client
     class Report
@@ -92,9 +90,9 @@ module HackerOne
       def payments
         activities.select { |activity| activity[:type] == PAYOUT_ACTIVITY_KEY }
       end
-      
+
       def payment_amount(payment)
-        @payment_amount ||= payment.fetch(:attributes, {}).fetch(:bounty_amount, 0).gsub(/[^\d]/, "").to_i
+        payment.fetch(:attributes, {}).fetch(:bounty_amount, 0).gsub(/[^\d]/, "").to_i
       end
 
       def activities

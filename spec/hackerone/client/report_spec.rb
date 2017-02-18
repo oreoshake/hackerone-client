@@ -1,8 +1,7 @@
 require "spec_helper"
 
-RSpec.describe HackerOne::Client do
+RSpec.describe HackerOne::Client::Report do
   let(:api) { HackerOne::Client::Api.new("github") }
-  let(:point_in_time) { DateTime.parse("2017-02-11T16:00:44-10:00") }
 
   before(:all) do
     ENV["HACKERONE_TOKEN_NAME"] = "foo"

@@ -51,17 +51,15 @@ module HackerOne
       # Excludes reports where the payout amount is 0 indicating swag-only or no
       # payout for the issue supplied
       def risk
-        @risk ||= begin
-          case payment_total
-          when HackerOne::Client.low_range || DEFAULT_LOW_RANGE
-            "low"
-          when HackerOne::Client.medium_range || DEFAULT_MEDIUM_RANGE
-            "medium"
-          when HackerOne::Client.high_range || DEFAULT_HIGH_RANGE
-            "high"
-          when HackerOne::Client.critical_range || DEFAULT_CRITICAL_RANGE
-            "critical"
-          end
+        case payment_total
+        when HackerOne::Client.low_range || DEFAULT_LOW_RANGE
+          "low"
+        when HackerOne::Client.medium_range || DEFAULT_MEDIUM_RANGE
+          "medium"
+        when HackerOne::Client.high_range || DEFAULT_HIGH_RANGE
+          "high"
+        when HackerOne::Client.critical_range || DEFAULT_CRITICAL_RANGE
+          "critical"
         end
       end
 

@@ -31,10 +31,10 @@ HackerOne::Client.program = "github"
 Configure the low/med/high/crit ranges for easier classification based on payouts:
 
 ```ruby
-HackerOne::Client::Report.low_range = 1..999
-HackerOne::Client::Report.medium_range = 1000...2500
-HackerOne::Client::Report.high_range = 2500...5000
-HackerOne::Client::Report.critical_range = 5000...100_000_000
+HackerOne::Client.low_range = 1..999
+HackerOne::Client.medium_range = 1000...2500
+HackerOne::Client.high_range = 2500...5000
+HackerOne::Client.critical_range = 5000...100_000_000
 ```
 
 ## Contributing

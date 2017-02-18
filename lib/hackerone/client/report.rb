@@ -21,23 +21,6 @@ module HackerOne
         "Unvalidated / Open Redirect" => "A10-Redirects"
       }
 
-      DEFAULT_LOW_RANGE = 1...999
-      DEFAULT_MEDIUM_RANGE = 1000...2500
-      DEFAULT_HIGH_RANGE = 2500...5000
-      DEFAULT_CRITICAL_RANGE = 5000...100_000_000
-
-      class << self
-        ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
-        attr_reader *ATTRS
-
-        ATTRS.each do |attr|
-          define_method "#{attr}=" do |value|
-            raise ArgumentError, "value must be a range object" unless value.is_a?(Range)
-            instance_variable_set :"@#{attr}", value
-          end
-        end
-      end
-
       def initialize(report)
         @report = report
       end
@@ -70,13 +53,13 @@ module HackerOne
       def risk
         @risk ||= begin
           case payment_total
-          when self.class.low_range || DEFAULT_LOW_RANGE
+          when HackerOne::Client.low_range || DEFAULT_LOW_RANGE
             "low"
-          when self.class.medium_range || DEFAULT_MEDIUM_RANGE
+          when HackerOne::Client.medium_range || DEFAULT_MEDIUM_RANGE
             "medium"
-          when self.class.high_range || DEFAULT_HIGH_RANGE
+          when HackerOne::Client.high_range || DEFAULT_HIGH_RANGE
             "high"
-          when self.class.critical_range || DEFAULT_CRITICAL_RANGE
+          when HackerOne::Client.critical_range || DEFAULT_CRITICAL_RANGE
             "critical"
           end
         end

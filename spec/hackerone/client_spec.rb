@@ -9,20 +9,28 @@ RSpec.describe HackerOne::Client do
     ENV["HACKERONE_TOKEN"] = "bar"
   end
 
-  it "has a version number" do
-    expect(Hackerone::Client::VERSION).not_to be nil
-  end
+  context "configuraiton" do
+    it "rejects invalid range values for risk classification" do
+      begin
+        expect { HackerOne::Client.low_range = "fred" }.to raise_error(ArgumentError)
+        expect { HackerOne::Client.low_range = nil }.to raise_error(ArgumentError)
+        expect { HackerOne::Client.low_range = 1..10000 }.to_not raise_error
+      ensure
+        HackerOne::Client.low_range = HackerOne::Client::DEFAULT_LOW_RANGE
+      end
+    end
 
-  it "requires credential env vars" do
-    begin
-      ENV["HACKERONE_TOKEN_NAME"] = nil
-      ENV["HACKERONE_TOKEN"] = nil
-      expect {
-        api.report(200)
-      }.to raise_error(HackerOne::Client::NotConfiguredError)
-    ensure
-      ENV["HACKERONE_TOKEN_NAME"] = "foo"
-      ENV["HACKERONE_TOKEN"] = "bar"
+    it "requires credential env vars" do
+      begin
+        ENV["HACKERONE_TOKEN_NAME"] = nil
+        ENV["HACKERONE_TOKEN"] = nil
+        expect {
+          api.report(200)
+        }.to raise_error(HackerOne::Client::NotConfiguredError)
+      ensure
+        ENV["HACKERONE_TOKEN_NAME"] = "foo"
+        ENV["HACKERONE_TOKEN"] = "bar"
+      end
     end
   end
 

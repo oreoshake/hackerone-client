@@ -7,8 +7,22 @@ module HackerOne
   module Client
     class NotConfiguredError < StandardError; end
 
+    DEFAULT_LOW_RANGE = 1...999
+    DEFAULT_MEDIUM_RANGE = 1000...2499
+    DEFAULT_HIGH_RANGE = 2500...4999
+    DEFAULT_CRITICAL_RANGE = 5000...100_000_000
+
     class << self
+      ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
       attr_accessor :program
+      attr_reader *ATTRS
+
+      ATTRS.each do |attr|
+        define_method "#{attr}=" do |value|
+          raise ArgumentError, "value must be a range object" unless value.is_a?(Range)
+          instance_variable_set :"@#{attr}", value
+        end
+      end
     end
 
     class Api

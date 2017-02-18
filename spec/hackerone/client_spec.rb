@@ -3,8 +3,27 @@ require "spec_helper"
 RSpec.describe HackerOne::Client do
   let(:api) { HackerOne::Client::Api.new("github") }
   let(:point_in_time) { DateTime.parse("2017-02-11T16:00:44-10:00") }
+
+  before(:all) do
+    ENV["HACKERONE_TOKEN_NAME"] = "foo"
+    ENV["HACKERONE_TOKEN"] = "bar"
+  end
+
   it "has a version number" do
     expect(Hackerone::Client::VERSION).not_to be nil
+  end
+
+  it "requires credential env vars" do
+    begin
+      ENV["HACKERONE_TOKEN_NAME"] = nil
+      ENV["HACKERONE_TOKEN"] = nil
+      expect {
+        api.report(200)
+      }.to raise_error(HackerOne::Client::NotConfiguredError)
+    ensure
+      ENV["HACKERONE_TOKEN_NAME"] = "foo"
+      ENV["HACKERONE_TOKEN"] = "bar"
+    end
   end
 
   context "#report" do

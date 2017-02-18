@@ -5,6 +5,8 @@ require_relative "client/report"
 
 module HackerOne
   module Client
+    class NotConfiguredError < StandardError; end
+
     class << self
       attr_accessor :program
     end
@@ -68,6 +70,10 @@ module HackerOne
       private
       def self.hackerone_api_connection
         @connection ||= Faraday.new(:url => "https://api.hackerone.com/v1") do |faraday|
+          unless ENV["HACKERONE_TOKEN_NAME"] && ENV["HACKERONE_TOKEN"]
+            raise NotConfiguredError, "HACKERONE_TOKEN_NAME HACKERONE_TOKEN environment variables must be set"
+          end
+
           faraday.basic_auth(ENV["HACKERONE_TOKEN_NAME"], ENV["HACKERONE_TOKEN"])
           faraday.adapter Faraday.default_adapter
         end

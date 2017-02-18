@@ -35,7 +35,7 @@ RSpec.describe HackerOne::Client do
       begin
         HackerOne::Client.program = "github"
         VCR.use_cassette(:report_list) do
-          expect(HackerOne::Client::Api.new.reports).to_not be_empty
+          expect(HackerOne::Client::Api.new.reports(since: point_in_time)).to_not be_empty
         end
       ensure
         HackerOne::Client.program = nil
@@ -44,7 +44,7 @@ RSpec.describe HackerOne::Client do
 
     it "returns reports for a given program" do
       VCR.use_cassette(:report_list) do
-        expect(api.reports).to_not be_empty
+        expect(api.reports(since: point_in_time)).to_not be_empty
       end
     end
 

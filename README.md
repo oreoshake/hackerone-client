@@ -9,7 +9,7 @@ A limited client library for interacting with HackerOne. Currently only supports
 
 ### Credential management
 
-You'll need to generate an API token on https://hackerone.com/<program>/api.
+You'll need to generate an API token at https://hackerone.com/&lt;program&gt;/api.
 
 * Click "Create API token"
 * Name the token

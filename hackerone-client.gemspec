@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "hackerone-client"
   spec.version       = Hackerone::Client::VERSION
   spec.authors       = ["Neil Matatall"]
-  spec.email         = ["oreoshake@users.noreply.github.com"]
+  spec.email         = ["neil.matatall@gmail.com"]
 
   spec.summary       = %q{A limited client for the HackerOne API}
   spec.homepage      = "https://github.com/oreoshake/hackerone-client"

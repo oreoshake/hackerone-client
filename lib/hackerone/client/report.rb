@@ -91,7 +91,7 @@ module HackerOne
       end
 
       def payment_amount(payment)
-        payment.fetch(:attributes, {}).fetch(:bounty_amount, 0).gsub(/[^\d]/, "").to_i
+        payment.fetch(:attributes, {}).fetch(:bounty_amount, "0").gsub(/[^\d]/, "").to_i
       end
 
       def activities

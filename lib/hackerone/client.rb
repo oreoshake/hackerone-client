@@ -61,6 +61,28 @@ module HackerOne
         end
       end
 
+      def add_report_reference(id, reference)
+        response = with_retry do
+          body = {
+            data: {
+              type: "issue-tracker-reference-id",
+              attributes: {
+                reference: reference
+              }
+            }
+          }.to_json
+          self.class.hackerone_api_connection.post do |req|
+            req.headers['Content-Type'] = 'application/json'
+            req.body = body
+            req.url "reports/#{id}/issue_tracker_reference_id"
+          end
+        end
+
+        unless response.success?
+          raise RuntimeError, "report not updated"
+        end
+      end
+
       ## Public: retrieve a report
       #
       # id: the ID of a specific report

@@ -31,8 +31,12 @@ module HackerOne
         attributes[:title]
       end
 
-      def vulnerability_information
-        attributes[:vulnerability_information]
+      def created_at
+        attributes[:created_at]
+      end
+
+      def issue_tracker_reference_url
+        attributes[:issue_tracker_reference_url]
       end
 
       def reporter
@@ -62,12 +66,7 @@ module HackerOne
       end
 
       def summary
-        summaries = relationships.fetch(:summaries, {}).fetch(:data, []).select {|summary| summary[:type] == "report-summary" }
-        return unless summaries
-
-        summaries.select { |summary| summary[:attributes][:category] == "team" }.map do |summary|
-          summary[:attributes][:content]
-        end.join("\n")
+        attributes[:vulnerability_information]
       end
 
       # Do our best to map the value that hackerone provides and the reporter sets

@@ -64,7 +64,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":403}]}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 15 Feb 2017 01:01:18 GMT
 - request:
     method: post
@@ -75,7 +75,7 @@ http_interactions:
         been triaged internally.","state":"triaged"}}}'
     headers:
       Authorization:
-      - Basic dGVzdGluZ2FnYWluOnVhNU8rVHd5Qlpla0JURmdUZTdVald5VUZseWNFTVRDUXJWUnVlOUFtdU09
+      - Basic nope
       User-Agent:
       - Faraday v0.11.0
       Content-Type:
@@ -134,6 +134,75 @@ http_interactions:
       encoding: UTF-8
       string: '{"errors":[{"status":400,"title":"Invalid Parameter","detail":"The
         parameter ''report_id'' is invalid.","source":{"parameter":"report_id"}}]}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 16 Mar 2017 20:06:07 GMT
+- request:
+    method: post
+    uri: https://api.hackerone.com/v1/reports/4040000000000000/issue_tracker_reference_id
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"issue-tracker-reference-id","attributes":{"reference":"fooooo"}}}'
+    headers:
+      Authorization:
+      - Basic nope
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 16 Mar 2017 20:23:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d937ff918b1e20c9491cb8b44ba307c1d1489695807; expires=Fri, 16-Mar-18
+        20:23:27 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - 80d19f89-5fc0-412a-b30a-6caaad350d0c
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - default-src 'none'; connect-src 'self' www.google-analytics.com errors.hackerone.net;
+        font-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'
+        'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 340a6e2b3a0522c4-LAX
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":400,"title":"Invalid Parameter","detail":"The
+        parameter ''report_id'' is invalid.","source":{"parameter":"report_id"}}]}'
+    http_version:
+  recorded_at: Thu, 16 Mar 2017 20:23:27 GMT
 recorded_with: VCR 3.0.3

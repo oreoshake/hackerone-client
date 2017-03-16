@@ -72,6 +72,18 @@ module HackerOne
         end
       end
 
+      ## Idempotent: add the issue reference and put the report into the "triage" state.
+      #
+      # id: the ID of the report
+      # state: value for the reference (e.g. issue number or relative path to cross-repo issue)
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
+      def triage(id, reference)
+        add_report_reference(id, reference)
+        state_change(id, :triaged)
+      end
+
       ## Idempotent: Add a report reference to a project
       #
       # id: the ID of the report

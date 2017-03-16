@@ -48,6 +48,34 @@ RSpec.describe HackerOne::Client do
     end
   end
 
+  context "#add_report_reference" do
+    it "adds an issue reference" do
+      VCR.use_cassette(:add_report_reference) do
+        expect(api.add_report_reference(132170, "fooooo")).to_not be_nil
+      end
+    end
+
+    it "raises an exception if a report is not found" do
+      VCR.use_cassette(:missing_report) do
+        expect { api.add_report_reference(4040000000000000, "fooooo") }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  context "#state_change" do
+    it "marks a report as triaged" do
+      VCR.use_cassette(:stage_change) do
+        expect(api.state_change(132170, :triaged)).to_not be_nil
+      end
+    end
+
+    it "raises an exception if a report is not found" do
+      VCR.use_cassette(:missing_report) do
+        expect { api.state_change(4040000000000000, :triaged) }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
   context "#reports" do
     it "raises an error if no program is supplied" do
       expect { HackerOne::Client::Api.new.reports }.to raise_error(ArgumentError)

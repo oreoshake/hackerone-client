@@ -12,6 +12,17 @@ module HackerOne
     DEFAULT_HIGH_RANGE = 2500...4999
     DEFAULT_CRITICAL_RANGE = 5000...100_000_000
 
+    STATES = %w(
+      new
+      triaged
+      needs-more-info
+      resolved
+      not-applicable
+      informative
+      duplicate
+      spam
+    ).map(&:to_sym)
+
     class << self
       ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
       attr_accessor :program
@@ -61,26 +72,46 @@ module HackerOne
         end
       end
 
+      ## Idempotent: Add a report reference to a project
+      #
+      # id: the ID of the report
+      # state: value for the reference (e.g. issue number or relative path to cross-repo issue)
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
       def add_report_reference(id, reference)
-        response = with_retry do
-          body = {
-            data: {
-              type: "issue-tracker-reference-id",
-              attributes: {
-                reference: reference
-              }
+        body = {
+          data: {
+            type: "issue-tracker-reference-id",
+            attributes: {
+              reference: reference
             }
-          }.to_json
-          self.class.hackerone_api_connection.post do |req|
-            req.headers['Content-Type'] = 'application/json'
-            req.body = body
-            req.url "reports/#{id}/issue_tracker_reference_id"
-          end
-        end
+          }
+        }
 
-        unless response.success?
-          raise RuntimeError, "report not updated"
-        end
+        post("reports/#{id}/issue_tracker_reference_id", body)
+      end
+
+      ## Idempotent: change the state of a report. See STATES for valid values.
+      #
+      # id: the ID of the report
+      # state: the state in which the report is to be put in
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
+      def state_change(id, state)
+        raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
+
+        body = {
+          data: {
+            type: "state-change",
+            attributes: {
+              message: "This is has been triaged internally.",
+              state: state
+            }
+          }
+        }
+        post("reports/#{id}/state_changes", body)
       end
 
       ## Public: retrieve a report
@@ -90,20 +121,46 @@ module HackerOne
       # returns an HackerOne::Client::Report object or raises an error if
       # no report is found.
       def report(id)
-        response = with_retry do
-          self.class.hackerone_api_connection.get do |req|
-            req.url "reports/#{id}"
-          end
-        end
-
-        if response.success?
-          Report.new(JSON.parse(response.body, :symbolize_names => true)[:data])
-        else
-          raise ArgumentError, "Could not retrieve HackerOne report ##{id}: #{response.body}"
-        end
+        get("reports/#{id}")
       end
 
       private
+      def post(endpoint, body)
+        response = with_retry do
+          self.class.hackerone_api_connection.post do |req|
+            req.headers['Content-Type'] = 'application/json'
+            req.body = body.to_json
+            req.url endpoint
+          end
+        end
+
+        parse_response(response)
+      end
+
+      def get(endpoint, params = nil)
+        response = with_retry do
+          self.class.hackerone_api_connection.get do |req|
+            req.headers['Content-Type'] = 'application/json'
+            req.params = params || {}
+            req.url endpoint
+          end
+        end
+
+        parse_response(response)
+      end
+
+      def parse_response(response)
+        if response.status.to_s.start_with?("4")
+          raise ArgumentError, "API called failed, probably your fault: #{response.body}"
+        elsif response.status.to_s.start_with?("5")
+          raise Runtime, "API called failed, probobly their fault: #{response.body}"
+        elsif response.success?
+          Report.new(JSON.parse(response.body, :symbolize_names => true)[:data])
+        else
+          raise RuntimeError, "Not sure what to do here: #{response.body}"
+        end
+      end
+
       def self.hackerone_api_connection
         unless ENV["HACKERONE_TOKEN_NAME"] && ENV["HACKERONE_TOKEN"]
           raise NotConfiguredError, "HACKERONE_TOKEN_NAME HACKERONE_TOKEN environment variables must be set"

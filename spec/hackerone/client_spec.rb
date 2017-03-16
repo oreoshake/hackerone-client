@@ -50,13 +50,13 @@ RSpec.describe HackerOne::Client do
 
   context "#add_report_reference" do
     it "adds an issue reference" do
-      VCR.use_cassette(:add_report_reference, record: :new_episodes) do
+      VCR.use_cassette(:add_report_reference) do
         expect(api.add_report_reference(132170, "fooooo")).to_not be_nil
       end
     end
 
     it "raises an exception if a report is not found" do
-      VCR.use_cassette(:missing_report, record: :new_episodes) do
+      VCR.use_cassette(:missing_report) do
         expect { api.add_report_reference(4040000000000000, "fooooo") }.to raise_error(ArgumentError)
       end
     end

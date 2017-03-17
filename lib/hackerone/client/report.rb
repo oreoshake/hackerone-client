@@ -1,23 +1,9 @@
+require_relative './weakness'
+
 module HackerOne
   module Client
     class Report
       PAYOUT_ACTIVITY_KEY = "activity-bounty-awarded"
-      CLASSIFICATION_MAPPING = {
-        "None Applicable" => "A0-Other",
-        "Denial of Service" => "A0-Other",
-        "Memory Corruption" => "A0-Other",
-        "Cryptographic Issue" => "A0-Other",
-        "Privilege Escalation" => "A0-Other",
-        "UI Redressing (Clickjacking)" => "A0-Other",
-        "Command Injection" => "A1-Injection",
-        "Remote Code Execution" => "A1-Injection",
-        "SQL Injection" => "A1-Injection",
-        "Authentication" => "A2-AuthSession",
-        "Cross-Site Scripting (XSS)" => "A3-XSS",
-        "Information Disclosure" => "A6-DataExposure",
-        "Cross-Site Request Forgery (CSRF)" => "A8-CSRF",
-        "Unvalidated / Open Redirect" => "A10-Redirects"
-      }
 
       def initialize(report)
         @report = report
@@ -69,15 +55,12 @@ module HackerOne
         attributes[:vulnerability_information]
       end
 
-      # Do our best to map the value that hackerone provides and the reporter sets
-      # to the OWASP Top 10. Take the first match since multiple values can be set.
-      # This is used for the issue label.
-      def classification_label
-        owasp_mapping = vulnerability_types.map do |vuln_type|
-          CLASSIFICATION_MAPPING[vuln_type[:attributes][:name]]
-        end.flatten.first
+      def weakness
+        @weakness ||= Weakness.new relationships[:weakness][:data][:attributes]
+      end
 
-        owasp_mapping || CLASSIFICATION_MAPPING["None Applicable"]
+      def classification_label
+        weakness.to_owasp
       end
 
       # Bounty writeups just use the key, and not the label value.

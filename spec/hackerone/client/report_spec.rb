@@ -37,4 +37,10 @@ RSpec.describe HackerOne::Client::Report do
   it "maps results to the owasp top 10" do
     expect(report.classification_label).to eq("A6-DataExposure")
   end
+
+  describe "#weakness" do
+    it 'returns a weakness instance' do
+      expect(report.weakness).to be_a(HackerOne::Client::Weakness)
+    end
+  end
 end

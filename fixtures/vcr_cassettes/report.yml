@@ -207,6 +207,18 @@ http_interactions:
                 }
               ]
             },
+            "weakness": {
+              "data": {
+                "id": "1",
+                "type": "weakness",
+                "attributes": {
+                  "name": "Cleartext Storage of Sensitive Information",
+                  "description": "",
+                  "external_id": "CWE-312",
+                  "created_at": "2016-01-28T13:34:08.945Z"
+                }
+              }
+            },
             "activities": {
               "data": [
                 {

@@ -1,9 +1,26 @@
 # Hackerone::Client
 
-A limited client library for interacting with HackerOne. Currently only supports two endpoints:
+A limited client library for interacting with HackerOne. Currently only supports a few operations:
 
-* `/reports` returns all reports in the "new" state for a given program
-* `/report/{id}` returns report data for a given report
+```ruby 
+client = HackerOne::Client::Api.new("github")
+
+# GET`/reports` returns all reports in the "new" state for a given program
+client.reports
+
+# GET `/report/{id}` returns report data for a given report
+client.report(id)
+
+# POST '/report/{id}/state_change change the state of a report
+# `state` can be one of  new, triaged, needs-more-info, resolved, not-applicable, informative, duplicate, spam
+client.state_change(id, state)
+
+# POST '/report/{id}/add_report_reference add a "reference" e.g. internal issue number
+client.add_report_reference(id, reference)
+
+# Triage an issue (add a reference and set state to :triaged)
+client.triage(id, reference)
+```
 
 ## Usage
 

@@ -5,7 +5,7 @@ module HackerOne
         def extract_cwe_number(cwe)
           fail StandardError::ArgumentError unless cwe.upcase.start_with?('CWE-')
 
-          cwe[4..-1].to_i
+          cwe.split('CWE-').last.to_i
         end
       end
 

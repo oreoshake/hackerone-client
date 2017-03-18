@@ -14,12 +14,12 @@ module HackerOne
         'A2-AuthSession' =>
           [287, 613, 522, 256, 384, 472, 346, 441, 523, 620, 640, 319, 311],
         'A3-XSS' => [79],
-        'A4-IDOR' => [639, 99, 22],
-        'A5-SecurityMisconfiguration' => [16, 2, 215, 548, 209],
+        'A4-DirectObjRef' => [639, 99, 22],
+        'A5-Misconfig' => [16, 2, 215, 548, 209],
         'A6-DataExposure' => [312, 319, 310, 326, 320, 311, 325, 328, 327],
-        'A7-MissingAccessControl' => [285, 287],
+        'A7-MissingACL' => [285, 287],
         'A8-CSRF' => [352, 642, 613, 346, 441],
-        'A9-ComponentsWithKnownVulnerabilities' => [],
+        'A9-KnownVuln' => [],
         'A10-Redirects' => [601],
       }.freeze
 

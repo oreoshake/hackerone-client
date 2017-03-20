@@ -1,10 +1,9 @@
 require_relative './weakness'
+require_relative './activity'
 
 module HackerOne
   module Client
     class Report
-      PAYOUT_ACTIVITY_KEY = "activity-bounty-awarded"
-
       def initialize(report)
         @report = report
       end
@@ -68,17 +67,20 @@ module HackerOne
         classification_label().split("-").first
       end
 
+      def activities
+        relationships.dig(:activities, :data)&.map do |activity_data|
+          Activity.new(activity_data)
+        end
+      end
+
       private
+
       def payments
-        activities.select { |activity| activity[:type] == PAYOUT_ACTIVITY_KEY }
+        activities.select(&:payout?)
       end
 
       def payment_amount(payment)
-        payment.fetch(:attributes, {}).fetch(:bounty_amount, "0").gsub(/[^\d]/, "").to_i
-      end
-
-      def activities
-        relationships.fetch(:activities, {}).fetch(:data, [])
+        payment.bounty_amount.gsub(/[^\d]/, "").to_i
       end
 
       def attributes

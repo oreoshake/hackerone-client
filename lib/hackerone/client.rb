@@ -2,6 +2,7 @@ require "faraday"
 require 'active_support/time'
 require_relative "client/version"
 require_relative "client/report"
+require_relative "client/activity"
 
 module HackerOne
   module Client

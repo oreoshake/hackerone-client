@@ -3,11 +3,29 @@ module HackerOne
     class Weakness
       class << self
         def extract_cwe_number(cwe)
+          return if cwe.nil?
           fail StandardError::ArgumentError unless cwe.upcase.start_with?('CWE-')
 
           cwe.split('CWE-').last.to_i
         end
       end
+
+      CLASSIFICATION_MAPPING = {
+        "None Applicable" => "A0-Other",
+        "Denial of Service" => "A0-Other",
+        "Memory Corruption" => "A0-Other",
+        "Cryptographic Issue" => "A0-Other",
+        "Privilege Escalation" => "A0-Other",
+        "UI Redressing (Clickjacking)" => "A0-Other",
+        "Command Injection" => "A1-Injection",
+        "Remote Code Execution" => "A1-Injection",
+        "SQL Injection" => "A1-Injection",
+        "Authentication" => "A2-AuthSession",
+        "Cross-Site Scripting (XSS)" => "A3-XSS",
+        "Information Disclosure" => "A6-DataExposure",
+        "Cross-Site Request Forgery (CSRF)" => "A8-CSRF",
+        "Unvalidated / Open Redirect" => "A10-Redirects"
+      }
 
       OWASP_TOP_10_2013_TO_CWE = {
         'A1-Injection' => [77, 78, 88, 89, 90, 91, 564],
@@ -30,9 +48,11 @@ module HackerOne
       end
 
       def to_owasp
-        OWASP_TOP_10_2013_TO_CWE.map do |owasp, cwes|
+        from_cwe = OWASP_TOP_10_2013_TO_CWE.map do |owasp, cwes|
           owasp if cwes.include?(self.class.extract_cwe_number(to_cwe))
-        end.compact.first || OWASP_DEFAULT
+        end.compact.first
+
+        from_cwe || CLASSIFICATION_MAPPING[@attributes[:name]] || OWASP_DEFAULT
       end
 
       def to_cwe

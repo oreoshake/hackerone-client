@@ -69,14 +69,14 @@ module HackerOne
 
       def activities
         relationships.dig(:activities, :data)&.map do |activity_data|
-          Activity.new(activity_data)
+          Activities.build(activity_data)
         end
       end
 
       private
 
       def payments
-        activities.select(&:payout?)
+        activities.select { |activity| activity.is_a? Activities::BountyAwarded }
       end
 
       def payment_amount(payment)

@@ -1,25 +1,47 @@
 module HackerOne
   module Client
-    class Activity
-      PAYOUT_ACTIVITY_KEY = "activity-bounty-awarded"
+    module Activities
+      BOUNTY_AWARDED_ACTIVITY_KEY = "activity-bounty-awarded"
+      SWAG_AWARDED_ACTIVITY_KEY = "activity-swag-awarded"
 
-      delegate :bounty_amount, to: :attributes
+      class Activity
+        delegate :message, :created_at, :updated_at, to: :attributes
 
-      def initialize(activity)
-        @activity = OpenStruct.new(activity)
+        def initialize(activity)
+          @activity = OpenStruct.new activity
+        end
+
+        def internal?
+          attributes.internal
+        end
+
+        private
+
+        def attributes
+          OpenStruct.new(activity.attributes)
+        end
+
+        attr_reader :activity
       end
 
-      def payout?
-        activity.type == PAYOUT_ACTIVITY_KEY
+      class BountyAwarded < Activity
+        delegate :bounty_amount, to: :attributes
       end
 
-      private
-
-      def attributes
-        OpenStruct.new(activity.attributes)
+      class SwagAwarded < Activity
       end
 
-      attr_reader :activity
+      def self.build(activity_data)
+        activity_type_class_mapping = {
+          BOUNTY_AWARDED_ACTIVITY_KEY => BountyAwarded,
+          SWAG_AWARDED_ACTIVITY_KEY => SwagAwarded
+        }
+
+        activity_type_class = \
+          activity_type_class_mapping.fetch(activity_data[:type], Activity)
+
+        activity_type_class.new activity_data
+      end
     end
   end
 end

@@ -46,7 +46,7 @@ RSpec.describe HackerOne::Client::Report do
 
   describe "#activities" do
     it "returns a list of activities" do
-      expect(report.activities).to all(be_an(HackerOne::Client::Activity))
+      expect(report.activities).to all(be_an(HackerOne::Client::Activities::Activity))
     end
   end
 end

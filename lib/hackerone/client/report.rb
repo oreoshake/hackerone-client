@@ -56,7 +56,7 @@ module HackerOne
       end
 
       def weakness
-        @weakness ||= Weakness.new relationships[:weakness][:data][:attributes]
+        @weakness ||= Weakness.new(relationships.fetch(:weakness, {}).fetch(:data, {}).fetch(:attributes, {}))
       end
 
       def classification_label

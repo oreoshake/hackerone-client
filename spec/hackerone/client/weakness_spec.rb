@@ -36,9 +36,14 @@ RSpec.describe HackerOne::Client::Weakness do
       it { is_expected.to eq("A1-Injection") }
     end
 
-    it "falls back to name matchin when external ID is nil" do
+    it "falls back to name matching when external ID is nil" do
       classification = described_class.new(:external_id => nil, name: "Command Injection").to_owasp
       expect(classification).to eq("A1-Injection")
+    end
+
+    it "falls A0-Other when no weakness data is avaialble" do
+      classification = described_class.new({}).to_owasp
+      expect(classification).to eq("A0-Other")
     end
   end
 end

@@ -27,8 +27,15 @@ module HackerOne
       end
 
       class BountyAwarded < Activity
-        delegate :bounty_amount, to: :attributes
-        delegate :bonus_amount, to: :attributes
+        def bounty_amount
+          formatted_bounty_amount = attributes.bounty_amount || "0"
+          formatted_bounty_amount.gsub(/[^\d]/, "").to_i
+        end
+
+        def bonus_amount
+          formatted_bonus_amount = attributes.bonus_amount || "0"
+          formatted_bonus_amount.gsub(/[^\d]/, "").to_i
+        end
       end
 
       class SwagAwarded < Activity

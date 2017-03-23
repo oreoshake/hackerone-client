@@ -35,8 +35,20 @@ RSpec.describe HackerOne::Client::Activities do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
-      expect(activity.bounty_amount).to eq '500'
-      expect(activity.bonus_amount).to eq '50'
+      expect(activity.bounty_amount).to eq 500
+      expect(activity.bonus_amount).to eq 50
+    end
+
+    it 'does not fail when bounty or bonus amount is not given' do
+      example = {
+        'type' => 'activity-bounty-awarded',
+        'attributes' => {}
+      }.with_indifferent_access
+
+      activity = HackerOne::Client::Activities.build example
+
+      expect(activity.bounty_amount).to eq 0
+      expect(activity.bonus_amount).to eq 0
     end
   end
 

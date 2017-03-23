@@ -80,7 +80,7 @@ module HackerOne
       end
 
       def payment_amount(payment)
-        payment.bounty_amount.gsub(/[^\d]/, "").to_i
+        payment.bounty_amount
       end
 
       def attributes

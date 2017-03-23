@@ -1,11 +1,9 @@
 module HackerOne
   module Client
     module Activities
-      BOUNTY_AWARDED_ACTIVITY_KEY = "activity-bounty-awarded"
-      SWAG_AWARDED_ACTIVITY_KEY = "activity-swag-awarded"
-
       class Activity
         delegate :message, :created_at, :updated_at, to: :attributes
+        delegate :actor, to: :relationships
 
         def initialize(activity)
           @activity = OpenStruct.new activity
@@ -16,6 +14,10 @@ module HackerOne
         end
 
         private
+
+        def relationships
+          OpenStruct.new(activity.relationships)
+        end
 
         def attributes
           OpenStruct.new(activity.attributes)
@@ -29,16 +31,31 @@ module HackerOne
       end
 
       class SwagAwarded < Activity
+        delegate :swag, to: :relationships
       end
 
-      def self.build(activity_data)
-        activity_type_class_mapping = {
-          BOUNTY_AWARDED_ACTIVITY_KEY => BountyAwarded,
-          SWAG_AWARDED_ACTIVITY_KEY => SwagAwarded
-        }
+      class UserAssignedToBug < Activity
+        delegate :assigned_user, to: :relationships
+      end
 
-        activity_type_class = \
-          activity_type_class_mapping.fetch(activity_data[:type], Activity)
+      class BugTriaged < Activity
+      end
+
+      class ReferenceIdAdded < Activity
+        delegate :reference, :reference_url, to: :attributes
+      end
+
+      ACTIVITY_TYPE_CLASS_MAPPING = {
+        'activity-bounty-awarded' => BountyAwarded,
+        'activity-swag-awarded' => SwagAwarded,
+        'activity-user-assigned-to-bug' => UserAssignedToBug,
+        'activity-bug-triaged' => BugTriaged,
+        'activity-reference-id-added' => ReferenceIdAdded
+      }.freeze
+
+      def self.build(activity_data)
+        activity_type_class = ACTIVITY_TYPE_CLASS_MAPPING.fetch \
+          activity_data[:type], Activity
 
         activity_type_class.new activity_data
       end

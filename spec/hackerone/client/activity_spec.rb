@@ -3,7 +3,6 @@ require 'active_support/core_ext/hash'
 
 RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::BountyAwarded do
-    # delegate :bounty_amount, to: :attributes
     let(:example) do
       {
         'id' => '1337',

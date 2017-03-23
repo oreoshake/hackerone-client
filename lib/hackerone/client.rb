@@ -21,7 +21,13 @@ module HackerOne
       informative
       duplicate
       spam
-    ).map(&:to_sym)
+    ).map(&:to_sym).freeze
+
+    STATES_REQUIRING_STATE_CHANGE_MESSAGE = %w(
+      needs-more-info
+      informative
+      duplicate
+    ).map(&:to_sym).freeze
 
     class << self
       ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
@@ -111,18 +117,23 @@ module HackerOne
       #
       # returns an HackerOne::Client::Report object or raises an error if
       # no report is found.
-      def state_change(id, state)
+      def state_change(id, state, message = nil)
         raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
 
         body = {
           data: {
             type: "state-change",
             attributes: {
-              message: "This is has been triaged internally.",
               state: state
             }
           }
         }
+
+        if message
+          body[:message] = message
+        elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
+          fail ArgumentError, "State #{state} requires a message. No message was supplied."
+        end
         post("reports/#{id}/state_changes", body)
       end
 

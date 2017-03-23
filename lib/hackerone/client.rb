@@ -111,18 +111,19 @@ module HackerOne
       #
       # returns an HackerOne::Client::Report object or raises an error if
       # no report is found.
-      def state_change(id, state)
+      def state_change(id, state, message = nil)
         raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
 
         body = {
           data: {
             type: "state-change",
             attributes: {
-              message: "This is has been triaged internally.",
               state: state
             }
           }
         }
+
+        body[:message] = message if message
         post("reports/#{id}/state_changes", body)
       end
 

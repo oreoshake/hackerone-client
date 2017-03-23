@@ -21,7 +21,13 @@ module HackerOne
       informative
       duplicate
       spam
-    ).map(&:to_sym)
+    ).map(&:to_sym).freeze
+
+    STATES_REQUIRING_STATE_CHANGE_MESSAGE = %w(
+      needs-more-info
+      informative
+      duplicate
+    ).map(&:to_sym).freeze
 
     class << self
       ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
@@ -123,7 +129,11 @@ module HackerOne
           }
         }
 
-        body[:message] = message if message
+        if message
+          body[:message] = message
+        elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
+          fail ArgumentError, "State #{state} requires a message. No message was supplied."
+        end
         post("reports/#{id}/state_changes", body)
       end
 

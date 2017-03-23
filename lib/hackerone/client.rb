@@ -165,7 +165,7 @@ module HackerOne
         if response.status.to_s.start_with?("4")
           raise ArgumentError, "API called failed, probably your fault: #{response.body}"
         elsif response.status.to_s.start_with?("5")
-          raise RuntimeError, "API called failed, probobly their fault: #{response.body}"
+          raise RuntimeError, "API called failed, probably their fault: #{response.body}"
         elsif response.success?
           Report.new(JSON.parse(response.body, :symbolize_names => true)[:data])
         else

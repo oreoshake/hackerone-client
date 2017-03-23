@@ -28,6 +28,7 @@ module HackerOne
 
       class BountyAwarded < Activity
         delegate :bounty_amount, to: :attributes
+        delegate :bonus_amount, to: :attributes
       end
 
       class SwagAwarded < Activity
@@ -57,6 +58,7 @@ module HackerOne
         activity_type_class = ACTIVITY_TYPE_CLASS_MAPPING.fetch \
           activity_data[:type], Activity
 
+        # puts activity_data
         activity_type_class.new activity_data
       end
     end

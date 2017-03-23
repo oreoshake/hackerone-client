@@ -46,6 +46,12 @@ RSpec.describe HackerOne::Client do
         expect { api.report(404) }.to raise_error(ArgumentError)
       end
     end
+
+    it "raises an error if hackerone 500s" do
+      VCR.use_cassette(:server_error) do
+        expect { api.report(500) }.to raise_error(RuntimeError)
+      end
+    end
   end
 
   context "#add_report_reference" do

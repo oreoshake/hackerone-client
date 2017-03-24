@@ -68,8 +68,10 @@ module HackerOne
       end
 
       def activities
-        relationships.dig(:activities, :data)&.map do |activity_data|
-          Activities.build(activity_data)
+        if ships = relationships.fetch(:activities, {}).fetch(:data, [])
+          ships.map do |activity_data|
+            Activities.build(activity_data)
+          end
         end
       end
 

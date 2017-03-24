@@ -131,9 +131,12 @@ module HackerOne
         }
 
         if message
-          body[:message] = message
+          body[:data][:attributes][:message] = message
         elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
           fail ArgumentError, "State #{state} requires a message. No message was supplied."
+        else
+          # message is in theory optional, but a value appears to be required.
+          body[:data][:attributes][:message] = ""
         end
         post("reports/#{id}/state_changes", body)
       end

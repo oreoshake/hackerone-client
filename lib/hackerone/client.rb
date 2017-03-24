@@ -58,7 +58,7 @@ module HackerOne
       # since (optional): a time bound, don't include reports earlier than +since+. Must be a DateTime object.
       #
       # returns all open reports or an empty array
-      def reports(since: 3.days.ago.to_i)
+      def reports(since: 3.days.ago)
         raise ArgumentError, "Program cannot be nil" unless program
         response = self.class.hackerone_api_connection.get do |req|
           options = {

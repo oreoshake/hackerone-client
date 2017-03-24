@@ -55,56 +55,56 @@ RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::SwagAwarded do
     let(:example) do
       {
-        'id': '1337',
-        'type': 'activity-swag-awarded',
-        'attributes': {
-          'message': 'Swag Awarded!',
-          'created_at': '2016-02-02T04:05:06.000Z',
-          'updated_at': '2016-02-02T04:05:06.000Z',
-          'internal': false
+        'id' => '1337',
+        'type' => 'activity-swag-awarded',
+        'attributes' => {
+          'message' => 'Swag Awarded!',
+          'created_at' => '2016-02-02T04:05:06.000Z',
+          'updated_at' => '2016-02-02T04:05:06.000Z',
+          'internal' => false
         },
-        'relationships': {
-          'actor': {
-            'data': {
-              'id': '1337',
-              'type': 'user',
-              'attributes': {
-                'username': 'api-example',
-                'name': 'API Example',
-                'disabled': false,
-                'created_at': '2016-02-02T04:05:06.000Z',
-                'profile_picture': {
-                  '62x62': '/assets/avatars/default.png',
-                  '82x82': '/assets/avatars/default.png',
-                  '110x110': '/assets/avatars/default.png',
-                  '260x260': '/assets/avatars/default.png'
+        'relationships' => {
+          'actor' => {
+            'data' => {
+              'id' => '1337',
+              'type' => 'user',
+              'attributes' => {
+                'username' => 'api-example',
+                'name' => 'API Example',
+                'disabled' => false,
+                'created_at' => '2016-02-02T04:05:06.000Z',
+                'profile_picture' => {
+                  '62x62' => '/assets/avatars/default.png',
+                  '82x82' => '/assets/avatars/default.png',
+                  '110x110' => '/assets/avatars/default.png',
+                  '260x260' => '/assets/avatars/default.png'
                 }
               }
             }
           },
-          'swag': {
-            'data': {
-              'id': '1337',
-              'type': 'swag',
-              'attributes': {
-                'sent': false,
-                'created_at': '2016-02-02T04:05:06.000Z'
+          'swag' => {
+            'data' => {
+              'id' => '1337',
+              'type' => 'swag',
+              'attributes' => {
+                'sent' => false,
+                'created_at' => '2016-02-02T04:05:06.000Z'
               },
-              'relationships': {
-                'address': {
-                  'data': {
-                    'id': '1337',
-                    'type': 'address',
-                    'attributes': {
-                      'name': 'Jane Doe',
-                      'street': '535 Mission Street',
-                      'city': 'San Francisco',
-                      'postal_code': '94105',
-                      'state': 'CA',
-                      'country': 'United States of America',
-                      'created_at': '2016-02-02T04:05:06.000Z',
-                      'tshirt_size': 'Large',
-                      'phone_number': '+1-510-000-0000'
+              'relationships' => {
+                'address' => {
+                  'data' => {
+                    'id' => '1337',
+                    'type' => 'address',
+                    'attributes' => {
+                      'name' => 'Jane Doe',
+                      'street' => '535 Mission Street',
+                      'city' => 'San Francisco',
+                      'postal_code' => '94105',
+                      'state' => 'CA',
+                      'country' => 'United States of America',
+                      'created_at' => '2016-02-02T04:05:06.000Z',
+                      'tshirt_size' => 'Large',
+                      'phone_number' => '+1-510-000-0000'
                     }
                   }
                 }

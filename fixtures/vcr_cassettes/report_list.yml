@@ -237,4 +237,317 @@ http_interactions:
 }'
     http_version:
   recorded_at: Sat, 18 Feb 2017 19:16:35 GMT
+- request:
+    method: get
+    uri: https://api.hackerone.com/v1/reports?page%5Bsize%5D=1&page%5Bnumber%5D=0&filter%5Bcreated_at__gt%5D=2017-02-11T16:00:44-10:00&filter%5Bprogram%5D%5B0%5D=github&filter%5Bstate%5D%5B0%5D=new
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic nope=
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 18 Feb 2017 19:16:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=123; expires=Sun, 18-Feb-18
+        19:16:35 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - 123
+      Etag:
+      - W/"e337505dbc57f7e1f85685911c939b6e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - default-src 'none'; connect-src 'self' www.google-analytics.com errors.hackerone.net;
+        font-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'
+        'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3333d0794c920d4f-LAX
+    body:
+      encoding: ASCII-8BIT
+      string: '{
+  "data": [
+    {
+      "id": "207385",
+      "type": "report",
+      "attributes": {
+        "title": "What is my purpose",
+        "state": "new",
+        "created_at": "2017-02-18T18:26:13.283Z",
+        "vulnerability_information": "You pass the butter",
+        "triaged_at": null,
+        "closed_at": null,
+        "last_reporter_activity_at": "2017-02-18T18:26:13.387Z",
+        "first_program_activity_at": null,
+        "last_program_activity_at": null,
+        "bounty_awarded_at": null,
+        "swag_awarded_at": null,
+        "disclosed_at": null,
+        "last_activity_at": "2017-02-18T18:26:13.387Z"
+      },
+      "relationships": {
+        "reporter": {
+          "data": {
+            "id": "123",
+            "type": "user",
+            "attributes": {
+              "username": "rickestofallthericks",
+              "name": "Rick Sanchez",
+              "disabled": false,
+              "created_at": "2017-02-18T18:21:28.638Z",
+              "profile_picture": {
+                "62x62": "/assets/avatars/default-123.png",
+                "82x82": "/assets/avatars/default-123.png",
+                "110x110": "/assets/avatars/default-123.png",
+                "260x260": "/assets/avatars/default-123.png"
+              }
+            }
+          }
+        },
+        "program": {
+          "data": {
+            "id": "1894",
+            "type": "program",
+            "attributes": {
+              "handle": "github",
+              "created_at": "2015-05-29T20:12:03.091Z",
+              "updated_at": "2017-02-17T15:18:04.114Z"
+            }
+          }
+        },
+        "severity": {
+          "data": {
+            "id": "26662",
+            "type": "severity",
+            "attributes": {
+              "rating": "critical",
+              "author_type": "User",
+              "user_id": 123,
+              "created_at": "2017-02-18T18:26:13.373Z",
+              "score": 9.1,
+              "attack_complexity": "low",
+              "attack_vector": "network",
+              "availability": "none",
+              "confidentiality": "high",
+              "integrity": "high",
+              "privileges_required": "none",
+              "user_interaction": "none",
+              "scope": "unchanged"
+            }
+          }
+        },
+        "vulnerability_types": {
+          "data": [
+            {
+              "id": "25110",
+              "type": "vulnerability-type",
+              "attributes": {
+                "name": "Information Disclosure",
+                "description": "nope",
+                "created_at": "2016-01-28T13:34:08.945Z"
+              }
+            }
+          ]
+        },
+        "bounties": {
+          "data": []
+        }
+      }
+    },
+  ],
+  "links": {
+    "next": "https://foooo"
+  }
+}'
+    http_version:
+  recorded_at: Sat, 18 Feb 2017 19:16:35 GMT
+- request:
+    method: get
+    uri: https://api.hackerone.com/v1/reports?page%5Bsize%5D=1&page%5Bnumber%5D=1&filter%5Bcreated_at__gt%5D=2017-02-11T16:00:44-10:00&filter%5Bprogram%5D%5B0%5D=github&filter%5Bstate%5D%5B0%5D=new
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic nope=
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 18 Feb 2017 19:16:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=123; expires=Sun, 18-Feb-18
+        19:16:35 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - 123
+      Etag:
+      - W/"e337505dbc57f7e1f85685911c939b6e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - default-src 'none'; connect-src 'self' www.google-analytics.com errors.hackerone.net;
+        font-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'
+        'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3333d0794c920d4f-LAX
+    body:
+      encoding: ASCII-8BIT
+      string: '{
+  "data": [
+    {
+      "id": "207228",
+      "type": "report",
+      "attributes": {
+        "title": "Take 2 Strokes off of Jerry''s swing",
+        "state": "new",
+        "created_at": "2017-02-17T21:51:00.916Z",
+        "vulnerability_information": "Hai",
+        "triaged_at": null,
+        "closed_at": null,
+        "last_reporter_activity_at": "2017-02-17T21:51:01.110Z",
+        "first_program_activity_at": null,
+        "last_program_activity_at": null,
+        "bounty_awarded_at": null,
+        "swag_awarded_at": null,
+        "disclosed_at": null,
+        "last_activity_at": "2017-02-17T21:51:01.110Z"
+      },
+      "relationships": {
+        "reporter": {
+          "data": {
+            "id": "1234",
+            "type": "user",
+            "attributes": {
+              "username": "ImMrMeeseeks",
+              "name": "Mr Meeseeks",
+              "disabled": false,
+              "created_at": "2017-02-17T20:52:56.666Z",
+              "profile_picture": {
+                "62x62": "/assets/avatars/default-123.png",
+                "82x82": "/assets/avatars/default-123.png",
+                "110x110": "/assets/avatars/default-123.png",
+                "260x260": "/assets/avatars/default-123.png"
+              }
+            }
+          }
+        },
+        "program": {
+          "data": {
+            "id": "1894",
+            "type": "program",
+            "attributes": {
+              "handle": "github",
+              "created_at": "2015-05-29T20:12:03.091Z",
+              "updated_at": "2017-02-17T15:18:04.114Z"
+            }
+          }
+        },
+        "severity": {
+          "data": {
+            "id": "26541",
+            "type": "severity",
+            "attributes": {
+              "rating": "low",
+              "author_type": "User",
+              "user_id": 144214,
+              "created_at": "2017-02-17T21:51:01.093Z"
+            }
+          }
+        },
+        "vulnerability_types": {
+          "data": [
+            {
+              "id": "25110",
+              "type": "vulnerability-type",
+              "attributes": {
+                "name": "Information Disclosure",
+                "description": "Exposure of system information, sensitive or private information, fingerprinting, etc.\n",
+                "created_at": "2016-01-28T13:34:08.945Z"
+              }
+            }
+          ]
+        },
+        "bounties": {
+          "data": []
+        }
+      }
+    }
+  ],
+  "links": {
+
+  }
+}'
+    http_version:
+  recorded_at: Sat, 18 Feb 2017 19:16:35 GMT
 recorded_with: VCR 3.0.3

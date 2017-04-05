@@ -123,5 +123,11 @@ RSpec.describe HackerOne::Client do
         expect(api.reports(since: point_in_time)).to be_empty
       end
     end
+
+    it "handles paginated responses" do
+      VCR.use_cassette(:report_list) do
+        expect(api.reports(since: point_in_time, page_size: 1).size).to eq(2)
+      end
+    end
   end
 end

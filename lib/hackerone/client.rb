@@ -56,26 +56,43 @@ module HackerOne
       #
       # program: the HackerOne program to search on (configure globally with Hackerone::Client.program=)
       # since (optional): a time bound, don't include reports earlier than +since+. Must be a DateTime object.
+      # state (optional): state or array of states to filter on (defaults to 'new' reports). Specify state: :all to includes all states.
+      # page_number (optional): which page of the current query should be returned
       #
       # returns all open reports or an empty array
-      def reports(since: 3.days.ago)
+      def reports(since: 3.days.ago, state: :new, page_number: 0, page_size: PAGE_SIZE)
         raise ArgumentError, "Program cannot be nil" unless program
+        if state != :all && !STATES.include?(state)
+          raise ArgumentError, "'state' must be :all or one of #{STATES}"
+        end
+
         response = self.class.hackerone_api_connection.get do |req|
           options = {
-            "filter[state][]" => "new",
+            "page[size]" => page_size,
+            "page[number]" => page_number,
             "filter[program][]" => program,
-            "filter[created_at__gt]" => since.iso8601
+            "filter[created_at__gt]" => since.iso8601,
           }
+
+          unless state == :all
+            options["filter[state][]"] = state
+          end
           req.url "reports", options
         end
 
-        data = JSON.parse(response.body, :symbolize_names => true)[:data]
-        if data.nil?
+        parsed_response = JSON.parse(response.body, :symbolize_names => true)
+        unless data = parsed_response[:data]
           raise RuntimeError, "Expected data attribute in response: #{response.body}"
         end
 
-        data.map do |report|
+        reports = data.map do |report|
           Report.new(report)
+        end
+
+        if parsed_response[:links][:next]
+          reports + reports(since: since, state: state, page_number: page_number + 1)
+        else
+          reports
         end
       end
 

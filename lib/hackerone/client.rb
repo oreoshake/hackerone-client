@@ -1,8 +1,11 @@
-require "faraday"
-require 'active_support/time'
+require 'faraday'
+require "json"
+require "active_support/time"
 require_relative "client/version"
 require_relative "client/report"
 require_relative "client/activity"
+require_relative "client/program"
+require_relative "client/reporter"
 
 module HackerOne
   module Client
@@ -50,6 +53,44 @@ module HackerOne
 
       def program
         @program || HackerOne::Client.program
+      end
+
+      def programs
+        response = self.class.hackerone_api_connection.get do |req|
+          req.url "me/programs"
+        end
+
+        data = JSON.parse(response.body, :symbolize_names => true)[:data]
+        if data.nil?
+          raise RuntimeError, "Expected data attribute in response: #{response.body}"
+        end
+
+        data.map do |program|
+          Program.new(program)
+        end
+      end
+
+      def program_as_object
+        program_handle_we_want = program
+        programs.find do |program|
+          program.handle == program_handle_we_want
+        end
+      end
+
+      def reporters
+        raise ArgumentError, "Program cannot be nil" unless program
+        response = self.class.hackerone_api_connection.get do |req|
+          req.url "programs/#{program_as_object.id}/reporters"
+        end
+
+        data = JSON.parse(response.body, :symbolize_names => true)[:data]
+        if data.nil?
+          raise RuntimeError, "Expected data attribute in response: #{response.body}"
+        end
+
+        data.map do |report|
+          Reporter.new(report)
+        end
       end
 
       ## Returns all open reports, optionally with a time bound

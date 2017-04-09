@@ -4,6 +4,8 @@ require_relative './activity'
 module HackerOne
   module Client
     class Reporter
+      delegate :username, :name, :created_at, to: :attributes
+
       def initialize(reporter)
         @reporter = reporter
       end
@@ -13,23 +15,11 @@ module HackerOne
       end
 
       def attributes
-        @reporter[:attributes]
-      end
-
-      def username
-        attributes[:username]
-      end
-
-      def name
-        attributes[:name]
+        OpenStruct.new @reporter[:attributes]
       end
 
       def disabled?
-        attributes[:disabled]
-      end
-
-      def created_at
-        attributes[:created_at]
+        attributes.disabled
       end
     end
   end

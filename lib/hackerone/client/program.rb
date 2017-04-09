@@ -4,6 +4,8 @@ require_relative './activity'
 module HackerOne
   module Client
     class Program
+      delegate :handle, to: :attributes
+
       def initialize(program)
         @program = program
       end
@@ -12,12 +14,8 @@ module HackerOne
         @program[:id]
       end
 
-      def handle
-        attributes[:handle]
-      end
-
       def attributes
-        @program[:attributes]
+        OpenStruct.new @program[:attributes]
       end
     end
   end

@@ -88,8 +88,8 @@ module HackerOne
           raise RuntimeError, "Expected data attribute in response: #{response.body}"
         end
 
-        data.map do |report|
-          Reporter.new(report)
+        data.map do |reporter|
+          Reporter.new(reporter)
         end
       end
 

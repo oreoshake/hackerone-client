@@ -12,7 +12,7 @@ module HackerOne
       end
 
       def attributes
-        OpenStruct.new @program[:attributes]
+        OpenStruct.new(@program[:attributes])
       end
     end
   end

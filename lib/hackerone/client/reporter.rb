@@ -12,7 +12,7 @@ module HackerOne
       end
 
       def attributes
-        OpenStruct.new @reporter[:attributes]
+        OpenStruct.new(@reporter[:attributes])
       end
 
       def disabled?

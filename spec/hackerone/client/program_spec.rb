@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe HackerOne::Client::Report do
+RSpec.describe HackerOne::Client::Program do
   let(:api) { HackerOne::Client::Api.new("github") }
 
   before(:all) do

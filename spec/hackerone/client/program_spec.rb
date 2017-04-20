@@ -8,20 +8,9 @@ RSpec.describe HackerOne::Client::Program do
     ENV["HACKERONE_TOKEN"] = "bar"
   end
 
-  let(:programs) do
-    VCR.use_cassette(:programs) do
-      api.programs
-    end
-  end
-
-  it "returns a collection" do
-    expect(programs).to be_kind_of(Array)
-    expect(programs.size).to eq 1
-  end
-
   describe 'find' do
     let(:found_program) do
-      VCR.use_casette(:programs) do
+      VCR.use_cassette(:programs) do
         described_class.find "github"
       end
     end

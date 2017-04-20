@@ -1,6 +1,3 @@
-require_relative './weakness'
-require_relative './activity'
-
 module HackerOne
   module Client
     class Reporter

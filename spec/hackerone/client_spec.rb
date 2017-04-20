@@ -9,7 +9,7 @@ RSpec.describe HackerOne::Client do
     ENV["HACKERONE_TOKEN"] = "bar"
   end
 
-  context "configuraiton" do
+  context "configuration" do
     it "rejects invalid range values for risk classification" do
       begin
         expect { HackerOne::Client.low_range = "fred" }.to raise_error(ArgumentError)

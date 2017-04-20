@@ -56,9 +56,6 @@ module HackerOne
         @program || HackerOne::Client.program
       end
 
-      def programs
-      end
-
       def reporters
         raise ArgumentError, "Program cannot be nil" unless program
         response = self.class.hackerone_api_connection.get do |req|

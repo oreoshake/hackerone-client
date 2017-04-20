@@ -14,22 +14,21 @@ RSpec.describe HackerOne::Client::Report do
     end
   end
 
-  let(:program_as_object) do
-    VCR.use_cassette(:programs) do
-      api.program_as_object
-    end
-  end
-
   it "returns a collection" do
     expect(programs).to be_kind_of(Array)
     expect(programs.size).to eq 1
   end
 
-  it "returns id" do
-    expect(program_as_object.id).to eq "18969"
-  end
+  describe 'find' do
+    let(:found_program) do
+      VCR.use_casette(:programs) do
+        described_class.find "github"
+      end
+    end
 
-  it "returns handle" do
-    expect(program_as_object.handle).to eq "github"
+    it "returns a team as object when provided the handle" do
+      expect(found_program.id).to eq("18969")
+      expect(found_program.handle).to eq("github")
+    end
   end
 end

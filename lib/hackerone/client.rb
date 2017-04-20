@@ -1,4 +1,4 @@
-require 'faraday'
+require "faraday"
 require "json"
 require "active_support/time"
 require_relative "client/version"

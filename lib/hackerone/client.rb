@@ -62,7 +62,7 @@ module HackerOne
           req.url "programs/#{Program.find(program).id}/reporters"
         end
 
-        data = JSON.parse(response.body, :symbolize_names => true)[:data]
+        data = self.class.parse_response(response)
         if data.nil?
           raise RuntimeError, "Expected data attribute in response: #{response.body}"
         end

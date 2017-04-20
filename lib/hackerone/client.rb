@@ -89,10 +89,7 @@ module HackerOne
           req.url "reports", options
         end
 
-        data = JSON.parse(response.body, :symbolize_names => true)[:data]
-        if data.nil?
-          raise RuntimeError, "Expected data attribute in response: #{response.body}"
-        end
+        data = self.class.parse_response(response)
 
         data.map do |report|
           Report.new(report)

@@ -20,6 +20,9 @@ client.add_report_reference(id, reference)
 
 # Triage an issue (add a reference and set state to :triaged)
 client.triage(id, reference)
+
+# GET `/{program}/reporters` returns a list of unique reporters that have reported to your program
+client.reporters
 ```
 
 ## Usage

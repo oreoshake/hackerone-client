@@ -1,8 +1,11 @@
 require "faraday"
-require 'active_support/time'
+require "json"
+require "active_support/time"
 require_relative "client/version"
 require_relative "client/report"
 require_relative "client/activity"
+require_relative "client/program"
+require_relative "client/reporter"
 
 module HackerOne
   module Client
@@ -52,6 +55,22 @@ module HackerOne
         @program || HackerOne::Client.program
       end
 
+      def reporters
+        raise ArgumentError, "Program cannot be nil" unless program
+        response = self.class.hackerone_api_connection.get do |req|
+          req.url "programs/#{Program.find(program).id}/reporters"
+        end
+
+        data = self.class.parse_response(response)
+        if data.nil?
+          raise RuntimeError, "Expected data attribute in response: #{response.body}"
+        end
+
+        data.map do |reporter|
+          Reporter.new(reporter)
+        end
+      end
+
       ## Returns all open reports, optionally with a time bound
       #
       # program: the HackerOne program to search on (configure globally with Hackerone::Client.program=)
@@ -69,10 +88,7 @@ module HackerOne
           req.url "reports", options
         end
 
-        data = JSON.parse(response.body, :symbolize_names => true)[:data]
-        if data.nil?
-          raise RuntimeError, "Expected data attribute in response: #{response.body}"
-        end
+        data = self.class.parse_response(response)
 
         data.map do |report|
           Report.new(report)
@@ -108,7 +124,7 @@ module HackerOne
           }
         }
 
-        post("reports/#{id}/issue_tracker_reference_id", body)
+        Report.new(post("reports/#{id}/issue_tracker_reference_id", body))
       end
 
       ## Idempotent: change the state of a report. See STATES for valid values.
@@ -148,7 +164,7 @@ module HackerOne
       # returns an HackerOne::Client::Report object or raises an error if
       # no report is found.
       def report(id)
-        get("reports/#{id}")
+        Report.new(get("reports/#{id}"))
       end
 
       private
@@ -161,7 +177,7 @@ module HackerOne
           end
         end
 
-        parse_response(response)
+        self.class.parse_response(response)
       end
 
       def get(endpoint, params = nil)
@@ -173,16 +189,16 @@ module HackerOne
           end
         end
 
-        parse_response(response)
+        self.class.parse_response(response)
       end
 
-      def parse_response(response)
+      def self.parse_response(response)
         if response.status.to_s.start_with?("4")
           raise ArgumentError, "API called failed, probably your fault: #{response.body}"
         elsif response.status.to_s.start_with?("5")
           raise RuntimeError, "API called failed, probably their fault: #{response.body}"
         elsif response.success?
-          Report.new(JSON.parse(response.body, :symbolize_names => true)[:data])
+          JSON.parse(response.body, :symbolize_names => true)[:data]
         else
           raise RuntimeError, "Not sure what to do here: #{response.body}"
         end

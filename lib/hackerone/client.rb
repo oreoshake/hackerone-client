@@ -6,6 +6,9 @@ require_relative "client/report"
 require_relative "client/activity"
 require_relative "client/program"
 require_relative "client/reporter"
+require_relative "client/member"
+require_relative "client/user"
+require_relative "client/group"
 
 module HackerOne
   module Client

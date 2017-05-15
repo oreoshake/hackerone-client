@@ -75,6 +75,31 @@ module HackerOne
         end
       end
 
+      def program
+        @team || Program.find(relationships[:program][:data][:attributes][:handle])
+      end
+
+      def assign_to(username_or_groupname)
+        request_body = if username_or_groupname == 'nobody'
+          { type: :nobody }
+        elsif program.member?(username_or_groupname)
+          member = program.find_member(username_or_groupname)
+          { id: member.user.id, type: :user }
+        elsif program.group?(username_or_groupname)
+          group = program.find_group(username_or_groupname)
+          { id: group.id, type: :group }
+        else
+          fail("Could not find a member or group with name '#{username_or_groupname}' in program '#{program.handle}' for report #{id}")
+        end
+
+        HackerOne::Client::Api.hackerone_api_connection.put do |req|
+          req.headers['Content-Type'] = 'application/json'
+          req.url "reports/#{id}/assignee"
+          puts({ data: request_body }.to_json)
+          req.body = { data: request_body }.to_json
+        end
+      end
+
       private
 
       def payments

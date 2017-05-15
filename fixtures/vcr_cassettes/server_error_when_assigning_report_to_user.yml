@@ -1,0 +1,220 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hackerone.com/v1/me/programs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic c2pvcnM6bzd1ektvYWlBeXhic2tlQWRrYm93R2hzZDB4VzJSQU10MnR0Z25ZUkNzZz0=
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 15 May 2017 20:20:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0d7a99fec927bfdcfe90f873ba28a7521494879631; expires=Tue, 15-May-18
+        20:20:31 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - f96eea01-21d7-4a34-8cb4-29f76636de9b
+      Etag:
+      - W/"9329ef6b8f370e76d96d71977a6480c4"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
+        font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
+        ''self'' data: cover-photos.hackerone-user-content.com profile-photos.hackerone-user-content.com
+        hackerone-attachments.s3.amazonaws.com; media-src ''self'' hackerone-attachments.s3.amazonaws.com;
+        script-src ''self'' www.google-analytics.com; style-src ''self'' ''unsafe-inline'';
+        report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 35f8cc5f2ee7731f-AMS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"18969","type":"program","attributes":{"handle":"github","created_at":"2017-03-08T19:22:41.884Z","updated_at":"2017-04-09T08:15:15.228Z"}}],"links":{}}'
+    http_version: 
+  recorded_at: Mon, 15 May 2017 20:19:59 GMT
+- request:
+    method: get
+    uri: https://api.hackerone.com/v1/programs/18969
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic c2pvcnM6bzd1ektvYWlBeXhic2tlQWRrYm93R2hzZDB4VzJSQU10MnR0Z25ZUkNzZz0=
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 15 May 2017 20:20:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d7481764f9fe167307e10d54154693b3e1494879631; expires=Tue, 15-May-18
+        20:20:31 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - 8a0439ed-d918-48e7-8cd2-c7de461490f1
+      Etag:
+      - W/"83a960a017993aaa92b252a3d4665ec0"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
+        font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
+        ''self'' data: cover-photos.hackerone-user-content.com profile-photos.hackerone-user-content.com
+        hackerone-attachments.s3.amazonaws.com; media-src ''self'' hackerone-attachments.s3.amazonaws.com;
+        script-src ''self'' www.google-analytics.com; style-src ''self'' ''unsafe-inline'';
+        report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 35f8cc611dc5722f-AMS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"18969","type":"program","attributes":{"handle":"github","created_at":"2017-03-08T19:22:41.884Z","updated_at":"2017-04-09T08:15:15.228Z"},"relationships":{"groups":{"data":[{"id":"23579","type":"group","attributes":{"name":"Standard","created_at":"2017-03-08T19:22:43.259Z","permissions":["report_management","reward_management"]}},{"id":"23578","type":"group","attributes":{"name":"Admin","created_at":"2017-03-08T19:22:43.243Z","permissions":["user_management","program_management"]}}]},"members":{"data":[{"id":"35928","type":"member","attributes":{"created_at":"2017-04-20T19:25:29.188Z","permissions":["program_management","report_management","reward_management","user_management"]},"relationships":{"user":{"data":{"id":"160844","type":"user","attributes":{"username":"esjee","name":null,"disabled":false,"created_at":"2017-04-20T19:25:29.165Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"id":"32557","type":"member","attributes":{"created_at":"2017-03-08T19:22:44.421Z","permissions":["program_management","report_management","reward_management","user_management"]},"relationships":{"user":{"data":{"id":"147515","type":"user","attributes":{"username":"hackhackhackhack","name":"hackhackhackhack","disabled":false,"created_at":"2017-03-04T16:31:33.595Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"id":"32556","type":"member","attributes":{"created_at":"2017-03-08T19:22:43.226Z","permissions":["program_management","report_management","reward_management","user_management"]},"relationships":{"user":{"data":{"id":"4954","type":"user","attributes":{"username":"demo-member","name":"Demo
+        Member","disabled":false,"created_at":"2014-04-14T11:45:00.949Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/004/954/76e628d12eaacde79878b890df02c065f740b1a4_small.png?1423472456","82x82":"https://profile-photos.hackerone-user-content.com/production/000/004/954/75e4cf2599f591e618646429db57d986e496ccee_medium.png?1423472456","110x110":"https://profile-photos.hackerone-user-content.com/production/000/004/954/25f5c8af70323cacb2c2ffa17d68cac2500dc410_large.png?1423472456","260x260":"https://profile-photos.hackerone-user-content.com/production/000/004/954/d903c042cdc7798ad76684563624ee7ea071aed8_xtralarge.png?1423472456"}}}}}}]}}}}'
+    http_version: 
+  recorded_at: Mon, 15 May 2017 20:19:59 GMT
+- request:
+    method: put
+    uri: https://api.hackerone.com/v1/reports/200/assignee
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"160844","type":"user"}}'
+    headers:
+      Authorization:
+      - Basic c2pvcnM6bzd1ektvYWlBeXhic2tlQWRrYm93R2hzZDB4VzJSQU10MnR0Z25ZUkNzZz0=
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Date:
+      - Mon, 15 May 2017 20:20:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dde3c2d8330ab3c5d345982fe936253711494879631; expires=Tue, 15-May-18
+        20:20:31 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - 714868f6-b785-4d49-984f-1df4e01c170f
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
+        font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
+        ''self'' data: cover-photos.hackerone-user-content.com profile-photos.hackerone-user-content.com
+        hackerone-attachments.s3.amazonaws.com; media-src ''self'' hackerone-attachments.s3.amazonaws.com;
+        script-src ''self'' www.google-analytics.com; style-src ''self'' ''unsafe-inline'';
+        report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 35f8cc634e9b2bee-AMS
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":500}]}'
+    http_version: 
+  recorded_at: Mon, 15 May 2017 20:20:01 GMT
+recorded_with: VCR 3.0.3

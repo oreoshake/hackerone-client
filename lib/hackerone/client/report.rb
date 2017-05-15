@@ -76,10 +76,11 @@ module HackerOne
       end
 
       def program
-        @team || Program.find(relationships[:program][:data][:attributes][:handle])
+        @program || Program.find(relationships[:program][:data][:attributes][:handle])
       end
 
       def assign_to(username_or_groupname)
+
         request_body = if username_or_groupname == 'nobody'
           { type: :nobody }
         elsif program.member?(username_or_groupname)

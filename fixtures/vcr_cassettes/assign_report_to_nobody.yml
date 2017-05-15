@@ -8,7 +8,7 @@ http_interactions:
       string: '{"data":{"type":"nobody"}}'
     headers:
       Authorization:
-      - Basic c2pvcnM6bzd1ektvYWlBeXhic2tlQWRrYm93R2hzZDB4VzJSQU10MnR0Z25ZUkNzZz0=
+      - Basic nope
       User-Agent:
       - Faraday v0.12.1
       Content-Type:

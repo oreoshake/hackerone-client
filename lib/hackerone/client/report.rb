@@ -95,7 +95,6 @@ module HackerOne
         HackerOne::Client::Api.hackerone_api_connection.put do |req|
           req.headers['Content-Type'] = 'application/json'
           req.url "reports/#{id}/assignee"
-          puts({ data: request_body }.to_json)
           req.body = { data: request_body }.to_json
         end
       end

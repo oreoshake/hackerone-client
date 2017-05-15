@@ -92,10 +92,13 @@ module HackerOne
           fail("Could not find a member or group with name '#{username_or_groupname}' in program '#{program.handle}' for report #{id}")
         end
 
-        HackerOne::Client::Api.hackerone_api_connection.put do |req|
+        response = HackerOne::Client::Api.hackerone_api_connection.put do |req|
           req.headers['Content-Type'] = 'application/json'
           req.url "reports/#{id}/assignee"
           req.body = { data: request_body }.to_json
+        end
+        unless response.success?
+          fail("Unable to assign report #{id} to member or group with name '#{username_or_groupname}'. Response status: #{response.status}, body: #{response.body}")
         end
       end
 

@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Basic nope
+      - Basic c2pvcnM6cjNENlR0TDQrMDBMci9jTmxuaTF6cXFRVDZkbGx2c3F0RHVtTVlKZzNybz0=
       User-Agent:
       - Faraday v0.12.1
       Accept-Encoding:
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 15 May 2017 20:20:31 GMT
+      - Tue, 23 May 2017 20:41:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -29,10 +29,10 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d0d7a99fec927bfdcfe90f873ba28a7521494879631; expires=Tue, 15-May-18
-        20:20:31 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      - __cfduid=d1b5421708c94400c8729f6c3c2d9e0561495572081; expires=Wed, 23-May-18
+        20:41:21 GMT; path=/; Domain=api.hackerone.com; HttpOnly
       X-Request-Id:
-      - f96eea01-21d7-4a34-8cb4-29f76636de9b
+      - 3933d272-4ceb-4272-b101-4652f141d098
       Etag:
       - W/"9329ef6b8f370e76d96d71977a6480c4"
       Cache-Control:
@@ -66,12 +66,12 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Cf-Ray:
-      - 35f8cc5f2ee7731f-AMS
+      - 363ad5e468200c1d-AMS
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"id":"18969","type":"program","attributes":{"handle":"github","created_at":"2017-03-08T19:22:41.884Z","updated_at":"2017-04-09T08:15:15.228Z"}}],"links":{}}'
     http_version: 
-  recorded_at: Mon, 15 May 2017 20:19:59 GMT
+  recorded_at: Tue, 23 May 2017 20:40:42 GMT
 - request:
     method: get
     uri: https://api.hackerone.com/v1/programs/18969
@@ -80,7 +80,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Basic nope
+      - Basic c2pvcnM6cjNENlR0TDQrMDBMci9jTmxuaTF6cXFRVDZkbGx2c3F0RHVtTVlKZzNybz0=
       User-Agent:
       - Faraday v0.12.1
       Accept-Encoding:
@@ -93,7 +93,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 15 May 2017 20:20:31 GMT
+      - Tue, 23 May 2017 20:41:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -101,12 +101,12 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d7481764f9fe167307e10d54154693b3e1494879631; expires=Tue, 15-May-18
-        20:20:31 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      - __cfduid=dfae2421a96e1240f9861bc1d666d38271495572082; expires=Wed, 23-May-18
+        20:41:22 GMT; path=/; Domain=api.hackerone.com; HttpOnly
       X-Request-Id:
-      - 8a0439ed-d918-48e7-8cd2-c7de461490f1
+      - ace6d9f4-f6b2-4a8a-aa21-221b7816f4d0
       Etag:
-      - W/"83a960a017993aaa92b252a3d4665ec0"
+      - W/"f4712fdd08f66d872753172d327d1327"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Strict-Transport-Security:
@@ -138,22 +138,22 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Cf-Ray:
-      - 35f8cc611dc5722f-AMS
+      - 363ad5e99c5b72e9-AMS
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"18969","type":"program","attributes":{"handle":"github","created_at":"2017-03-08T19:22:41.884Z","updated_at":"2017-04-09T08:15:15.228Z"},"relationships":{"groups":{"data":[{"id":"23579","type":"group","attributes":{"name":"Standard","created_at":"2017-03-08T19:22:43.259Z","permissions":["report_management","reward_management"]}},{"id":"23578","type":"group","attributes":{"name":"Admin","created_at":"2017-03-08T19:22:43.243Z","permissions":["user_management","program_management"]}}]},"members":{"data":[{"id":"35928","type":"member","attributes":{"created_at":"2017-04-20T19:25:29.188Z","permissions":["program_management","report_management","reward_management","user_management"]},"relationships":{"user":{"data":{"id":"160844","type":"user","attributes":{"username":"esjee","name":null,"disabled":false,"created_at":"2017-04-20T19:25:29.165Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"id":"32557","type":"member","attributes":{"created_at":"2017-03-08T19:22:44.421Z","permissions":["program_management","report_management","reward_management","user_management"]},"relationships":{"user":{"data":{"id":"147515","type":"user","attributes":{"username":"esjee","name":"esjee","disabled":false,"created_at":"2017-03-04T16:31:33.595Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"id":"32556","type":"member","attributes":{"created_at":"2017-03-08T19:22:43.226Z","permissions":["program_management","report_management","reward_management","user_management"]},"relationships":{"user":{"data":{"id":"4954","type":"user","attributes":{"username":"demo-member","name":"Demo
+      string: '{"data":{"id":"18969","type":"program","attributes":{"handle":"github","created_at":"2017-03-08T19:22:41.884Z","updated_at":"2017-04-09T08:15:15.228Z"},"relationships":{"groups":{"data":[{"id":"23579","type":"group","attributes":{"name":"Standard","created_at":"2017-03-08T19:22:43.259Z","permissions":["report_management","reward_management"]}},{"id":"23578","type":"group","attributes":{"name":"Admin","created_at":"2017-03-08T19:22:43.243Z","permissions":["user_management","program_management"]}}]},"members":{"data":[{"id":"39241","type":"member","attributes":{"created_at":"2017-05-23T20:19:30.830Z","permissions":[]},"relationships":{"user":{"data":{"id":"170310","type":"user","attributes":{"username":"esjee","name":null,"disabled":false,"created_at":"2017-05-23T20:19:30.805Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"id":"32557","type":"member","attributes":{"created_at":"2017-03-08T19:22:44.421Z","permissions":["program_management","report_management","reward_management","user_management"]},"relationships":{"user":{"data":{"id":"147515","type":"user","attributes":{"username":"esjee","name":"esjee","disabled":false,"created_at":"2017-03-04T16:31:33.595Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"id":"32556","type":"member","attributes":{"created_at":"2017-03-08T19:22:43.226Z","permissions":["program_management","report_management","reward_management","user_management"]},"relationships":{"user":{"data":{"id":"4954","type":"user","attributes":{"username":"demo-member","name":"Demo
         Member","disabled":false,"created_at":"2014-04-14T11:45:00.949Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/004/954/76e628d12eaacde79878b890df02c065f740b1a4_small.png?1423472456","82x82":"https://profile-photos.hackerone-user-content.com/production/000/004/954/75e4cf2599f591e618646429db57d986e496ccee_medium.png?1423472456","110x110":"https://profile-photos.hackerone-user-content.com/production/000/004/954/25f5c8af70323cacb2c2ffa17d68cac2500dc410_large.png?1423472456","260x260":"https://profile-photos.hackerone-user-content.com/production/000/004/954/d903c042cdc7798ad76684563624ee7ea071aed8_xtralarge.png?1423472456"}}}}}}]}}}}'
     http_version: 
-  recorded_at: Mon, 15 May 2017 20:19:59 GMT
+  recorded_at: Tue, 23 May 2017 20:40:43 GMT
 - request:
     method: put
     uri: https://api.hackerone.com/v1/reports/200/assignee
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"160844","type":"user"}}'
+      string: '{"data":{"type":"group","id":"23578"}}'
     headers:
       Authorization:
-      - Basic nope
+      - Basic c2pvcnM6cjNENlR0TDQrMDBMci9jTmxuaTF6cXFRVDZkbGx2c3F0RHVtTVlKZzNybz0=
       User-Agent:
       - Faraday v0.12.1
       Content-Type:
@@ -164,11 +164,11 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 500
-      message: Internal Server Error
+      code: 403
+      message: Forbidden
     headers:
       Date:
-      - Mon, 15 May 2017 20:20:32 GMT
+      - Tue, 23 May 2017 20:41:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -176,10 +176,10 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dde3c2d8330ab3c5d345982fe936253711494879631; expires=Tue, 15-May-18
-        20:20:31 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      - __cfduid=dcc678c2a1f78a938b08c6a45ebbb98401495572083; expires=Wed, 23-May-18
+        20:41:23 GMT; path=/; Domain=api.hackerone.com; HttpOnly
       X-Request-Id:
-      - 714868f6-b785-4d49-984f-1df4e01c170f
+      - c53322a5-51b9-4c70-a080-c1e079f7ebf8
       Cache-Control:
       - no-cache
       Strict-Transport-Security:
@@ -211,10 +211,10 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Cf-Ray:
-      - 35f8cc634e9b2bee-AMS
+      - 363ad5eef9df72a7-AMS
     body:
-      encoding: UTF-8
-      string: '{"errors":[{"status":500}]}'
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":403}]}'
     http_version: 
-  recorded_at: Mon, 15 May 2017 20:20:01 GMT
+  recorded_at: Tue, 23 May 2017 20:40:43 GMT
 recorded_with: VCR 3.0.3

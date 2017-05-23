@@ -79,6 +79,28 @@ module HackerOne
         @program || Program.find(relationships[:program][:data][:attributes][:handle])
       end
 
+      def assign_to_user(name)
+        fail(
+          "Could not find a member with name '#{name}' in program '#{program.handle}' for report #{id}"
+        ) unless program.member?(name)
+
+        member = program.find_member(name)
+        _assign_to(member.user.id, :user)
+      end
+
+      def assign_to_group(name)
+        fail(
+          "Could not find a group with name '#{name}' in program '#{program.handle}' for report #{id}"
+        ) unless program.group?(name)
+
+        group = program.find_group(name)
+        _assign_to(group.id, :group)
+      end
+
+      def unassign
+        _assign_to(nil, :nobody)
+      end
+
       def assign_to(username_or_groupname)
 
         request_body = if username_or_groupname == 'nobody'
@@ -123,6 +145,22 @@ module HackerOne
 
       def vulnerability_types
         relationships.fetch(:vulnerability_types, {}).fetch(:data, [])
+      end
+
+      def _assign_to(assignee_id, assignee_type)
+        request_body = {
+          type: assignee_type,
+        }
+        request_body[:id] = assignee_id if assignee_id
+
+        response = HackerOne::Client::Api.hackerone_api_connection.put do |req|
+          req.headers['Content-Type'] = 'application/json'
+          req.url "reports/#{id}/assignee"
+          req.body = { data: request_body }.to_json
+        end
+        unless response.success?
+          fail("Unable to assign report #{id} to #{assignee_type} with id '#{assignee_id}'. Response status: #{response.status}, body: #{response.body}")
+        end
       end
     end
   end

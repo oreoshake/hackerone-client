@@ -4,7 +4,7 @@ RSpec.describe HackerOne::Client::Report do
   let(:api) { HackerOne::Client::Api.new("github") }
 
   before(:all) do
-    ENV["HACKERONE_TOKEN_NAME"] = "foo"
+    ENV["HACKERONE_TOKEN_NAME"] = "esjee"
     ENV["HACKERONE_TOKEN"] = "nope"
   end
 
@@ -44,37 +44,73 @@ RSpec.describe HackerOne::Client::Report do
     end
   end
 
-  describe '#assign_to' do
-    it 'raises if HackerOne responds with 500' do
+  describe '#assign_to_user' do
+    it 'can assign to users' do
+      expect(
+        VCR.use_cassette(:assign_report_to_user) do
+          report.assign_to_user 'esjee'
+        end
+      ).to eq nil
+    end
+
+    it "fails if the API user doesn't have permission" do
       expect do
-        VCR.use_cassette(:server_error_when_assigning_report_to_user) do
-          report.assign_to 'esjee'
+        VCR.use_cassette(:assign_report_to_user_no_permission) do
+          report.assign_to_user 'esjee'
         end
       end.to raise_error RuntimeError
     end
 
-    it 'can assign to users' do
-      expect(
-        VCR.use_cassette(:assign_report_to_user) do
-          report.assign_to 'esjee'
+    it 'fails if it cannot find the user' do
+      expect do
+        VCR.use_cassette(:assign_report_to_user_cannot_find_user) do
+          report.assign_to_user 'does-not-exist'
         end
-      ).to eq nil
+      end.to raise_error RuntimeError
     end
+  end
 
+  describe '#assign_to_group' do
     it 'can assign to groups' do
       expect(
         VCR.use_cassette(:assign_report_to_group) do
-          report.assign_to 'Admin'
+          report.assign_to_group 'Admin'
         end
       ).to eq nil
     end
 
+    it "fails if the API user doesn't have permission" do
+      expect do
+        VCR.use_cassette(:assign_report_to_group_no_permission) do
+          report.assign_to_group 'Admin'
+        end
+      end.to raise_error RuntimeError
+    end
+
+    it 'fails if it cannot find the group' do
+      expect do
+        VCR.use_cassette(:assign_report_to_group_cannot_find_group) do
+          report.assign_to_group 'does-not-exist'
+        end
+      end.to raise_error RuntimeError
+    end
+  end
+
+  describe '#unassign' do
     it 'can assign to nobody' do
       expect(
         VCR.use_cassette(:assign_report_to_nobody) do
-          report.assign_to 'nobody'
+          report.unassign
         end
       ).to eq nil
+    end
+
+    it "fails if the API user doesn't have permission" do
+      expect do
+        VCR.use_cassette(:assign_report_to_nobody_no_permission) do
+          report.unassign
+        end
+      end.to raise_error RuntimeError
     end
   end
 

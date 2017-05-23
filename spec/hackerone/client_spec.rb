@@ -28,8 +28,8 @@ RSpec.describe HackerOne::Client do
           api.report(200)
         }.to raise_error(HackerOne::Client::NotConfiguredError)
       ensure
-        ENV["HACKERONE_TOKEN_NAME"] = "esjee"
-        ENV["HACKERONE_TOKEN"] = "nope"
+        ENV["HACKERONE_TOKEN_NAME"] = "foo"
+        ENV["HACKERONE_TOKEN"] = "bar"
       end
     end
   end

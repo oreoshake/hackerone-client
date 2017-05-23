@@ -4,8 +4,8 @@ RSpec.describe HackerOne::Client::Report do
   let(:api) { HackerOne::Client::Api.new("github") }
 
   before(:all) do
-    ENV["HACKERONE_TOKEN_NAME"] = "esjee"
-    ENV["HACKERONE_TOKEN"] = "nope"
+    ENV["HACKERONE_TOKEN_NAME"] = "foo"
+    ENV["HACKERONE_TOKEN"] = "bar"
   end
 
   let(:report) do

@@ -101,30 +101,6 @@ module HackerOne
         _assign_to(nil, :nobody)
       end
 
-      def assign_to(username_or_groupname)
-
-        request_body = if username_or_groupname == 'nobody'
-          { type: :nobody }
-        elsif program.member?(username_or_groupname)
-          member = program.find_member(username_or_groupname)
-          { id: member.user.id, type: :user }
-        elsif program.group?(username_or_groupname)
-          group = program.find_group(username_or_groupname)
-          { id: group.id, type: :group }
-        else
-          fail("Could not find a member or group with name '#{username_or_groupname}' in program '#{program.handle}' for report #{id}")
-        end
-
-        response = HackerOne::Client::Api.hackerone_api_connection.put do |req|
-          req.headers['Content-Type'] = 'application/json'
-          req.url "reports/#{id}/assignee"
-          req.body = { data: request_body }.to_json
-        end
-        unless response.success?
-          fail("Unable to assign report #{id} to member or group with name '#{username_or_groupname}'. Response status: #{response.status}, body: #{response.body}")
-        end
-      end
-
       private
 
       def payments

@@ -60,14 +60,6 @@ RSpec.describe HackerOne::Client::Report do
         end
       end.to raise_error RuntimeError
     end
-
-    it 'fails if it cannot find the user' do
-      expect do
-        VCR.use_cassette(:assign_report_to_user_cannot_find_user) do
-          report.assign_to_user 'does-not-exist'
-        end
-      end.to raise_error RuntimeError
-    end
   end
 
   describe '#assign_to_group' do
@@ -83,14 +75,6 @@ RSpec.describe HackerOne::Client::Report do
       expect do
         VCR.use_cassette(:assign_report_to_group_no_permission) do
           report.assign_to_group 'Admin'
-        end
-      end.to raise_error RuntimeError
-    end
-
-    it 'fails if it cannot find the group' do
-      expect do
-        VCR.use_cassette(:assign_report_to_group_cannot_find_group) do
-          report.assign_to_group 'does-not-exist'
         end
       end.to raise_error RuntimeError
     end

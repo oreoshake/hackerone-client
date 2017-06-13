@@ -80,19 +80,11 @@ module HackerOne
       end
 
       def assign_to_user(name)
-        fail(
-          "Could not find a member with name '#{name}' in program '#{program.handle}' for report #{id}"
-        ) unless program.member?(name)
-
         member = program.find_member(name)
         _assign_to(member.user.id, :user)
       end
 
       def assign_to_group(name)
-        fail(
-          "Could not find a group with name '#{name}' in program '#{program.handle}' for report #{id}"
-        ) unless program.group?(name)
-
         group = program.find_group(name)
         _assign_to(group.id, :group)
       end

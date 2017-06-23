@@ -9,6 +9,7 @@ require_relative "client/reporter"
 require_relative "client/member"
 require_relative "client/user"
 require_relative "client/group"
+require_relative "client/structured_scope"
 
 module HackerOne
   module Client

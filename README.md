@@ -2,14 +2,18 @@
 
 A limited client library for interacting with HackerOne. Currently only supports a few operations:
 
-```ruby 
+```ruby
 client = HackerOne::Client::Api.new("github")
 
 # GET`/reports` returns all reports in the "new" state for a given program
 client.reports
 
 # GET `/report/{id}` returns report data for a given report
-client.report(id)
+report = client.report(id)
+
+# PUT `/reports/{id}/assignee`
+report.assign_to_user("username")
+report.assign_to_group("groupname")
 
 # POST '/report/{id}/state_change change the state of a report
 # `state` can be one of  new, triaged, needs-more-info, resolved, not-applicable, informative, duplicate, spam

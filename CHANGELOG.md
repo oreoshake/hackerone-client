@@ -1,3 +1,7 @@
+## [0.5.1] - 2017-06-26
+### Added
+- [Structure scope](https://api.hackerone.com/docs/v1#structured-scope) data added to report object
+
 ## [0.5.0] - 2017-06-23
 ### Added
 - `report.assign_to_user` and `report.assign_to_group` (@esjee)

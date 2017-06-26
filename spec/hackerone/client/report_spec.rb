@@ -103,4 +103,12 @@ RSpec.describe HackerOne::Client::Report do
       expect(report.activities).to all(be_an(HackerOne::Client::Activities::Activity))
     end
   end
+
+  describe "#structured_scope" do
+    it "returns a structured_scope" do
+      scope = report.structured_scope
+      expect(scope).to be_an(HackerOne::Client::StructuredScope)
+      expect(scope.asset_type).to eq("url")
+    end
+  end
 end

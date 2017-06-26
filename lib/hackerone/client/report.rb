@@ -35,6 +35,10 @@ module HackerOne
         payments.reduce(0) { |total, payment| total + payment_amount(payment) }
       end
 
+      def structured_scope
+        StructuredScope.new(relationships[:structured_scope])
+      end
+
       # Excludes reports where the payout amount is 0 indicating swag-only or no
       # payout for the issue supplied
       def risk

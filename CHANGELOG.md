@@ -1,3 +1,7 @@
+## [0.5.2] - 2017-07-19
+
+- Bugfix: structured scopes were not being populated correctly resulting in nil results for all attributes
+
 ## [0.5.1] - 2017-06-26
 ### Added
 - [Structure scope](https://api.hackerone.com/docs/v1#structured-scope) data added to report object

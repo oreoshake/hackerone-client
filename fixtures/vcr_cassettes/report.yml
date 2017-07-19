@@ -220,20 +220,22 @@ http_interactions:
               }
             },
             "structured_scope": {
-              "id": "57",
-              "type": "structured_scope",
-              "attributes": {
-                "asset_identifier": "api.example.com",
-                "asset_type": "url",
-                "confidentiality_requirement": "high",
-                "integrity_requirement": "high",
-                "availability_requirement": "high",
-                "max_severity": "critical",
-                "created_at": "2015-02-02T04:05:06.000Z",
-                "updated_at": "2016-05-02T04:05:06.000Z",
-                "instruction": null,
-                "eligible_for_bounty": true,
-                "eligible_for_submission": true
+              "data": {
+                "id": "57",
+                "type": "structured_scope",
+                "attributes": {
+                  "asset_identifier": "api.example.com",
+                  "asset_type": "url",
+                  "confidentiality_requirement": "high",
+                  "integrity_requirement": "high",
+                  "availability_requirement": "high",
+                  "max_severity": "critical",
+                  "created_at": "2015-02-02T04:05:06.000Z",
+                  "updated_at": "2016-05-02T04:05:06.000Z",
+                  "instruction": null,
+                  "eligible_for_bounty": true,
+                  "eligible_for_submission": true
+                }
               }
             },
             "activities": {

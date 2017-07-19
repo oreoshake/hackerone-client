@@ -36,7 +36,7 @@ module HackerOne
       end
 
       def structured_scope
-        StructuredScope.new(relationships[:structured_scope])
+        StructuredScope.new(relationships[:structured_scope].fetch(:data, {}))
       end
 
       # Excludes reports where the payout amount is 0 indicating swag-only or no

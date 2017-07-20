@@ -96,6 +96,26 @@ RSpec.describe HackerOne::Client do
     end
   end
 
+  context "#add_comment" do
+    it "adds an internal comment by default" do
+      VCR.use_cassette(:add_comment) do
+        response = api.add_comment(215230, "I am an internal comment")
+        comment = HackerOne::Client::Activities.build(response)
+        expect(comment).to be_a(HackerOne::Client::Activities::CommentAdded)
+        expect(comment.internal).to be true
+      end
+    end
+
+    it "allows comments for all participants" do
+      VCR.use_cassette(:add_comment) do
+        response = api.add_comment(132170, "I am not an internal comment", internal: false)
+        comment = HackerOne::Client::Activities.build(response)
+        expect(comment).to be_a(HackerOne::Client::Activities::CommentAdded)
+        expect(comment.internal).to be false
+      end
+    end
+  end
+
   context "#reports" do
     it "raises an error if no program is supplied" do
       expect { HackerOne::Client::Api.new.reports }.to raise_error(ArgumentError)

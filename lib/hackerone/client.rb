@@ -161,6 +161,27 @@ module HackerOne
         post("reports/#{id}/state_changes", body)
       end
 
+      # Add a comment to a report. By default, internal comments will be added.
+      #
+      # id: the ID of the report
+      # message: the content of the comment that will be created
+      # internal: "team only" comment (true, default) or "all participants"
+      def add_comment(id, message, internal: true)
+        fail ArgumentError, "message is required" if message.blank?
+
+        body = {
+          data: {
+            type: "activity-comment",
+            attributes: {
+              message: message,
+              internal: internal
+            }
+          }
+        }
+
+        post("reports/#{id}/activities", body)
+      end
+
       ## Public: retrieve a report
       #
       # id: the ID of a specific report

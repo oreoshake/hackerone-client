@@ -1,3 +1,7 @@
+## [0.6.0] - 2017-07-24
+
+- Feature: comments (internal or not) can be added to reports
+
 ## [0.5.2] - 2017-07-19
 
 - Bugfix: structured scopes were not being populated correctly resulting in nil results for all attributes

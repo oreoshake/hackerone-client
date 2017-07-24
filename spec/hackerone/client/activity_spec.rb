@@ -123,6 +123,49 @@ RSpec.describe HackerOne::Client::Activities do
     end
   end
 
+  describe HackerOne::Client::Activities::CommentAdded do
+    let(:example) do
+      {
+        "id" => "1337",
+        "type" => "activity-comment",
+        "attributes" => {
+          "message" => "A fix has been deployed. Can you retest, please?",
+          "created_at" => "2016-02-02T04:05:06.000Z",
+          "updated_at" => "2016-02-02T04:05:06.000Z",
+          "internal" => false
+        },
+        "relationships" => {
+          "actor" => {
+            "data" => {
+              "id" => "1337",
+              "type" => "user",
+              "attributes" => {
+                "username" => "api-example",
+                "name" => "API Example",
+                "disabled" => false,
+                "created_at" => "2016-02-02T04:05:06.000Z",
+                "profile_picture" => {
+                  "62x62" => "/assets/avatars/default.png",
+                  "82x82" => "/assets/avatars/default.png",
+                  "110x110" => "/assets/avatars/default.png",
+                  "260x260" => "/assets/avatars/default.png"
+                }
+              }
+            }
+          }
+        }
+      }.with_indifferent_access
+    end
+
+    it 'creates the activity type with attributes' do
+      activity = HackerOne::Client::Activities.build example
+
+      expect(activity.class).to eq described_class
+      expect(activity.message).to_not be_nil
+      expect(activity.internal).to_not be_nil
+    end
+  end
+
   describe HackerOne::Client::Activities::UserAssignedToBug do
     let(:example) do
       {

@@ -57,13 +57,18 @@ module HackerOne
         delegate :message, :internal, to: :attributes
       end
 
+      class BountySuggested < Activity
+        delegate :message, :bounty_amount, :bonus_amount, to: :attributes
+      end
+
       ACTIVITY_TYPE_CLASS_MAPPING = {
         'activity-bounty-awarded' => BountyAwarded,
         'activity-swag-awarded' => SwagAwarded,
         'activity-user-assigned-to-bug' => UserAssignedToBug,
         'activity-bug-triaged' => BugTriaged,
         'activity-reference-id-added' => ReferenceIdAdded,
-        'activity-comment' => CommentAdded
+        'activity-comment' => CommentAdded,
+        'activity-bounty-suggested' => BountySuggested
       }.freeze
 
       def self.build(activity_data)

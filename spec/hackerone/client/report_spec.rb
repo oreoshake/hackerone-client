@@ -98,6 +98,55 @@ RSpec.describe HackerOne::Client::Report do
     end
   end
 
+  describe '#award_bounty' do
+    it 'creates a bounty' do
+      result = VCR.use_cassette(:award_a_bounty) do
+        report.award_bounty(
+          message: 'Thanks for the great report!',
+          amount: 1330,
+          bonus_amount: 7
+        )
+      end
+
+      expect(result).to be_a HackerOne::Client::Bounty
+      expect(result.amount).to eq '1330.00'
+      expect(result.bonus_amount).to eq '7.00'
+      expect(result.awarded_amount).to eq '1330.00'
+      expect(result.awarded_bonus_amount).to eq '7.00'
+      expect(result.awarded_currency).to eq 'USD'
+    end
+  end
+
+  describe '#suggest_award' do
+    it 'creates a bounty' do
+      result = VCR.use_cassette(:suggest_a_bounty) do
+        report.suggest_bounty(
+          message: 'This report is great, I think we should award a high bounty.',
+          amount: 5000,
+          bonus_amount: 2500
+        )
+      end
+
+      expect(result).to be_a HackerOne::Client::Activities::BountySuggested
+      expect(result.message).to eq 'This report is great, I think we should award a high bounty.'
+      expect(result.bounty_amount).to eq '5,000'
+      expect(result.bonus_amount).to eq '2,500'
+    end
+  end
+
+  describe '#award_swag' do
+    it 'creates a bounty' do
+      result = VCR.use_cassette(:award_swag) do
+        report.award_swag(
+          message: 'Enjoy this cool swag!',
+        )
+      end
+
+      expect(result).to be_a HackerOne::Client::Swag
+      expect(result.sent).to eq false
+    end
+  end
+
   describe "#activities" do
     it "returns a list of activities" do
       expect(report.activities).to all(be_an(HackerOne::Client::Activities::Activity))

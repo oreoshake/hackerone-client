@@ -1,6 +1,10 @@
+require_relative './resource_helper'
+
 module HackerOne
   module Client
     class Program
+      include ResourceHelper
+
       delegate :handle, to: :attributes
 
       def self.find(program_handle_we_want)
@@ -35,6 +39,13 @@ module HackerOne
 
       def find_group(groupname)
         groups.find { |group| group.name == groupname }
+      end
+
+      def common_responses(page_number: 1, page_size: 100)
+        make_get_request(
+          "programs/#{id}/common_responses",
+          params: { page: { number: page_number, size: page_size } }
+        )
       end
 
       private

@@ -41,8 +41,11 @@ module HackerOne
         groups.find { |group| group.name == groupname }
       end
 
-      def common_responses
-        make_get_request "programs/#{id}/common_responses"
+      def common_responses(page_number: 1, page_size: 100)
+        make_get_request(
+          "programs/#{id}/common_responses",
+          params: { page: { number: page_number, size: page_size } }
+        )
       end
 
       private

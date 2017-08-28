@@ -15,10 +15,11 @@ module HackerOne
         parse_response(response)
       end
 
-      def make_get_request(url)
+      def make_get_request(url, params: {})
         response = HackerOne::Client::Api.hackerone_api_connection.get do |req|
           req.headers['Content-Type'] = 'application/json'
           req.url url
+          req.params = params
         end
 
         parse_response(response)

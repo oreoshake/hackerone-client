@@ -31,6 +31,11 @@ client.triage(id, reference)
 
 # GET `/{program}/reporters` returns a list of unique reporters that have reported to your program
 client.reporters
+
+program = HackerOne::Client::Program.find("insert-program-name-here")
+
+# returns all common responses
+program.common_responses
 ```
 
 ## Usage

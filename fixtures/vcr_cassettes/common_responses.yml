@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.hackerone.com/v1/programs/18969/common_responses
+    uri: https://api.hackerone.com/v1/programs/18969/common_responses?page%5Bnumber%5D=1&page%5Bsize%5D=100
     body:
       encoding: US-ASCII
       string: ''

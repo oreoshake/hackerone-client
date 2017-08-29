@@ -1,0 +1,167 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hackerone.com/v1/programs/18969/common_responses?page%5Bnumber%5D=1&page%5Bsize%5D=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic NOPE
+      User-Agent:
+      - Faraday v0.13.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 28 Aug 2017 11:20:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dafee7223f650cd1e244d455e37ea169f1503919239; expires=Tue, 28-Aug-18
+        11:20:39 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - 21d28136-7750-4557-83fb-e359b93a941b
+      Etag:
+      - W/"9b1e2aa1721b777df242b64b310c51bb"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
+        font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
+        ''self'' data: cover-photos.hackerone-user-content.com hackathon-photos.hackerone-user-content.com
+        profile-photos.hackerone-user-content.com hackerone-attachments.s3.amazonaws.com;
+        media-src ''self'' hackerone-attachments.s3.amazonaws.com; script-src ''self''
+        www.google-analytics.com; style-src ''self'' ''unsafe-inline''; report-uri
+        https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+      Referrer-Policy:
+      - origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3956e1efab7972f5-AMS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"108878","attributes":{"title":"Vulnerability Scanner
+        False Positive","message":"Automated vulnerability scanners commonly have
+        low priority issues and/or false positives. Before submitting the results
+        from a scanner, please take a moment to confirm that the reported issues are
+        actually valid and exploitable. Please reply if you have a working proof-of-concept
+        or reason to believe that this issue is exploitable.\n"}},{"id":"108879","attributes":{"title":"No
+        Security Implications","message":"Based on your initial description, there
+        do not appear to be any security implications as a direct result of this behavior.
+        If you disagree, please reply with additional information describing your
+        reasoning. Including a working proof-of-concept can be incredibly helpful
+        in our assessment of these claims.\n"}},{"id":"108880","attributes":{"title":"Language
+        Barrier","message":"Sorry, I''m having a difficult time understanding this
+        report. Please reply with a proof of concept and more technical details about
+        the vulnerability, the impact of this vulnerability and any suggested fixes
+        for this vulnerability. Including screenshots or a short video can be worth
+        a thousand words. If you don''t speak English, feel free to leave your report
+        in your own language, and we''ll try our best to find someone who can help
+        translate.\n"}},{"id":"108881","attributes":{"title":"Logout cross-site request
+        forgery","message":"For better or worse, the design of HTTP cookies means
+        that no single website can prevent its users from being logged out; consequently,
+        application-specific ways of achieving this goal will likely not qualify.
+        You may be interested in personal blog posts from Chris Evans (https://scarybeastsecurity.blogspot.com/2010/01/logout-xsrf-significant-web-app-bug.html)
+        and Michal Zalewski (https://lcamtuf.blogspot.com/2010/10/http-cookies-or-how-not-to-design.html)
+        for more background.\n"}},{"id":"108882","attributes":{"title":"Open Redirect","message":"We
+        recognize that the address bar is the only reliable security indicator in
+        modern browsers. As a result, we typically do not treat arbitrary URL redirection
+        behavior (\"Open Redirects\") as a security vulnerability unless you are able
+        to demonstrate risks that do not depend upon social engineering.\n"}},{"id":"108883","attributes":{"title":"Strict-Transport-Security
+        Not Necessary On This Domain","message":"Automated vulnerability scanners
+        commonly have low priority issues and/or false positives. Before submitting
+        the results from a scanner, please take a moment to confirm that the reported
+        issues are actually valid and exploitable. In this specific case, the `Strict-Transport-Security`
+        header is not suitable for the domain in question because it is intentionally
+        accessible over both HTTP and HTTPS. If we ever migrate to 100% HTTPS on this
+        domain, we''ll consider enabling the header at that time.\n"}},{"id":"108884","attributes":{"title":"Cookie
+        Missing HttpOnly","message":"Automated vulnerability scanners commonly have
+        low priority issues and/or false positives. Before submitting the results
+        from a scanner, please take a moment to confirm that the reported issues are
+        actually valid and exploitable. In this specific case, many cookies intentionally
+        lack the `HttpOnly` flag so that they can be accessed from JavaScript. This
+        only introduces a potential risk if the cookie in question contains session
+        data or other sensitive information.\n"}},{"id":"108885","attributes":{"title":"Cookie
+        Missing Secure","message":"Automated vulnerability scanners commonly have
+        low priority issues and/or false positives. Before submitting the results
+        from a scanner, please take a moment to confirm that the reported issues are
+        actually valid and exploitable. In this specific case, many cookies intentionally
+        lack the `secure` flag so that they can be accessed from HTTP pages. This
+        only introduces a potential risk if the cookie in question contains sensitive
+        information that must be served over HTTPS.\n"}},{"id":"108886","attributes":{"title":"X-XSS-Protection","message":"Automated
+        vulnerability scanners commonly have low priority issues and/or false positives.
+        Before submitting the results from a scanner, please take a moment to confirm
+        that the reported issues are actually valid and exploitable. In this specific
+        case, we believe that the default state of the `X-XSS-Protection` header is
+        sufficient for our purposes. Please reply if you have a working proof-of-concept
+        that could be mitigated by an adjustment to our header.\n"}},{"id":"108887","attributes":{"title":"X-Content-Type-Options:
+        nosniff","message":"Automated vulnerability scanners commonly have low priority
+        issues and/or false positives. Before submitting the results from a scanner,
+        please take a moment to confirm that the reported issues are actually valid
+        and exploitable. In this specific case, the `X-Content-Type-Options: nosniff`
+        header is only necessary on endpoints that serve untrusted user content. Please
+        reply if you have a working proof-of-concept or reason to believe that this
+        issue is exploitable.\n"}},{"id":"108888","attributes":{"title":"X-Frame-Options
+        / Clickjacking","message":"The lack of X-Frame-Options does not always indicate
+        that a security vulnerability is present. This is an optional header that
+        is only necessary on endpoints where there UI is rendered to invoke state
+        changing actions. We recommend reading this informative post by David Ross:
+        https://plus.google.com/u/0/+DavidRossX/posts/jVrtTRd5yKP\n"}},{"id":"108889","attributes":{"title":"Autocomplete","message":"We
+        intentionally leave autocomplete enabled as we believe that all modern browsers
+        now handle local form completion in a reasonably sane manner. Autocomplete
+        enables individuals to use stronger passwords and makes them less susceptible
+        to phishing attacks. These benefits greatly outweigh the minor risk here.
+        If you disagree, we encourage you to also read this post: https://blog.0xbadc0de.be/archives/124\n"}},{"id":"108890","attributes":{"title":"SSL
+        - RC4 / BEAST Information","message":"Automated vulnerability scanners commonly
+        have low priority issues and/or false positives. Before submitting the results
+        from a scanner, please take a moment to confirm that the reported issues are
+        actually valid and exploitable. In this instance, we intentionally use RC4
+        when the client is connecting with TLS 1.0 and earlier as an effective mitigation
+        against the \"BEAST\" attack. For clients that support TLS 1.1 and higher,
+        we prioritize non-RC4 ciphers. We believe that this is consistent with current
+        industry best practices. For more information, please review this post: https://blog.cloudflare.com/killing-rc4\nThis
+        combination most effectively balances the competing risks associated with
+        weaker RC4 ciphers and the BEAST attack scenario.\n"}},{"id":"108891","attributes":{"title":"Video
+        Without Content","message":"Using a video to demonstrate a potential issue
+        should only be necessary in rare situations and should always be accompanied
+        with a text description of the issue as well. Please update this report with
+        step-by-step instructions to reproduce the core components of the issue. If
+        you don''t speak English, feel free to leave your report in your own language,
+        and we''ll try our best to find someone who can help translate.\n"}}],"links":{}}'
+    http_version: 
+  recorded_at: Mon, 28 Aug 2017 11:20:40 GMT
+recorded_with: VCR 3.0.3

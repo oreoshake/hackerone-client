@@ -10,6 +10,8 @@ require_relative "client/member"
 require_relative "client/user"
 require_relative "client/group"
 require_relative "client/structured_scope"
+require_relative "client/swag"
+require_relative "client/bounty"
 
 module HackerOne
   module Client

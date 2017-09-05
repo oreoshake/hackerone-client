@@ -1,9 +1,12 @@
+require_relative './resource_helper'
 require_relative './weakness'
 require_relative './activity'
 
 module HackerOne
   module Client
     class Report
+      include ResourceHelper
+
       def initialize(report)
         @report = report
       end
@@ -81,6 +84,46 @@ module HackerOne
 
       def program
         @program || Program.find(relationships[:program][:data][:attributes][:handle])
+      end
+
+      def award_bounty(message:, amount:, bonus_amount: nil)
+        request_body = {
+          message: message,
+          amount: amount,
+          bonus_amount: bonus_amount
+        }
+
+        response_body = make_post_request(
+          "reports/#{id}/bounties",
+          request_body: request_body
+        )
+        Bounty.new(response_body)
+      end
+
+      def award_swag(message:)
+        request_body = {
+          message: message
+        }
+
+        response_body = make_post_request(
+          "reports/#{id}/swags",
+          request_body: request_body
+        )
+        Swag.new(response_body)
+      end
+
+      def suggest_bounty(message:, amount:, bonus_amount: nil)
+        request_body = {
+          message: message,
+          amount: amount,
+          bonus_amount: bonus_amount
+        }
+
+        response_body = make_post_request(
+          "reports/#{id}/bounty_suggestions",
+          request_body: request_body
+        )
+        Activities.build(response_body)
       end
 
       def assign_to_user(name)

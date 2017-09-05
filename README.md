@@ -15,6 +15,15 @@ report = client.report(id)
 report.assign_to_user("username")
 report.assign_to_group("groupname")
 
+# POST /reports/{id}/bounty_suggestions
+report.suggest_bounty(message: "I suggest $500 with a small bonus. Report is well-written.", amount: 500, bonus_amount: 50)
+
+# POST /reports/{id}/bounties
+report.award_bounty(message: "Here's your bounty!", amount: 500, bonus_amount: 50)
+
+# POST /reports/{id}/swags
+report.award_swag(message: "Here's your T-Shirt")
+
 # POST '/reports/#{id}/activities'
 
 client.add_comment(id, message, internal: false) # internal is true by default

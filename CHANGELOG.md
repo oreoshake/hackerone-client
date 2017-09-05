@@ -1,3 +1,7 @@
+## [0.8.0] - 2017-09-05
+
+- Feature: add ability to suggest and award swag, cash, and bonuses (@esjee)
+
 ## [0.7.0] - 2017-08-28
 
 - Feature: retrieve common responses (@esjee)

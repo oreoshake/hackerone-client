@@ -144,6 +144,7 @@ RSpec.describe HackerOne::Client::Report do
 
       expect(result).to be_a HackerOne::Client::Swag
       expect(result.sent).to eq false
+      expect(result.created_at).to be_present
     end
   end
 

@@ -7,6 +7,7 @@ module HackerOne
         :awarded_amount,
         :awarded_bonus_amount,
         :awarded_currency,
+        :created_at,
         to: :attributes
       )
 

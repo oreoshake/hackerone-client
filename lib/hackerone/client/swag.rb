@@ -1,7 +1,7 @@
 module HackerOne
   module Client
     class Swag
-      delegate :sent, to: :attributes
+      delegate :sent, :created_at, to: :attributes
 
       def initialize(swag)
         @swag = swag

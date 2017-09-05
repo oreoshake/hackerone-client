@@ -131,6 +131,7 @@ RSpec.describe HackerOne::Client::Report do
       expect(result.message).to eq 'This report is great, I think we should award a high bounty.'
       expect(result.bounty_amount).to eq '5,000'
       expect(result.bonus_amount).to eq '2,500'
+      expect(result.created_at).to be_present
     end
   end
 

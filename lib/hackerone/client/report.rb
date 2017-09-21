@@ -44,6 +44,10 @@ module HackerOne
         attributes[:issue_tracker_reference_url]
       end
 
+      def issue_tracker_reference_id
+        attributes[:issue_tracker_reference_id]
+      end
+
       def reporter
         relationships
           .fetch(:reporter, {})
@@ -170,6 +174,38 @@ module HackerOne
         end
 
         make_post_request("reports/#{id}/state_changes", request_body: body)
+      end
+
+      ## Idempotent: Add a report reference to a project
+      #
+      # id: the ID of the report
+      # state: value for the reference (e.g. issue number or relative path to cross-repo issue)
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
+      def add_report_reference(reference)
+        body = {
+          type: "issue-tracker-reference-id",
+          attributes: {
+            reference: reference
+          }
+        }
+
+        response_json = make_post_request("reports/#{id}/issue_tracker_reference_id", request_body: body)
+        @report = response_json[:relationships][:report][:data]
+        self
+      end
+
+      ## Idempotent: add the issue reference and put the report into the "triage" state.
+      #
+      # id: the ID of the report
+      # state: value for the reference (e.g. issue number or relative path to cross-repo issue)
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
+      def triage(reference)
+        add_report_reference(reference)
+        state_change(:triaged)
       end
 
       def assign_to_user(name)

@@ -171,6 +171,16 @@ RSpec.describe HackerOne::Client::Report do
     end
   end
 
+  context "#add_report_reference" do
+    it "adds an issue reference" do
+      VCR.use_cassette(:add_report_reference) do
+        expect(report.add_report_reference("fooooo")).to_not be_nil
+      end
+
+      expect(report.issue_tracker_reference_id).to eq "fooooo"
+    end
+  end
+
   describe "#activities" do
     it "returns a list of activities" do
       expect(report.activities).to all(be_an(HackerOne::Client::Activities::Activity))

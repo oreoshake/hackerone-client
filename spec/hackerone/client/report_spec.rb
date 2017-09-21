@@ -149,6 +149,28 @@ RSpec.describe HackerOne::Client::Report do
     end
   end
 
+  context "#state_change" do
+    it "marks a report as triaged" do
+      VCR.use_cassette(:stage_change) do
+        expect(report.state_change(:triaged)).to_not be_nil
+      end
+    end
+
+    HackerOne::Client::Report::STATES_REQUIRING_STATE_CHANGE_MESSAGE.each do |state|
+      it "raises an error if no message is supplied for #{state} actions" do
+        expect { report.state_change(state) }.to raise_error(ArgumentError)
+      end
+    end
+
+    (HackerOne::Client::Report::STATES - HackerOne::Client::Report::STATES_REQUIRING_STATE_CHANGE_MESSAGE).each do |state|
+      it "does not raises an error if no message is supplied for #{state} actions" do
+        VCR.use_cassette(:stage_change) do
+          expect { report.state_change(state) }.to_not raise_error
+        end
+      end
+    end
+  end
+
   describe "#activities" do
     it "returns a list of activities" do
       expect(report.activities).to all(be_an(HackerOne::Client::Activities::Activity))

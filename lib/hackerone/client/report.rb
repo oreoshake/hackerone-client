@@ -7,6 +7,23 @@ module HackerOne
     class Report
       include ResourceHelper
 
+      STATES = %w(
+        new
+        triaged
+        needs-more-info
+        resolved
+        not-applicable
+        informative
+        duplicate
+        spam
+      ).map(&:to_sym).freeze
+
+      STATES_REQUIRING_STATE_CHANGE_MESSAGE = %w(
+        needs-more-info
+        informative
+        duplicate
+      ).map(&:to_sym).freeze
+
       def initialize(report)
         @report = report
       end
@@ -124,6 +141,35 @@ module HackerOne
           request_body: request_body
         )
         Activities.build(response_body)
+      end
+
+      ## Idempotent: change the state of a report. See STATES for valid values.
+      #
+      # id: the ID of the report
+      # state: the state in which the report is to be put in
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
+      def state_change(state, message = nil)
+        raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
+
+        body = {
+          type: "state-change",
+          attributes: {
+            state: state
+          }
+        }
+
+        if message
+          body[:attributes][:message] = message
+        elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
+          fail ArgumentError, "State #{state} requires a message. No message was supplied."
+        else
+          # message is in theory optional, but a value appears to be required.
+          body[:attributes][:message] = ""
+        end
+
+        make_post_request("reports/#{id}/state_changes", request_body: body)
       end
 
       def assign_to_user(name)

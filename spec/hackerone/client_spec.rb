@@ -68,34 +68,6 @@ RSpec.describe HackerOne::Client do
     end
   end
 
-  context "#state_change" do
-    it "marks a report as triaged" do
-      VCR.use_cassette(:stage_change) do
-        expect(api.state_change(132170, :triaged)).to_not be_nil
-      end
-    end
-
-    it "raises an exception if a report is not found" do
-      VCR.use_cassette(:missing_report) do
-        expect { api.state_change(4040000000000000, :triaged) }.to raise_error(ArgumentError)
-      end
-    end
-
-    HackerOne::Client::STATES_REQUIRING_STATE_CHANGE_MESSAGE.each do |state|
-      it "raises an error if no message is supplied for #{state} actions" do
-        expect { api.state_change(1234, state) }.to raise_error(ArgumentError)
-      end
-    end
-
-    (HackerOne::Client::STATES - HackerOne::Client::STATES_REQUIRING_STATE_CHANGE_MESSAGE).each do |state|
-      it "does not raises an error if no message is supplied for #{state} actions" do
-        VCR.use_cassette(:stage_change) do
-          expect { api.state_change(132170, state) }.to_not raise_error
-        end
-      end
-    end
-  end
-
   context "#add_comment" do
     it "adds an internal comment by default" do
       VCR.use_cassette(:add_comment) do

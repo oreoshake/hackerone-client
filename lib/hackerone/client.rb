@@ -22,23 +22,6 @@ module HackerOne
     DEFAULT_HIGH_RANGE = 2500...4999
     DEFAULT_CRITICAL_RANGE = 5000...100_000_000
 
-    STATES = %w(
-      new
-      triaged
-      needs-more-info
-      resolved
-      not-applicable
-      informative
-      duplicate
-      spam
-    ).map(&:to_sym).freeze
-
-    STATES_REQUIRING_STATE_CHANGE_MESSAGE = %w(
-      needs-more-info
-      informative
-      duplicate
-    ).map(&:to_sym).freeze
-
     class << self
       ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
       attr_accessor :program
@@ -133,35 +116,6 @@ module HackerOne
         Report.new(post("reports/#{id}/issue_tracker_reference_id", body))
       end
 
-      ## Idempotent: change the state of a report. See STATES for valid values.
-      #
-      # id: the ID of the report
-      # state: the state in which the report is to be put in
-      #
-      # returns an HackerOne::Client::Report object or raises an error if
-      # no report is found.
-      def state_change(id, state, message = nil)
-        raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
-
-        body = {
-          data: {
-            type: "state-change",
-            attributes: {
-              state: state
-            }
-          }
-        }
-
-        if message
-          body[:data][:attributes][:message] = message
-        elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
-          fail ArgumentError, "State #{state} requires a message. No message was supplied."
-        else
-          # message is in theory optional, but a value appears to be required.
-          body[:data][:attributes][:message] = ""
-        end
-        post("reports/#{id}/state_changes", body)
-      end
 
       # Add a comment to a report. By default, internal comments will be added.
       #

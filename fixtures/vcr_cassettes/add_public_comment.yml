@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "{\"data\":{\"type\":\"activity-comment\",\"attributes\":{\"message\":\"I
-        am an internal comment\",\"internal\":true}}}"
+        am not an internal comment\",\"internal\":false}}}"
     headers:
       Authorization:
       - Basic ==
@@ -24,7 +24,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Thu, 20 Jul 2017 19:31:19 GMT
+      - Thu, 20 Jul 2017 19:31:20 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -32,12 +32,12 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dc6e0045651a0dfb269f81402a0ee74051500579079; expires=Fri, 20-Jul-18
-        19:31:19 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      - __cfduid=d104d11a7dd0d4d546ad5de4a34ae70091500579080; expires=Fri, 20-Jul-18
+        19:31:20 GMT; path=/; Domain=api.hackerone.com; HttpOnly
       X-Request-Id:
-      - 552f630f-8f34-4e39-b49f-f4cf6046dd1b
+      - d3253b5d-6f40-4070-8a49-2c9fddc85b6f
       Etag:
-      - W/"213a426a179715f6d44f095780be6b17"
+      - W/"5409aa55cb4b50a7801681b8f529bcfd"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Strict-Transport-Security:
@@ -70,10 +70,11 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Cf-Ray:
-      - 3818570f7dce53a2-LAX
+      - 381857128fff7820-LAX
     body:
       encoding: UTF-8
-      string: "{\"data\":{\"type\":\"activity-comment\",\"id\":\"1854710\",\"attributes\":{\"message\":\"I
-        am an internal comment\",\"created_at\":\"2017-07-20T19:31:19.733Z\",\"updated_at\":\"2017-07-20T19:31:19.733Z\",\"internal\":true},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}}}"
+      string: "{\"data\":{\"type\":\"activity-comment\",\"id\":\"1854711\",\"attributes\":{\"message\":\"I
+        am not an internal comment\",\"created_at\":\"2017-07-20T19:31:20.181Z\",\"updated_at\":\"2017-07-20T19:31:20.181Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}}}"
     http_version:
-  recorded_at: Thu, 20 Jul 2017 19:31:19 GMT
+  recorded_at: Thu, 20 Jul 2017 19:31:20 GMT
+recorded_with: VCR 3.0.3

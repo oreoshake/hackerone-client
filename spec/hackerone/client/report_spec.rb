@@ -181,6 +181,27 @@ RSpec.describe HackerOne::Client::Report do
     end
   end
 
+  context "#add_comment" do
+    it "adds an internal comment by default" do
+      VCR.use_cassette(:add_comment) do
+        response = report.add_comment("I am an internal comment")
+        comment = HackerOne::Client::Activities.build(response)
+        expect(comment).to be_a(HackerOne::Client::Activities::CommentAdded)
+        expect(comment.internal).to be true
+      end
+    end
+
+    it "allows comments for all participants" do
+      VCR.use_cassette(:add_public_comment) do
+        response = report.add_comment("I am not an internal comment", internal: false)
+        comment = HackerOne::Client::Activities.build(response)
+        expect(comment).to be_a(HackerOne::Client::Activities::CommentAdded)
+        expect(comment.internal).to be false
+      end
+    end
+  end
+
+
   describe "#activities" do
     it "returns a list of activities" do
       expect(report.activities).to all(be_an(HackerOne::Client::Activities::Activity))

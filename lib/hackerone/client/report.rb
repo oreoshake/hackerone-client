@@ -208,6 +208,26 @@ module HackerOne
         state_change(:triaged)
       end
 
+      # Add a comment to a report. By default, internal comments will be added.
+      #
+      # id: the ID of the report
+      # message: the content of the comment that will be created
+      # internal: "team only" comment (true, default) or "all participants"
+      def add_comment(message, internal: true)
+        fail ArgumentError, "message is required" if message.blank?
+
+        body = {
+          type: "activity-comment",
+          attributes: {
+            message: message,
+            internal: internal
+          }
+        }
+
+        make_post_request("reports/#{id}/activities", request_body: body)
+      end
+
+
       def assign_to_user(name)
         member = program.find_member(name)
         _assign_to(member.user.id, :user)

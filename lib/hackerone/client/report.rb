@@ -173,7 +173,9 @@ module HackerOne
           body[:attributes][:message] = ""
         end
 
-        make_post_request("reports/#{id}/state_changes", request_body: body)
+        response_json = make_post_request("reports/#{id}/state_changes", request_body: body)
+        @report = response_json
+        self
       end
 
       ## Idempotent: Add a report reference to a project

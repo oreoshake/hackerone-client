@@ -226,7 +226,8 @@ module HackerOne
           }
         }
 
-        make_post_request("reports/#{id}/activities", request_body: body)
+        response_json = make_post_request("reports/#{id}/activities", request_body: body)
+        HackerOne::Client::Activities.build(response_json)
       end
 
 

@@ -1,3 +1,9 @@
+## [0.9.0] - 2017-10-09
+
+- API: move actions from client into report (@esjee)
+
+This is a breaking change, but this is still not a 1.0 and shouldn't be considered stable.
+
 ## [0.8.0] - 2017-09-05
 
 - Feature: add ability to suggest and award swag, cash, and bonuses (@esjee)

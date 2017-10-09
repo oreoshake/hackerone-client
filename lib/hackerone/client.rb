@@ -22,23 +22,6 @@ module HackerOne
     DEFAULT_HIGH_RANGE = 2500...4999
     DEFAULT_CRITICAL_RANGE = 5000...100_000_000
 
-    STATES = %w(
-      new
-      triaged
-      needs-more-info
-      resolved
-      not-applicable
-      informative
-      duplicate
-      spam
-    ).map(&:to_sym).freeze
-
-    STATES_REQUIRING_STATE_CHANGE_MESSAGE = %w(
-      needs-more-info
-      informative
-      duplicate
-    ).map(&:to_sym).freeze
-
     class << self
       ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
       attr_accessor :program
@@ -101,89 +84,6 @@ module HackerOne
         end
       end
 
-      ## Idempotent: add the issue reference and put the report into the "triage" state.
-      #
-      # id: the ID of the report
-      # state: value for the reference (e.g. issue number or relative path to cross-repo issue)
-      #
-      # returns an HackerOne::Client::Report object or raises an error if
-      # no report is found.
-      def triage(id, reference)
-        add_report_reference(id, reference)
-        state_change(id, :triaged)
-      end
-
-      ## Idempotent: Add a report reference to a project
-      #
-      # id: the ID of the report
-      # state: value for the reference (e.g. issue number or relative path to cross-repo issue)
-      #
-      # returns an HackerOne::Client::Report object or raises an error if
-      # no report is found.
-      def add_report_reference(id, reference)
-        body = {
-          data: {
-            type: "issue-tracker-reference-id",
-            attributes: {
-              reference: reference
-            }
-          }
-        }
-
-        Report.new(post("reports/#{id}/issue_tracker_reference_id", body))
-      end
-
-      ## Idempotent: change the state of a report. See STATES for valid values.
-      #
-      # id: the ID of the report
-      # state: the state in which the report is to be put in
-      #
-      # returns an HackerOne::Client::Report object or raises an error if
-      # no report is found.
-      def state_change(id, state, message = nil)
-        raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
-
-        body = {
-          data: {
-            type: "state-change",
-            attributes: {
-              state: state
-            }
-          }
-        }
-
-        if message
-          body[:data][:attributes][:message] = message
-        elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
-          fail ArgumentError, "State #{state} requires a message. No message was supplied."
-        else
-          # message is in theory optional, but a value appears to be required.
-          body[:data][:attributes][:message] = ""
-        end
-        post("reports/#{id}/state_changes", body)
-      end
-
-      # Add a comment to a report. By default, internal comments will be added.
-      #
-      # id: the ID of the report
-      # message: the content of the comment that will be created
-      # internal: "team only" comment (true, default) or "all participants"
-      def add_comment(id, message, internal: true)
-        fail ArgumentError, "message is required" if message.blank?
-
-        body = {
-          data: {
-            type: "activity-comment",
-            attributes: {
-              message: message,
-              internal: internal
-            }
-          }
-        }
-
-        post("reports/#{id}/activities", body)
-      end
-
       ## Public: retrieve a report
       #
       # id: the ID of a specific report
@@ -225,7 +125,12 @@ module HackerOne
         elsif response.status.to_s.start_with?("5")
           raise RuntimeError, "API called failed, probably their fault: #{response.body}"
         elsif response.success?
-          JSON.parse(response.body, :symbolize_names => true)[:data]
+          response_body_json = JSON.parse(response.body, :symbolize_names => true)
+          if response_body_json.key?(:data)
+            response_body_json[:data]
+          else
+            response_body_json
+          end
         else
           raise RuntimeError, "Not sure what to do here: #{response.body}"
         end

@@ -7,6 +7,23 @@ module HackerOne
     class Report
       include ResourceHelper
 
+      STATES = %w(
+        new
+        triaged
+        needs-more-info
+        resolved
+        not-applicable
+        informative
+        duplicate
+        spam
+      ).map(&:to_sym).freeze
+
+      STATES_REQUIRING_STATE_CHANGE_MESSAGE = %w(
+        needs-more-info
+        informative
+        duplicate
+      ).map(&:to_sym).freeze
+
       def initialize(report)
         @report = report
       end
@@ -25,6 +42,10 @@ module HackerOne
 
       def issue_tracker_reference_url
         attributes[:issue_tracker_reference_url]
+      end
+
+      def issue_tracker_reference_id
+        attributes[:issue_tracker_reference_id]
       end
 
       def reporter
@@ -124,6 +145,89 @@ module HackerOne
           request_body: request_body
         )
         Activities.build(response_body)
+      end
+
+      ## Idempotent: change the state of a report. See STATES for valid values.
+      #
+      # id: the ID of the report
+      # state: the state in which the report is to be put in
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
+      def state_change(state, message = nil)
+        raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
+
+        body = {
+          type: "state-change",
+          attributes: {
+            state: state
+          }
+        }
+
+        if message
+          body[:attributes][:message] = message
+        elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
+          fail ArgumentError, "State #{state} requires a message. No message was supplied."
+        else
+          # message is in theory optional, but a value appears to be required.
+          body[:attributes][:message] = ""
+        end
+
+        response_json = make_post_request("reports/#{id}/state_changes", request_body: body)
+        @report = response_json
+        self
+      end
+
+      ## Idempotent: Add a report reference to a project
+      #
+      # id: the ID of the report
+      # state: value for the reference (e.g. issue number or relative path to cross-repo issue)
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
+      def add_report_reference(reference)
+        body = {
+          type: "issue-tracker-reference-id",
+          attributes: {
+            reference: reference
+          }
+        }
+
+        response_json = make_post_request("reports/#{id}/issue_tracker_reference_id", request_body: body)
+        @report = response_json[:relationships][:report][:data]
+        self
+      end
+
+      ## Idempotent: add the issue reference and put the report into the "triage" state.
+      #
+      # id: the ID of the report
+      # state: value for the reference (e.g. issue number or relative path to cross-repo issue)
+      #
+      # returns an HackerOne::Client::Report object or raises an error if
+      # no report is found.
+      def triage(reference)
+        add_report_reference(reference)
+        state_change(:triaged)
+      end
+
+      # Add a comment to a report. By default, internal comments will be added.
+      #
+      # id: the ID of the report
+      # message: the content of the comment that will be created
+      # internal: "team only" comment (true, default) or "all participants"
+      def add_comment(message, internal: true)
+        fail ArgumentError, "message is required" if message.blank?
+
+        body = {
+          type: "activity-comment",
+          attributes: {
+            message: message,
+            internal: internal
+          }
+        }
+
+        response_json = make_post_request("reports/#{id}/activities", request_body: body)
+        HackerOne::Client::Activities.build(response_json)
       end
 
       def assign_to_user(name)

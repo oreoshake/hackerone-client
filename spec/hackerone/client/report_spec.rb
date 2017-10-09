@@ -149,6 +149,57 @@ RSpec.describe HackerOne::Client::Report do
     end
   end
 
+  context "#state_change" do
+    it "marks a report as triaged" do
+      VCR.use_cassette(:stage_change) do
+        expect(report.state_change(:triaged)).to_not be_nil
+      end
+    end
+
+    HackerOne::Client::Report::STATES_REQUIRING_STATE_CHANGE_MESSAGE.each do |state|
+      it "raises an error if no message is supplied for #{state} actions" do
+        expect { report.state_change(state) }.to raise_error(ArgumentError)
+      end
+    end
+
+    (HackerOne::Client::Report::STATES - HackerOne::Client::Report::STATES_REQUIRING_STATE_CHANGE_MESSAGE).each do |state|
+      it "does not raises an error if no message is supplied for #{state} actions" do
+        VCR.use_cassette(:stage_change) do
+          expect { report.state_change(state) }.to_not raise_error
+        end
+      end
+    end
+  end
+
+  context "#add_report_reference" do
+    it "adds an issue reference" do
+      VCR.use_cassette(:add_report_reference) do
+        expect(report.add_report_reference("fooooo")).to_not be_nil
+      end
+
+      expect(report.issue_tracker_reference_id).to eq "fooooo"
+    end
+  end
+
+  context "#add_comment" do
+    it "adds an internal comment by default" do
+      VCR.use_cassette(:add_comment) do
+        comment = report.add_comment("I am an internal comment")
+        expect(comment).to be_a(HackerOne::Client::Activities::CommentAdded)
+        expect(comment.internal).to be true
+      end
+    end
+
+    it "allows comments for all participants" do
+      VCR.use_cassette(:add_public_comment) do
+        comment = report.add_comment("I am not an internal comment", internal: false)
+        expect(comment).to be_a(HackerOne::Client::Activities::CommentAdded)
+        expect(comment.internal).to be false
+      end
+    end
+  end
+
+
   describe "#activities" do
     it "returns a list of activities" do
       expect(report.activities).to all(be_an(HackerOne::Client::Activities::Activity))

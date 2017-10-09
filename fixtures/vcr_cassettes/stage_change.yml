@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hackerone.com/v1/reports/132170/state_changes
+    uri: https://api.hackerone.com/v1/reports/200/state_changes
     body:
       encoding: UTF-8
       string: '{"data":{"type":"state-change","attributes":{"message":"This is has
@@ -68,7 +68,7 @@ http_interactions:
       - 340a42c58e9553de-LAX
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"132170","type":"report","attributes":{"title":"ssss","state":"triaged","created_at":"2016-04-18T22:24:50.065Z","vulnerability_information":"sssss","triaged_at":"2017-03-16T19:53:49.939Z","closed_at":null,"last_reporter_activity_at":"2016-04-18T22:24:50.118Z","first_program_activity_at":"2017-03-16T18:36:40.650Z","last_program_activity_at":"2017-03-16T19:53:49.939Z","bounty_awarded_at":null,"swag_awarded_at":null,"disclosed_at":null,"last_activity_at":"2017-03-16T19:53:49.939Z","issue_tracker_reference_id":"3476"},"relationships":{"reporter":{"data":{"id":"57690","type":"user","attributes":{"username":"ndm-github","name":"Neil
+      string: '{"data":{"id":"200","type":"report","attributes":{"title":"ssss","state":"triaged","created_at":"2016-04-18T22:24:50.065Z","vulnerability_information":"sssss","triaged_at":"2017-03-16T19:53:49.939Z","closed_at":null,"last_reporter_activity_at":"2016-04-18T22:24:50.118Z","first_program_activity_at":"2017-03-16T18:36:40.650Z","last_program_activity_at":"2017-03-16T19:53:49.939Z","bounty_awarded_at":null,"swag_awarded_at":null,"disclosed_at":null,"last_activity_at":"2017-03-16T19:53:49.939Z","issue_tracker_reference_id":"3476"},"relationships":{"reporter":{"data":{"id":"57690","type":"user","attributes":{"username":"ndm-github","name":"Neil
         Matatall","disabled":false,"created_at":"2016-02-24T01:33:01.258Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487","82x82":"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487","110x110":"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487","260x260":"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"}}}},"program":{"data":{"id":"11767","type":"program","attributes":{"handle":"github-test","created_at":"2016-04-15T17:10:31.261Z","updated_at":"2016-09-20T14:54:15.448Z"}}},"swag":{"data":[]},"attachments":{"data":[]},"vulnerability_types":{"data":[{"id":"107921","type":"vulnerability-type","attributes":{"name":"Cross-Site
         Scripting (XSS)","description":"Failure of a site to validate, filter, or
         encode user input before returning it to another user''s web client.\n","created_at":"2016-04-15T17:10:39.169Z"}}]},"activities":{"data":[{"type":"activity-bug-triaged","id":"1546376","attributes":{"message":"This

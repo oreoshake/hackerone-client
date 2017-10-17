@@ -15,6 +15,19 @@ report = client.report(id)
 report.assign_to_user("username")
 report.assign_to_group("groupname")
 
+# POST '/reports/#{id}/activities'
+report.add_comment(message, internal: false) # internal is true by default
+
+# POST '/report/{id}/state_change change the state of a report
+# `state` can be one of  new, triaged, needs-more-info, resolved, not-applicable, informative, duplicate, spam
+report.state_change(state)
+
+# POST '/report/{id}/add_report_reference add a "reference" e.g. internal issue number
+report.add_report_reference(reference)
+
+# Triage an issue (add a reference and set state to :triaged)
+report.triage(reference)
+
 # POST /reports/{id}/bounty_suggestions
 report.suggest_bounty(message: "I suggest $500 with a small bonus. Report is well-written.", amount: 500, bonus_amount: 50)
 
@@ -23,20 +36,6 @@ report.award_bounty(message: "Here's your bounty!", amount: 500, bonus_amount: 5
 
 # POST /reports/{id}/swags
 report.award_swag(message: "Here's your T-Shirt")
-
-# POST '/reports/#{id}/activities'
-
-client.add_comment(id, message, internal: false) # internal is true by default
-
-# POST '/report/{id}/state_change change the state of a report
-# `state` can be one of  new, triaged, needs-more-info, resolved, not-applicable, informative, duplicate, spam
-client.state_change(id, state)
-
-# POST '/report/{id}/add_report_reference add a "reference" e.g. internal issue number
-client.add_report_reference(id, reference)
-
-# Triage an issue (add a reference and set state to :triaged)
-client.triage(id, reference)
 
 # GET `/{program}/reporters` returns a list of unique reporters that have reported to your program
 client.reporters
@@ -51,14 +50,14 @@ program.common_responses
 
 ### Credential management
 
-You'll need to generate an API token at https://hackerone.com/&lt;program&gt;/api.
+You'll need to generate an API token at `https://hackerone.com/<program>/api`.
 
 * Click "Create API token"
 * Name the token
 * Click "Create"
 * Copy down the value
 
-Set the `HACKERONE_TOKEN` and `HACKERONE_TOKEN_NAME` environment variables.
+**Set the `HACKERONE_TOKEN` and `HACKERONE_TOKEN_NAME` environment variables.**
 
 ### Program name
 

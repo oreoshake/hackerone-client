@@ -36,8 +36,16 @@ module HackerOne
     end
 
     class Api
-      def initialize(program = nil)
+      ## Initialize the API client
+      #
+      # program: the HackerOne program to search on (configure globally with Hackerone::Client.program=)
+      # auth(optional): optional Hash containing :token_name and :token values instead them being passed
+      #                 as environment variables `HACKERONE_TOKEN_NAME and `HACKERONE_TOKEN`
+      #
+      # returns API client
+      def initialize(program = nil, auth = {})
         @program = program
+        self.class.auth(auth)
       end
 
       def program
@@ -137,14 +145,16 @@ module HackerOne
       end
 
       def self.hackerone_api_connection
-        unless ENV["HACKERONE_TOKEN_NAME"] && ENV["HACKERONE_TOKEN"]
-          raise NotConfiguredError, "HACKERONE_TOKEN_NAME HACKERONE_TOKEN environment variables must be set"
-        end
-
         @connection ||= Faraday.new(:url => "https://api.hackerone.com/v1") do |faraday|
-          faraday.basic_auth(ENV["HACKERONE_TOKEN_NAME"], ENV["HACKERONE_TOKEN"])
+          faraday.basic_auth(@auth[:token_name], @auth[:token])
           faraday.adapter Faraday.default_adapter
         end
+      end
+
+      def self.auth(auth={})
+        @auth = {}
+        @auth[:token] = auth[:token] || ENV["HACKERONE_TOKEN"] || raise(NotConfiguredError, "HACKERONE_TOKEN environment variables or auth[:token] must be set")
+        @auth[:token_name] = auth[:token_name] || ENV["HACKERONE_TOKEN_NAME"] || raise(NotConfiguredError, "HACKERONE_TOKEN_NAME environment variables or auth[:token_name] must be set")
       end
 
       def with_retry(attempts=3, &block)

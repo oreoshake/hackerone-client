@@ -1,3 +1,7 @@
+## [0.9.1] - 2017-10-24
+
+- Misc: loosen version restrictions on activesupport
+
 ## [0.9.0] - 2017-10-09
 
 - API: move actions from client into report (@esjee)

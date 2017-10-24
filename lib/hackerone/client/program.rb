@@ -40,6 +40,14 @@ module HackerOne
       def find_group(groupname)
         groups.find { |group| group.name == groupname }
       end
+      
+      # Get reporters via pages.
+       def reporters(page_number: 1, page_size: 25)
+        make_get_request(
+          "programs/#{id}/reporters",
+          params: { page: { number: page_number, size: page_size } }
+        )
+      end
 
       def common_responses(page_number: 1, page_size: 100)
         make_get_request(

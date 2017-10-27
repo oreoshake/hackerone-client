@@ -1,8 +1,9 @@
 # Hackerone::Client
 
 A limited client library for interacting with HackerOne. Currently only supports a few operations:
-
+### Client
 ```ruby
+Initialize Client
 client = HackerOne::Client::Api.new("github")
 
 # GET '/reports' returns all reports in the "new" state for a given program
@@ -39,8 +40,27 @@ report.award_swag(message: "Here's your T-Shirt")
 
 # GET `/{program}/reporters` returns a list of unique reporters that have reported to your program
 client.reporters
-
+```
+### Program
+```
+Initialize program
 program = HackerOne::Client::Program.find("insert-program-name-here")
+
+# returns all groups, memership types and users that manage the program. **It does not include reporters**
+program.users
+
+# get all groups in a program
+program.users[:relationships][:groups]
+
+ # > program.users[:relationships][:groups]
+ => {:data=>[{:id=>"xxx", :type=>"group", :attributes=>{:name=>"Admin", :created_at=>"20xx-06-16T15:44:16.721Z",
+ :permissions=>["user_management", "program_management"]}}, {:id=>"xxxx", :type=>"group", :attributes=>{:name=>"Standard",
+ :created_at=>"20xx-06-16T15:44:16.751Z", :permissions=>["report_management", "reward_management"]}}, {:id=>"xxxx", 
+ :type=>"group", :attributes=>{:name=>"View/Comment/Triage", :created_at=>"20xx-11-11T19:39:55.393Z", :permissions=>["report_management"]}}]}
+ 
+ # get all members in a program
+ program.users[:relationships][:members]
+
 
 # returns all common responses
 program.common_responses

@@ -24,6 +24,12 @@ module HackerOne
       def attributes
         OpenStruct.new(@program[:attributes])
       end
+       # List all groups, membership types and users for a program
+      def users()
+        make_get_request(
+          "programs/#{id}"
+          )
+      end
 
       def member?(username)
         find_member(username).present?

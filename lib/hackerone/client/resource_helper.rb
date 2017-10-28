@@ -25,16 +25,6 @@ module HackerOne
         parse_response(response)
       end
 
-      def make_put_request(url, params: {})
-        response = HackerOne::Client::Api.hackerone_api_connection.put do |req|
-          req.headers['Content-Type'] = 'application/json'
-          req.url url
-          req.params = params
-        end
-
-        parse_response(response)
-      end
-
       private
 
       def api_connection

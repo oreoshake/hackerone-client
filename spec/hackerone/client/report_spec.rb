@@ -225,9 +225,7 @@ RSpec.describe HackerOne::Client::Report do
       end
       described_class.add_on_state_change_hook ->(report, old_state, new_state) do
         if new_state == "triaged" && report.assignee.nil?
-          VCR.use_cassette(:assign_report_to_user) do
-            report.assign_to_user "esjee"
-          end
+          report.assign_to_user "esjee"
         end
       end
 
@@ -235,6 +233,7 @@ RSpec.describe HackerOne::Client::Report do
         report.triage("fooooo")
       end
 
+      expect(report.state).to eq "triaged"
       expect(report.assignee).to be_present
       expect(report.assignee.username).to eq "esjee"
     end

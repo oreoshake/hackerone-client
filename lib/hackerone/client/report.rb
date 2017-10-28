@@ -24,6 +24,23 @@ module HackerOne
         duplicate
       ).map(&:to_sym).freeze
 
+      class << self
+        @on_state_change_hooks = []
+
+        def add_on_state_change_hook(proc)
+          @on_state_change_hooks ||= []
+          @on_state_change_hooks << proc
+        end
+
+        def clear_on_state_change_hooks
+          @on_state_change_hooks = []
+        end
+
+        def on_state_change_hooks
+          @on_state_change_hooks ||= []
+        end
+      end
+
       def initialize(report)
         @report = report
       end
@@ -48,11 +65,23 @@ module HackerOne
         attributes[:issue_tracker_reference_id]
       end
 
+      def state
+        attributes[:state]
+      end
+
       def reporter
         relationships
           .fetch(:reporter, {})
           .fetch(:data, {})
           .fetch(:attributes, {})
+      end
+
+      def assignee
+        if assignee_relationship = relationships[:assignee]
+          HackerOne::Client::User.new(assignee_relationship[:data])
+        else
+          nil
+        end
       end
 
       def payment_total
@@ -157,6 +186,7 @@ module HackerOne
       def state_change(state, message = nil)
         raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
 
+        old_state = self.state
         body = {
           type: "state-change",
           attributes: {
@@ -175,6 +205,9 @@ module HackerOne
 
         response_json = make_post_request("reports/#{id}/state_changes", request_body: body)
         @report = response_json
+        self.class.on_state_change_hooks.each do |hook|
+          hook.call(self, old_state.to_s, state.to_s)
+        end
         self
       end
 
@@ -280,6 +313,8 @@ module HackerOne
         unless response.success?
           fail("Unable to assign report #{id} to #{assignee_type} with id '#{assignee_id}'. Response status: #{response.status}, body: #{response.body}")
         end
+
+        @report = parse_response response
       end
     end
   end

@@ -1,0 +1,154 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hackerone.com/v1/reports/200/issue_tracker_reference_id
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"issue-tracker-reference-id","attributes":{"reference":"fooooo"}}}'
+    headers:
+      Authorization:
+      - Basic Zm9vOmJhcg==
+      User-Agent:
+      - Faraday v0.13.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 16 Mar 2017 20:21:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d4b57ca8890f7f0e1428003db73c2a8f41489695704; expires=Fri, 16-Mar-18
+        20:21:44 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - 2c20eb84-1d41-48c2-a64a-6fffd601dce9
+      Etag:
+      - W/"e6e4cf756fbd434e3375eec1c1256611"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - default-src 'none'; connect-src 'self' www.google-analytics.com errors.hackerone.net;
+        font-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'
+        'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 340a6ba9fa5653a8-LAX
+    body:
+      encoding: ASCII-8BIT
+      string: '{"relationships":{"report":{"data":{"id":"200","type":"report","attributes":{"title":"ssss","state":"triaged","created_at":"2016-04-18T22:24:50.065Z","vulnerability_information":"sssss","triaged_at":"2017-03-16T19:53:49.939Z","closed_at":null,"last_reporter_activity_at":"2016-04-18T22:24:50.118Z","first_program_activity_at":"2017-03-16T18:36:40.650Z","last_program_activity_at":"2017-03-16T19:53:49.939Z","bounty_awarded_at":null,"swag_awarded_at":null,"disclosed_at":null,"last_activity_at":"2017-03-16T19:53:49.939Z","issue_tracker_reference_id":"fooooo"},"relationships":{"reporter":{"data":{"id":"57690","type":"user","attributes":{"username":"ndm-github","name":"Neil
+        Matatall","disabled":false,"created_at":"2016-02-24T01:33:01.258Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487","82x82":"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487","110x110":"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487","260x260":"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"}}}},"program":{"data":{"id":"11767","type":"program","attributes":{"handle":"github","created_at":"2016-04-15T17:10:31.261Z","updated_at":"2016-09-20T14:54:15.448Z"}}},"swag":{"data":[]},"attachments":{"data":[]},"vulnerability_types":{"data":[{"id":"107921","type":"vulnerability-type","attributes":{"name":"Cross-Site
+        Scripting (XSS)","description":"Failure of a site to validate, filter, or
+        encode user input before returning it to another user''s web client.\n","created_at":"2016-04-15T17:10:39.169Z"}}]},"activities":{"data":[{"type":"activity-reference-id-added","id":"1546419","attributes":{"message":"","created_at":"2017-03-16T20:21:44.883Z","updated_at":"2017-03-16T20:21:44.883Z","internal":true,"reference":"fooooo","reference_url":null},"relationships":{"actor":{"data":{"type":"user","id":"151303","attributes":{"username":"testingagain","name":null,"disabled":false,"created_at":"2017-03-16T00:35:19.472Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bug-triaged","id":"1546376","attributes":{"message":"This
+        is has been triaged internally.","created_at":"2017-03-16T19:53:49.939Z","updated_at":"2017-03-16T19:53:49.939Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"151303","attributes":{"username":"testingagain","name":null,"disabled":false,"created_at":"2017-03-16T00:35:19.472Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-reference-id-added","id":"1546123","attributes":{"message":"","created_at":"2017-03-16T18:36:49.045Z","updated_at":"2017-03-16T18:36:49.045Z","internal":true,"reference":"3476","reference_url":null},"relationships":{"actor":{"data":{"type":"user","id":"151303","attributes":{"username":"testingagain","name":null,"disabled":false,"created_at":"2017-03-16T00:35:19.472Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bug-needs-more-info","id":"1546120","attributes":{"message":"This
+        is has been triaged internally.","created_at":"2017-03-16T18:36:40.650Z","updated_at":"2017-03-16T18:36:40.650Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"151303","attributes":{"username":"testingagain","name":null,"disabled":false,"created_at":"2017-03-16T00:35:19.472Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}}]},"bounties":{"data":[]},"summaries":{"data":[]}}}}}}'
+    http_version:
+  recorded_at: Sat, 28 Oct 2017 18:29:20 GMT
+- request:
+    method: post
+    uri: https://api.hackerone.com/v1/reports/200/state_changes
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"state-change","attributes":{"message":"This is has
+        been triaged internally.","state":"triaged"}}}'
+    headers:
+      Authorization:
+      - Basic nope
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 16 Mar 2017 19:53:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d6abf05e4448cfd8e6f406e1fb105f1911489694029; expires=Fri, 16-Mar-18
+        19:53:49 GMT; path=/; Domain=api.hackerone.com; HttpOnly
+      X-Request-Id:
+      - cd191af9-7666-4ed1-8a52-8a1305e29f5e
+      Etag:
+      - W/"ec64e6720b3ad3ce4838299e5a951f99"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - default-src 'none'; connect-src 'self' www.google-analytics.com errors.hackerone.net;
+        font-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'
+        'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 340a42c58e9553de-LAX
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"200","type":"report","attributes":{"title":"ssss","state":"triaged","created_at":"2016-04-18T22:24:50.065Z","vulnerability_information":"sssss","triaged_at":"2017-03-16T19:53:49.939Z","closed_at":null,"last_reporter_activity_at":"2016-04-18T22:24:50.118Z","first_program_activity_at":"2017-03-16T18:36:40.650Z","last_program_activity_at":"2017-03-16T19:53:49.939Z","bounty_awarded_at":null,"swag_awarded_at":null,"disclosed_at":null,"last_activity_at":"2017-03-16T19:53:49.939Z","issue_tracker_reference_id":"3476"},"relationships":{"reporter":{"data":{"id":"57690","type":"user","attributes":{"username":"ndm-github","name":"Neil
+        Matatall","disabled":false,"created_at":"2016-02-24T01:33:01.258Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487","82x82":"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487","110x110":"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487","260x260":"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487"}}}},"program":{"data":{"id":"11767","type":"program","attributes":{"handle":"github","created_at":"2016-04-15T17:10:31.261Z","updated_at":"2016-09-20T14:54:15.448Z"}}},"swag":{"data":[]},"attachments":{"data":[]},"vulnerability_types":{"data":[{"id":"107921","type":"vulnerability-type","attributes":{"name":"Cross-Site
+        Scripting (XSS)","description":"Failure of a site to validate, filter, or
+        encode user input before returning it to another user''s web client.\n","created_at":"2016-04-15T17:10:39.169Z"}}]},"activities":{"data":[{"type":"activity-bug-triaged","id":"1546376","attributes":{"message":"This
+        is has been triaged internally.","created_at":"2017-03-16T19:53:49.939Z","updated_at":"2017-03-16T19:53:49.939Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"151303","attributes":{"username":"testingagain","name":null,"disabled":false,"created_at":"2017-03-16T00:35:19.472Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-reference-id-added","id":"1546123","attributes":{"message":"","created_at":"2017-03-16T18:36:49.045Z","updated_at":"2017-03-16T18:36:49.045Z","internal":true,"reference":"3476","reference_url":null},"relationships":{"actor":{"data":{"type":"user","id":"151303","attributes":{"username":"testingagain","name":null,"disabled":false,"created_at":"2017-03-16T00:35:19.472Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bug-needs-more-info","id":"1546120","attributes":{"message":"This
+        is has been triaged internally.","created_at":"2017-03-16T18:36:40.650Z","updated_at":"2017-03-16T18:36:40.650Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"151303","attributes":{"username":"testingagain","name":null,"disabled":false,"created_at":"2017-03-16T00:35:19.472Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}}]},"bounties":{"data":[]},"summaries":{"data":[]}}}}'
+    http_version:
+  recorded_at: Thu, 16 Mar 2017 19:53:50 GMT
+recorded_with: VCR 3.0.3

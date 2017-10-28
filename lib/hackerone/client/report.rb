@@ -25,11 +25,8 @@ module HackerOne
       ).map(&:to_sym).freeze
 
       class << self
-        @on_state_change_hooks = []
-
         def add_on_state_change_hook(proc)
-          @on_state_change_hooks ||= []
-          @on_state_change_hooks << proc
+          on_state_change_hooks << proc
         end
 
         def clear_on_state_change_hooks

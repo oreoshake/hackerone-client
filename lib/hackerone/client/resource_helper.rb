@@ -1,6 +1,10 @@
 module HackerOne
   module Client
     module ResourceHelper
+      def self.included(base)
+        base.extend(self)
+      end
+
       def parse_response(response)
         HackerOne::Client::Api.parse_response(response)
       end

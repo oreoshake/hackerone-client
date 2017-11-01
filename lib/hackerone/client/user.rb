@@ -1,7 +1,13 @@
 module HackerOne
   module Client
     class User
+      include ResourceHelper
+
       delegate :username, to: :attributes
+
+      def self.find(username_we_want)
+        make_get_request("users/#{username_we_want}")
+      end
 
       def initialize(user)
         @user = user

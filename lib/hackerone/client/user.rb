@@ -3,10 +3,11 @@ module HackerOne
     class User
       include ResourceHelper
 
-      delegate :username, to: :attributes
+      delegate :username, :signal, :impact, :reputation, to: :attributes
 
       def self.find(username_we_want)
-        make_get_request("users/#{username_we_want}")
+        user_json = make_get_request("users/#{username_we_want}")
+        new(user_json)
       end
 
       def initialize(user)

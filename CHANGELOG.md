@@ -1,3 +1,10 @@
+## [0.10.0] - 2017-11-03
+
+Oh no! I hate versions where one number is >= 10! We should figure out what's missing for a solid 1.0 release.
+
+- `HackerOne::Client::User.find(user_id)` returns an instance of `User` (@esjee)
+- Add "original report ID" field when marking things as duplicate. This invites the reporter to the original issue.
+
 ## [0.9.1] - 2017-10-24
 
 - Misc: loosen version restrictions on activesupport

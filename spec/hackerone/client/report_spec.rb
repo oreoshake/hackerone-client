@@ -46,11 +46,11 @@ RSpec.describe HackerOne::Client::Report do
 
   describe '#assign_to_user' do
     it 'can assign to users' do
-      expect(
-        VCR.use_cassette(:assign_report_to_user) do
-          report.assign_to_user 'esjee'
-        end
-      ).to eq nil
+      VCR.use_cassette(:assign_report_to_user) do
+        report.assign_to_user 'esjee'
+      end
+
+      expect(report.assignee.username).to eq 'esjee'
     end
 
     it "fails if the API user doesn't have permission" do
@@ -64,11 +64,11 @@ RSpec.describe HackerOne::Client::Report do
 
   describe '#assign_to_group' do
     it 'can assign to groups' do
-      expect(
-        VCR.use_cassette(:assign_report_to_group) do
-          report.assign_to_group 'Admin'
-        end
-      ).to eq nil
+      VCR.use_cassette(:assign_report_to_group) do
+        report.assign_to_group 'Admin'
+      end
+
+      expect(report.assignee).to be_present
     end
 
     it "fails if the API user doesn't have permission" do
@@ -82,11 +82,11 @@ RSpec.describe HackerOne::Client::Report do
 
   describe '#unassign' do
     it 'can assign to nobody' do
-      expect(
-        VCR.use_cassette(:assign_report_to_nobody) do
-          report.unassign
-        end
-      ).to eq nil
+      VCR.use_cassette(:assign_report_to_nobody) do
+        report.unassign
+      end
+
+      expect(report.assignee).to_not be_present
     end
 
     it "fails if the API user doesn't have permission" do
@@ -217,6 +217,31 @@ RSpec.describe HackerOne::Client::Report do
       scope = report.structured_scope
       expect(scope).to be_an(HackerOne::Client::StructuredScope)
       expect(scope.asset_type).to eq("url")
+    end
+  end
+
+  describe "#on_state_change_hooks" do
+    after do
+      described_class.clear_on_state_change_hooks
+    end
+
+    it "triggers hooks on state changes" do
+      described_class.add_on_state_change_hook ->(_report, _old_state, _new_state) do
+        # NOOP, just leaving it hear to demonstrate the multiple hooks run
+      end
+      described_class.add_on_state_change_hook ->(report, old_state, new_state) do
+        if new_state == "triaged" && report.assignee.nil?
+          report.assign_to_user "esjee"
+        end
+      end
+
+      VCR.use_cassette(:triage_and_hook_assign_report_to_user) do
+        report.triage("fooooo")
+      end
+
+      expect(report.state).to eq "triaged"
+      expect(report.assignee).to be_present
+      expect(report.assignee.username).to eq "esjee"
     end
   end
 end

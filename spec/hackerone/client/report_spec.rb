@@ -221,7 +221,7 @@ RSpec.describe HackerOne::Client::Report do
 
     it "triggers hooks on state changes" do
       described_class.add_on_state_change_hook ->(_report, _old_state, _new_state) do
-        # NOOP
+        # NOOP, just leaving it hear to demonstrate the multiple hooks run
       end
       described_class.add_on_state_change_hook ->(report, old_state, new_state) do
         if new_state == "triaged" && report.assignee.nil?

@@ -10,9 +10,9 @@ module HackerOne
       STATES = %w(
         new
         triaged
-        needs-more-info
+        needs_more_info
         resolved
-        not-applicable
+        not_applicable
         informative
         duplicate
         spam

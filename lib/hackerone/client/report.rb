@@ -180,7 +180,7 @@ module HackerOne
       #
       # returns an HackerOne::Client::Report object or raises an error if
       # no report is found.
-      def state_change(state, message = nil)
+      def state_change(state, message = nil, attributes = {})
         raise ArgumentError, "state (#{state}) must be one of #{STATES}" unless STATES.include?(state)
 
         old_state = self.state
@@ -191,6 +191,8 @@ module HackerOne
           }
         }
 
+        body[:attributes] = body[:attributes].reverse_merge(attributes)
+
         if message
           body[:attributes][:message] = message
         elsif STATES_REQUIRING_STATE_CHANGE_MESSAGE.include?(state)
@@ -199,7 +201,6 @@ module HackerOne
           # message is in theory optional, but a value appears to be required.
           body[:attributes][:message] = ""
         end
-
         response_json = make_post_request("reports/#{id}/state_changes", request_body: body)
         @report = response_json
         self.class.on_state_change_hooks.each do |hook|

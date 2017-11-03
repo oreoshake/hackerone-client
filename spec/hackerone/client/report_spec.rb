@@ -156,6 +156,12 @@ RSpec.describe HackerOne::Client::Report do
       end
     end
 
+    it "marks a report as duplicate with the original report" do
+      VCR.use_cassette(:dup) do
+        expect(report.state_change(:duplicate, "totally a dup", original_report_id: "302")).to_not be_nil
+      end
+    end
+
     HackerOne::Client::Report::STATES_REQUIRING_STATE_CHANGE_MESSAGE.each do |state|
       it "raises an error if no message is supplied for #{state} actions" do
         expect { report.state_change(state) }.to raise_error(ArgumentError)

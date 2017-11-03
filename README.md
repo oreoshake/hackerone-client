@@ -47,6 +47,18 @@ program = HackerOne::Client::Program.find("insert-program-name-here")
 program.common_responses
 ```
 
+## State change hooks
+
+You can add hooks that will be called for every state change. This can be useful e.g. for ensuring that reports always get assigned or calling out to external services for specific state changes.
+
+```ruby
+# Initialization
+
+HackerOne::Client::Report.add_state_change_hook ->(report, old_state, new_state) do
+  # ...
+end
+```
+
 ## Usage
 
 ### Credential management

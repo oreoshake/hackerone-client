@@ -1,3 +1,7 @@
+## [0.11.0] - 2017-11-03
+
+- [Add state change hooks](https://github.com/oreoshake/hackerone-client/issues/25) (@esjee)
+
 ## [0.10.0] - 2017-11-03
 
 Oh no! I hate versions where one number is >= 10! We should figure out what's missing for a solid 1.0 release.

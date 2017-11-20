@@ -50,6 +50,9 @@ module HackerOne
           dotfile_content = JSON.parse(
             File.read(dotfile_filepath)
           )
+
+          return nil unless dotfile_content.key?(program.handle)
+
           @updated_at_after = dotfile_content
                               .fetch(program.handle)
                               .fetch('updated_at_after')

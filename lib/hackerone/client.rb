@@ -12,6 +12,7 @@ require_relative "client/group"
 require_relative "client/structured_scope"
 require_relative "client/swag"
 require_relative "client/bounty"
+require_relative "client/incremental/activities"
 
 module HackerOne
   module Client
@@ -119,14 +120,14 @@ module HackerOne
         self.class.parse_response(response)
       end
 
-      def self.parse_response(response)
+      def self.parse_response(response, extract_data: true)
         if response.status.to_s.start_with?("4")
           raise ArgumentError, "API called failed, probably your fault: #{response.body}"
         elsif response.status.to_s.start_with?("5")
           raise RuntimeError, "API called failed, probably their fault: #{response.body}"
         elsif response.success?
           response_body_json = JSON.parse(response.body, :symbolize_names => true)
-          if response_body_json.key?(:data)
+          if extract_data && response_body_json.key?(:data)
             response_body_json[:data]
           else
             response_body_json

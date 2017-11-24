@@ -4,8 +4,6 @@ module HackerOne
       class Activities
         include ResourceHelper
 
-        DOTFILE = '.hackerone_client_incremental_activities'.freeze
-
         attr_reader :program, :updated_at_after, :page_size
 
         def initialize(program, updated_at_after: nil, page_size: 25)
@@ -14,15 +12,9 @@ module HackerOne
           @page_size = page_size
         end
 
-        def loop_through_activities
-          load_dotfile
-
+        def traverse
           loop do
-            fetch_current_page
-
-            activities.each do |activity_json|
-              activity = HackerOne::Client::Activities
-                         .build(activity_json)
+            activities.each do |activity|
               yield activity
             end
 
@@ -31,50 +23,27 @@ module HackerOne
         end
 
         def activities
-          current_page[:data]
-        end
-
-        def next_page?
-          next_updated_at_after.present?
-        end
-
-        def next_page
-          return nil unless next_page?
-
-          @updated_at_after = next_updated_at_after
-          fetch_current_page
-        end
-
-        def load_dotfile
-          return nil unless File.exist?(dotfile_filepath)
-          dotfile_content = JSON.parse(
-            File.read(dotfile_filepath)
-          )
-
-          return nil unless dotfile_content.key?(program.handle)
-
-          @updated_at_after = dotfile_content
-                              .fetch(program.handle)
-                              .fetch('updated_at_after')
-        end
-
-        def store_dotfile
-          new_dotfile_content = {
-            program.handle => {
-              updated_at_after: updated_at_after
-            }
-          }
-          File.open(dotfile_filepath, 'w') do |f|
-            f.puts(JSON.pretty_generate(new_dotfile_content))
+          @activities ||= current_page[:data].map do |activity_json|
+            HackerOne::Client::Activities.build activity_json
           end
         end
 
-        private
+        def next_page
+          return nil unless next_cursor.present?
 
-        def fetch_current_page
+          # Remove memoization
           @current_page = nil
+
+          # Set cursor to next page
+          @updated_at_after = next_cursor
+
+          # Fetch new page
           current_page
+
+          activities
         end
+
+        private
 
         def current_page
           @current_page ||= make_get_request(
@@ -88,11 +57,7 @@ module HackerOne
           )
         end
 
-        def dotfile_filepath
-          File.join(Dir.home, DOTFILE)
-        end
-
-        def next_updated_at_after
+        def next_cursor
           current_page[:meta][:max_updated_at]
         end
       end

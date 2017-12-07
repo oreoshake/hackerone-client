@@ -21,6 +21,14 @@ module HackerOne
         @program[:id]
       end
 
+      def incremental_activities(updated_at_after: nil, page_size: 25)
+        HackerOne::Client::Incremental::Activities.new(
+          self,
+          updated_at_after: updated_at_after,
+          page_size: page_size
+        )
+      end
+
       def attributes
         OpenStruct.new(@program[:attributes])
       end

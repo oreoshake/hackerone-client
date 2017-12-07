@@ -1,3 +1,7 @@
+## [0.12.0] - 2017-12-07
+
+- [Incremental activities](https://github.com/oreoshake/hackerone-client/pull/36) - iterate over actions in a program (@esjee)
+
 ## [0.11.0] - 2017-11-03
 
 - [Add state change hooks](https://github.com/oreoshake/hackerone-client/issues/25) (@esjee)

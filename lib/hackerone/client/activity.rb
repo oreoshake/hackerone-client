@@ -46,6 +46,12 @@ module HackerOne
         delegate :assigned_user, to: :relationships
       end
 
+      class GroupAssignedToBug < Activity
+        def group
+          HackerOne::Client::Group.new(relationships.group[:data])
+        end
+      end
+
       class BugTriaged < Activity
       end
 
@@ -65,6 +71,7 @@ module HackerOne
         'activity-bounty-awarded' => BountyAwarded,
         'activity-swag-awarded' => SwagAwarded,
         'activity-user-assigned-to-bug' => UserAssignedToBug,
+        'activity-group-assigned-to-bug' => GroupAssignedToBug,
         'activity-bug-triaged' => BugTriaged,
         'activity-reference-id-added' => ReferenceIdAdded,
         'activity-comment' => CommentAdded,

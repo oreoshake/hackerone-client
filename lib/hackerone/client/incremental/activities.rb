@@ -31,11 +31,12 @@ module HackerOne
         def next_page
           return nil unless next_cursor.present?
 
-          # Remove memoization
-          @current_page = nil
-
           # Set cursor to next page
           @updated_at_after = next_cursor
+
+          # Remove memoization
+          @current_page = nil
+          @activities = nil
 
           # Fetch new page
           current_page

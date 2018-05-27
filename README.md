@@ -21,7 +21,8 @@ report.add_comment(message, internal: false) # internal is true by default
 
 # POST '/report/{id}/state_change change the state of a report
 # `state` can be one of  new, triaged, needs-more-info, resolved, not-applicable, informative, duplicate, spam
-report.state_change(state)
+# when marking as duplicate, you can supply the original report ID
+report.state_change(:duplicate, "Your issue has been marked as X", original_report_id: 12345)
 
 # POST '/report/{id}/add_report_reference add a "reference" e.g. internal issue number
 report.add_report_reference(reference)
@@ -67,6 +68,18 @@ program.common_responses
 
 # pagination on program reporters
 default: program.reporters(page_number: 1, page_size: 25)
+```
+
+## State change hooks
+
+You can add hooks that will be called for every state change. This can be useful e.g. for ensuring that reports always get assigned or calling out to external services for specific state changes.
+
+```ruby
+# Initialization
+
+HackerOne::Client::Report.add_state_change_hook ->(report, old_state, new_state) do
+  # ...
+end
 ```
 
 ## Usage

@@ -1,0 +1,197 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hackerone.com/v1/reports/200
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic Nope
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 24 Oct 2017 22:53:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=; expires=Wed, 24-Oct-18
+        22:53:39 GMT; path=/; Domain=api.hackerone.com; HttpOnly; Secure
+      X-Request-Id:
+      - 4db0ef19-2256-4ace-b3c8-06abf32f6f0f
+      Etag:
+      - W/"48d77e13622d03735f1a72ea94e8838a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
+        font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
+        ''self'' data: cover-photos.hackerone-user-content.com hackathon-photos.hackerone-user-content.com
+        profile-photos.hackerone-user-content.com hackerone-attachments.s3.amazonaws.com;
+        media-src ''self'' hackerone-attachments.s3.amazonaws.com; script-src ''self''
+        www.google-analytics.com; style-src ''self'' ''unsafe-inline''; report-uri
+        https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3b3083747ba8793c-LAX
+    body:
+      encoding: UTF-8
+      string: "{\"data\":{\"id\":\"200\",\"type\":\"report\",\"attributes\":{\"title\":\"another
+        attempt\",\"state\":\"triaged\",\"created_at\":\"2017-10-10T23:29:35.200Z\",\"vulnerability_information\":\"blehhh\",\"triaged_at\":\"2017-10-10T23:29:49.700Z\",\"closed_at\":null,\"last_reporter_activity_at\":\"2017-10-10T23:29:35.265Z\",\"first_program_activity_at\":\"2017-10-10T23:29:35.265Z\",\"last_program_activity_at\":\"2017-10-10T23:29:49.700Z\",\"bounty_awarded_at\":null,\"swag_awarded_at\":\"2017-10-10T23:30:28.501Z\",\"disclosed_at\":null,\"last_public_activity_at\":\"2017-10-10T23:30:28.501Z\",\"last_activity_at\":\"2017-10-10T23:30:28.501Z\",\"issue_tracker_reference_id\":\"reference\"},\"relationships\":{\"reporter\":{\"data\":{\"id\":\"57690\",\"type\":\"user\",\"attributes\":{\"username\":\"ndm-github\",\"name\":\"Neil
+        Matatall\",\"disabled\":false,\"created_at\":\"2016-02-24T01:33:01.258Z\",\"profile_picture\":{\"62x62\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487\",\"82x82\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487\",\"110x110\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487\",\"260x260\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487\"}}}},\"assignee\":{\"data\":{\"type\":\"user\",\"id\":\"57690\",\"attributes\":{\"username\":\"ndm-github\",\"name\":\"Neil
+        Matatall\",\"disabled\":false,\"created_at\":\"2016-02-24T01:33:01.258Z\",\"profile_picture\":{\"62x62\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487\",\"82x82\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487\",\"110x110\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487\",\"260x260\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487\"}}}},\"program\":{\"data\":{\"id\":\"11767\",\"type\":\"program\",\"attributes\":{\"handle\":\"github\",\"created_at\":\"2016-04-15T17:10:31.261Z\",\"updated_at\":\"2017-10-03T12:58:34.637Z\"}}},\"swag\":{\"data\":[{\"id\":\"2158\",\"type\":\"swag\",\"attributes\":{\"sent\":false,\"created_at\":\"2017-10-10T23:30:28.494Z\"},\"relationships\":{\"address\":{\"data\":{\"id\":\"235\",\"type\":\"address\",\"attributes\":{\"name\":\"neil
+        matatall\",\"street\":\"\",\"city\":\"Kailua
+        Kona\",\"postal_code\":\"96740\",\"state\":\"HI\",\"country\":\"USA\",\"created_at\":\"2016-04-15T02:34:17.252Z\",\"tshirt_size\":\"XLarge\",\"phone_number\":\"8082091148\"}}}}},{\"id\":\"2157\",\"type\":\"swag\",\"attributes\":{\"sent\":false,\"created_at\":\"2017-10-10T23:30:07.259Z\"},\"relationships\":{\"address\":{\"data\":{\"id\":\"235\",\"type\":\"address\",\"attributes\":{\"name\":\"neil
+        matatall\",\"street\":\"\",\"city\":\"Kailua
+        Kona\",\"postal_code\":\"96740\",\"state\":\"HI\",\"country\":\"USA\",\"created_at\":\"2016-04-15T02:34:17.252Z\",\"tshirt_size\":\"XLarge\",\"phone_number\":\"8082091148\"}}}}}]},\"attachments\":{\"data\":[]},\"activities\":{\"data\":[{\"type\":\"activity-swag-awarded\",\"id\":\"2057701\",\"attributes\":{\"message\":\"\",\"created_at\":\"2017-10-10T23:30:28.501Z\",\"updated_at\":\"2017-10-10T23:30:28.501Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"program\",\"id\":\"11767\",\"attributes\":{\"handle\":\"github\",\"created_at\":\"2016-04-15T17:10:31.261Z\",\"updated_at\":\"2017-10-03T12:58:34.637Z\"}}},\"swag\":{\"data\":{\"id\":\"2158\",\"type\":\"swag\",\"attributes\":{\"sent\":false,\"created_at\":\"2017-10-10T23:30:28.494Z\"},\"relationships\":{\"address\":{\"data\":{\"id\":\"235\",\"type\":\"address\",\"attributes\":{\"name\":\"neil
+        matatall\",\"street\":\"\",\"city\":\"Kailua
+        Kona\",\"postal_code\":\"96740\",\"state\":\"HI\",\"country\":\"USA\",\"created_at\":\"2016-04-15T02:34:17.252Z\",\"tshirt_size\":\"XLarge\",\"phone_number\":\"8082091148\"}}}}}}}},{\"type\":\"activity-swag-awarded\",\"id\":\"2057700\",\"attributes\":{\"message\":\"\",\"created_at\":\"2017-10-10T23:30:07.266Z\",\"updated_at\":\"2017-10-10T23:30:07.266Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"program\",\"id\":\"11767\",\"attributes\":{\"handle\":\"github\",\"created_at\":\"2016-04-15T17:10:31.261Z\",\"updated_at\":\"2017-10-03T12:58:34.637Z\"}}},\"swag\":{\"data\":{\"id\":\"2157\",\"type\":\"swag\",\"attributes\":{\"sent\":false,\"created_at\":\"2017-10-10T23:30:07.259Z\"},\"relationships\":{\"address\":{\"data\":{\"id\":\"235\",\"type\":\"address\",\"attributes\":{\"name\":\"neil
+        matatall\",\"street\":\"\",\"city\":\"Kailua
+        Kona\",\"postal_code\":\"96740\",\"state\":\"HI\",\"country\":\"USA\",\"created_at\":\"2016-04-15T02:34:17.252Z\",\"tshirt_size\":\"XLarge\",\"phone_number\":\"8082091148\"}}}}}}}},{\"type\":\"activity-bounty-suggested\",\"id\":\"2057699\",\"attributes\":{\"message\":\"Suggested
+        by oreoshake in https://github.slack.com/archives//p\",\"created_at\":\"2017-10-10T23:29:55.239Z\",\"updated_at\":\"2017-10-10T23:29:55.239Z\",\"internal\":true,\"bounty_amount\":\"100\",\"bonus_amount\":\"0\"},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-bug-triaged\",\"id\":\"2057697\",\"attributes\":{\"message\":\"\",\"created_at\":\"2017-10-10T23:29:49.700Z\",\"updated_at\":\"2017-10-10T23:29:49.700Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-reference-id-added\",\"id\":\"2057696\",\"attributes\":{\"message\":\"\",\"created_at\":\"2017-10-10T23:29:49.101Z\",\"updated_at\":\"2017-10-10T23:29:49.101Z\",\"internal\":true,\"reference\":\"reference\",\"reference_url\":null},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-comment\",\"id\":\"2057695\",\"attributes\":{\"message\":\"For
+        better or worse, the design of HTTP cookies means that no single website can
+        prevent its users from being logged out; consequently, application-specific
+        ways of achieving this goal will likely not qualify. You may be interested
+        in personal blog posts from Chris Evans (https://scarybeastsecurity.blogspot.com/2010/01/logout-xsrf-significant-web-app-bug.html)
+        and Michal Zalewski (https://lcamtuf.blogspot.com/2010/10/http-cookies-or-how-not-to-design.html)
+        for more background.\\n\",\"created_at\":\"2017-10-10T23:29:48.618Z\",\"updated_at\":\"2017-10-10T23:29:48.618Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-user-assigned-to-bug\",\"id\":\"2057694\",\"attributes\":{\"message\":null,\"created_at\":\"2017-10-10T23:29:46.939Z\",\"updated_at\":\"2017-10-10T23:29:46.939Z\",\"internal\":true},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}},\"assigned_user\":{\"data\":{\"id\":\"57690\",\"type\":\"user\",\"attributes\":{\"username\":\"ndm-github\",\"name\":\"Neil
+        Matatall\",\"disabled\":false,\"created_at\":\"2016-02-24T01:33:01.258Z\",\"profile_picture\":{\"62x62\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487\",\"82x82\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487\",\"110x110\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487\",\"260x260\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487\"}}}}}}]},\"bounties\":{\"data\":[]},\"summaries\":{\"data\":[]}}}}"
+    http_version:
+  recorded_at: Tue, 24 Oct 2017 22:53:40 GMT
+- request:
+    method: post
+    uri: https://api.hackerone.com/v1/reports/200/state_changes
+    body:
+      encoding: UTF-8
+      string: "{\"data\":{\"type\":\"state-change\",\"attributes\":{\"original_report_id\":\"302\",\"state\":\"duplicate\",\"message\":\"totally
+        a dup\"}}}"
+    headers:
+      Authorization:
+      - Basic Nope==
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 24 Oct 2017 22:53:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=; expires=Wed, 24-Oct-18
+        22:53:48 GMT; path=/; Domain=api.hackerone.com; HttpOnly; Secure
+      X-Request-Id:
+      - cd376b1b-99ab-4fdb-bf6b-a07561818cb2
+      Etag:
+      - W/"c4b760035f20d5c8f9e48569e0297d7f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
+        font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
+        ''self'' data: cover-photos.hackerone-user-content.com hackathon-photos.hackerone-user-content.com
+        profile-photos.hackerone-user-content.com hackerone-attachments.s3.amazonaws.com;
+        media-src ''self'' hackerone-attachments.s3.amazonaws.com; script-src ''self''
+        www.google-analytics.com; style-src ''self'' ''unsafe-inline''; report-uri
+        https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Public-Key-Pins-Report-Only:
+      - pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=";
+        pin-sha256="cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A="; pin-sha256="bIlWcjiKq1mftH/xd7Hw1JO77Cr+Gv+XYcGUQWwO+A4=";
+        pin-sha256="tXD+dGAP8rGY4PW1be90cOYEwg7pZ4G+yPZmIZWPTSg="; max-age=600; includeSubDomains;
+        report-uri="https://hackerone.report-uri.io/r/default/hpkp/reportOnly"
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3b3083ac7b09776c-LAX
+    body:
+      encoding: UTF-8
+      string: "{\"data\":{\"id\":\"200\",\"type\":\"report\",\"attributes\":{\"title\":\"another
+        attempt\",\"state\":\"duplicate\",\"created_at\":\"2017-10-10T23:29:35.200Z\",\"vulnerability_information\":\"blehhh\",\"triaged_at\":\"2017-10-10T23:29:49.700Z\",\"closed_at\":\"2017-10-24T22:53:49.007Z\",\"last_reporter_activity_at\":\"2017-10-10T23:29:35.265Z\",\"first_program_activity_at\":\"2017-10-10T23:29:35.265Z\",\"last_program_activity_at\":\"2017-10-24T22:53:49.007Z\",\"bounty_awarded_at\":null,\"swag_awarded_at\":\"2017-10-10T23:30:28.501Z\",\"disclosed_at\":null,\"last_public_activity_at\":\"2017-10-24T22:53:49.007Z\",\"last_activity_at\":\"2017-10-24T22:53:49.007Z\",\"issue_tracker_reference_id\":\"reference\"},\"relationships\":{\"reporter\":{\"data\":{\"id\":\"57690\",\"type\":\"user\",\"attributes\":{\"username\":\"ndm-github\",\"name\":\"Neil
+        Matatall\",\"disabled\":false,\"created_at\":\"2016-02-24T01:33:01.258Z\",\"profile_picture\":{\"62x62\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487\",\"82x82\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487\",\"110x110\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487\",\"260x260\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487\"}}}},\"assignee\":{\"data\":{\"type\":\"user\",\"id\":\"57690\",\"attributes\":{\"username\":\"ndm-github\",\"name\":\"Neil
+        Matatall\",\"disabled\":false,\"created_at\":\"2016-02-24T01:33:01.258Z\",\"profile_picture\":{\"62x62\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487\",\"82x82\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487\",\"110x110\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487\",\"260x260\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487\"}}}},\"program\":{\"data\":{\"id\":\"11767\",\"type\":\"program\",\"attributes\":{\"handle\":\"github\",\"created_at\":\"2016-04-15T17:10:31.261Z\",\"updated_at\":\"2017-10-03T12:58:34.637Z\"}}},\"swag\":{\"data\":[{\"id\":\"2158\",\"type\":\"swag\",\"attributes\":{\"sent\":false,\"created_at\":\"2017-10-10T23:30:28.494Z\"},\"relationships\":{\"address\":{\"data\":{\"id\":\"235\",\"type\":\"address\",\"attributes\":{\"name\":\"neil
+        matatall\",\"street\":\"\",\"city\":\"Kailua
+        Kona\",\"postal_code\":\"96740\",\"state\":\"HI\",\"country\":\"USA\",\"created_at\":\"2016-04-15T02:34:17.252Z\",\"tshirt_size\":\"XLarge\",\"phone_number\":\"8082091148\"}}}}},{\"id\":\"2157\",\"type\":\"swag\",\"attributes\":{\"sent\":false,\"created_at\":\"2017-10-10T23:30:07.259Z\"},\"relationships\":{\"address\":{\"data\":{\"id\":\"235\",\"type\":\"address\",\"attributes\":{\"name\":\"neil
+        matatall\",\"street\":\"\",\"city\":\"Kailua
+        Kona\",\"postal_code\":\"96740\",\"state\":\"HI\",\"country\":\"USA\",\"created_at\":\"2016-04-15T02:34:17.252Z\",\"tshirt_size\":\"XLarge\",\"phone_number\":\"8082091148\"}}}}}]},\"attachments\":{\"data\":[]},\"activities\":{\"data\":[{\"type\":\"activity-bug-duplicate\",\"id\":\"2100521\",\"attributes\":{\"message\":\"totally
+        a dup\",\"created_at\":\"2017-10-24T22:53:49.007Z\",\"updated_at\":\"2017-10-24T22:53:49.007Z\",\"internal\":false,\"original_report_id\":302},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"211530\",\"attributes\":{\"username\":\"oreoshake-testing-dups\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-10-24T22:44:55.280Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-swag-awarded\",\"id\":\"2057701\",\"attributes\":{\"message\":\"\",\"created_at\":\"2017-10-10T23:30:28.501Z\",\"updated_at\":\"2017-10-10T23:30:28.501Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"program\",\"id\":\"11767\",\"attributes\":{\"handle\":\"github\",\"created_at\":\"2016-04-15T17:10:31.261Z\",\"updated_at\":\"2017-10-03T12:58:34.637Z\"}}},\"swag\":{\"data\":{\"id\":\"2158\",\"type\":\"swag\",\"attributes\":{\"sent\":false,\"created_at\":\"2017-10-10T23:30:28.494Z\"},\"relationships\":{\"address\":{\"data\":{\"id\":\"235\",\"type\":\"address\",\"attributes\":{\"name\":\"neil
+        matatall\",\"street\":\"\",\"city\":\"Kailua
+        Kona\",\"postal_code\":\"96740\",\"state\":\"HI\",\"country\":\"USA\",\"created_at\":\"2016-04-15T02:34:17.252Z\",\"tshirt_size\":\"XLarge\",\"phone_number\":\"8082091148\"}}}}}}}},{\"type\":\"activity-swag-awarded\",\"id\":\"2057700\",\"attributes\":{\"message\":\"\",\"created_at\":\"2017-10-10T23:30:07.266Z\",\"updated_at\":\"2017-10-10T23:30:07.266Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"program\",\"id\":\"11767\",\"attributes\":{\"handle\":\"github\",\"created_at\":\"2016-04-15T17:10:31.261Z\",\"updated_at\":\"2017-10-03T12:58:34.637Z\"}}},\"swag\":{\"data\":{\"id\":\"2157\",\"type\":\"swag\",\"attributes\":{\"sent\":false,\"created_at\":\"2017-10-10T23:30:07.259Z\"},\"relationships\":{\"address\":{\"data\":{\"id\":\"235\",\"type\":\"address\",\"attributes\":{\"name\":\"neil
+        matatall\",\"street\":\"\",\"city\":\"Kailua
+        Kona\",\"postal_code\":\"96740\",\"state\":\"HI\",\"country\":\"USA\",\"created_at\":\"2016-04-15T02:34:17.252Z\",\"tshirt_size\":\"XLarge\",\"phone_number\":\"8082091148\"}}}}}}}},{\"type\":\"activity-bounty-suggested\",\"id\":\"2057699\",\"attributes\":{\"message\":\"Suggested
+        by oreoshake in https://github.slack.com/archives//p\",\"created_at\":\"2017-10-10T23:29:55.239Z\",\"updated_at\":\"2017-10-10T23:29:55.239Z\",\"internal\":true,\"bounty_amount\":\"100\",\"bonus_amount\":\"0\"},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-bug-triaged\",\"id\":\"2057697\",\"attributes\":{\"message\":\"\",\"created_at\":\"2017-10-10T23:29:49.700Z\",\"updated_at\":\"2017-10-10T23:29:49.700Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-reference-id-added\",\"id\":\"2057696\",\"attributes\":{\"message\":\"\",\"created_at\":\"2017-10-10T23:29:49.101Z\",\"updated_at\":\"2017-10-10T23:29:49.101Z\",\"internal\":true,\"reference\":\"reference\",\"reference_url\":null},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-comment\",\"id\":\"2057695\",\"attributes\":{\"message\":\"For
+        better or worse, the design of HTTP cookies means that no single website can
+        prevent its users from being logged out; consequently, application-specific
+        ways of achieving this goal will likely not qualify. You may be interested
+        in personal blog posts from Chris Evans (https://scarybeastsecurity.blogspot.com/2010/01/logout-xsrf-significant-web-app-bug.html)
+        and Michal Zalewski (https://lcamtuf.blogspot.com/2010/10/http-cookies-or-how-not-to-design.html)
+        for more background.\\n\",\"created_at\":\"2017-10-10T23:29:48.618Z\",\"updated_at\":\"2017-10-10T23:29:48.618Z\",\"internal\":false},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}}}},{\"type\":\"activity-user-assigned-to-bug\",\"id\":\"2057694\",\"attributes\":{\"message\":null,\"created_at\":\"2017-10-10T23:29:46.939Z\",\"updated_at\":\"2017-10-10T23:29:46.939Z\",\"internal\":true},\"relationships\":{\"actor\":{\"data\":{\"type\":\"user\",\"id\":\"185283\",\"attributes\":{\"username\":\"oreoshake-test-token-4\",\"name\":null,\"disabled\":false,\"created_at\":\"2017-07-20T19:22:56.881Z\",\"profile_picture\":{\"62x62\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"82x82\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"110x110\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\",\"260x260\":\"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png\"}}}},\"assigned_user\":{\"data\":{\"id\":\"57690\",\"type\":\"user\",\"attributes\":{\"username\":\"ndm-github\",\"name\":\"Neil
+        Matatall\",\"disabled\":false,\"created_at\":\"2016-02-24T01:33:01.258Z\",\"profile_picture\":{\"62x62\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/1e0c9ef6fc8bcc17806ae82e6f73cdd4d0e74eb9_small.jpg?1469554487\",\"82x82\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/f6a17c40a6c910ba801014d1498b55727ea858e3_medium.jpg?1469554487\",\"110x110\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/2259dde15230756d99f68a9ca824af11081ab965_large.jpg?1469554487\",\"260x260\":\"https://profile-photos.hackerone-user-content.com/production/000/057/690/6d2da33805fef8b8ac4cf513e1562699e79365e0_xtralarge.jpg?1469554487\"}}}}}}]},\"bounties\":{\"data\":[]},\"summaries\":{\"data\":[]}}}}"
+    http_version:
+  recorded_at: Tue, 24 Oct 2017 22:53:49 GMT
+recorded_with: VCR 3.0.3

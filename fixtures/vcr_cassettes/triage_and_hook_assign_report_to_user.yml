@@ -159,7 +159,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Basic c2pvcnM6cjNENlR0TDQrMDBMci9jTmxuaTF6cXFRVDZkbGx2c3F0RHVtTVlKZzNybz0=
+      - Basic nope=
       User-Agent:
       - Faraday v0.12.1
       Accept-Encoding:
@@ -231,7 +231,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Basic c2pvcnM6cjNENlR0TDQrMDBMci9jTmxuaTF6cXFRVDZkbGx2c3F0RHVtTVlKZzNybz0=
+      - Basic nope=
       User-Agent:
       - Faraday v0.12.1
       Accept-Encoding:
@@ -304,7 +304,7 @@ http_interactions:
       string: '{"data":{"type":"user","id":"147515"}}'
     headers:
       Authorization:
-      - Basic c2pvcnM6cjNENlR0TDQrMDBMci9jTmxuaTF6cXFRVDZkbGx2c3F0RHVtTVlKZzNybz0=
+      - Basic nope=
       User-Agent:
       - Faraday v0.12.1
       Content-Type:

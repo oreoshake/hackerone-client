@@ -145,7 +145,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Basic c2pvcnM6czZhdGxtTGFZT1RZbXhMMXlrRHpoT3Z2SHRXbEhlK1praUg4SHpJWEtEZz0=
+      - Basic nope=
       User-Agent:
       - Faraday v0.12.0.1
       Accept-Encoding:
@@ -213,7 +213,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Basic c2pvcnM6czZhdGxtTGFZT1RZbXhMMXlrRHpoT3Z2SHRXbEhlK1praUg4SHpJWEtEZz0=
+      - Basic nope=
       User-Agent:
       - Faraday v0.12.0.1
       Accept-Encoding:

@@ -8,10 +8,14 @@ module HackerOne
           end
         end
 
-        def extract_cwe_number(cwe)
-          return if cwe.nil?
+        def validate_cwe(cwe)
           fail StandardError::NotAnOwaspWeaknessError if cwe.upcase.start_with?('CAPEC-')
           fail StandardError::ArgumentError unless cwe.upcase.start_with?('CWE-')
+        end
+
+        def extract_cwe_number(cwe)
+          return if cwe.nil?
+          validate_cwe(cwe)
 
           cwe.split('CWE-').last.to_i
         end

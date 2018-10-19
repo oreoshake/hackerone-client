@@ -11,8 +11,8 @@ RSpec.describe HackerOne::Client::Weakness do
 
     context "with CAPEC label" do
       it do
-        expect { described_class.extract_cwe_number("CAPEC-1337")
-          .to raise_error NotAnOwaspWeaknessError }
+        expect { described_class.extract_cwe_number("CAPEC-1337") }
+          .to raise_error HackerOne::Client::Weakness::NotAnOwaspWeaknessError
       end
     end
 

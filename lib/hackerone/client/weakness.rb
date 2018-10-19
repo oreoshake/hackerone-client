@@ -2,11 +2,22 @@ module HackerOne
   module Client
     class Weakness
       class << self
+        def validate_cwe!(cwe)
+          fail NotAnOwaspWeaknessError if cwe.upcase.start_with?('CAPEC-')
+          fail StandardError::ArgumentError unless cwe.upcase.start_with?('CWE-')
+        end
+
         def extract_cwe_number(cwe)
           return if cwe.nil?
-          fail StandardError::ArgumentError unless cwe.upcase.start_with?('CWE-')
+          validate_cwe!(cwe)
 
           cwe.split('CWE-').last.to_i
+        end
+      end
+
+      class NotAnOwaspWeaknessError < StandardError
+        def message
+          "CAPEC labels do not describe OWASP weaknesses"
         end
       end
 

@@ -1,3 +1,7 @@
+## [0.13.0] - 2018-10-19
+
+- [Fix issue with `#to_owasp` which would raise an error if an issue classification started with `CAPEC-`](https://github.com/oreoshake/hackerone-client/pull/39) (@rzhade3)
+
 ## [0.12.0] - 2017-12-07
 
 - [Incremental activities](https://github.com/oreoshake/hackerone-client/pull/36) - iterate over actions in a program (@esjee)

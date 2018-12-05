@@ -52,7 +52,7 @@ module HackerOne
             extract_data: false,
             params: {
               handle: program.handle,
-              first: page_size,
+              page: { size: page_size },
               updated_at_after: updated_at_after
             }
           )

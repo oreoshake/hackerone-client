@@ -33,7 +33,7 @@ RSpec.describe HackerOne::Client::Program do
 
   describe '.incremental_activities' do
     it 'can traverse through the activities of a program' do
-      incremental_activities = program.incremental_activities(updated_at_after: DateTime.new(2017, 12, 4, 15, 38), page_size: 3)
+      incremental_activities = program.incremental_activities(updated_at_after: DateTime.new(2018, 12, 4, 15, 38), page_size: 3)
 
       activities = []
       VCR.use_cassette(:traverse_through_3_activities) do
@@ -43,17 +43,18 @@ RSpec.describe HackerOne::Client::Program do
       end
 
       expect(activities.size).to eq 3
-      group_assigned_to_bug, comment_added, bounty_awarded = activities
-      expect(group_assigned_to_bug)
-        .to be_a HackerOne::Client::Activities::GroupAssignedToBug
-      expect(group_assigned_to_bug.group).to be_present
-      expect(group_assigned_to_bug.group.name).to eq 'Standard'
-      expect(comment_added)
-        .to be_a HackerOne::Client::Activities::CommentAdded
-      expect(comment_added.message).to eq 'this is a comment'
-      expect(bounty_awarded)
-        .to be_a HackerOne::Client::Activities::BountyAwarded
-      expect(bounty_awarded.message).to eq "Here's a bounty!"
+      bug_resolved, reference_added, bug_filed = activities
+
+      expect(bug_resolved)
+        .to be_a HackerOne::Client::Activities::BugResolved
+      expect(bug_resolved.message).to be_present
+      expect(bug_resolved.message).to eq 'Sent it.'
+      expect(reference_added)
+        .to be_a HackerOne::Client::Activities::ReferenceIdAdded
+      expect(reference_added.reference).to eq 'T1722'
+      expect(bug_filed)
+        .to be_a HackerOne::Client::Activities::BugFiled
+      expect(bug_filed.report_id).to eq '458533'
     end
 
     it 'can traverse through all activities of a program' do
@@ -66,7 +67,7 @@ RSpec.describe HackerOne::Client::Program do
         end
       end
 
-      expect(activities.size).to eq 27
+      expect(activities.size).to eq 25
 
       # Assert no activity appears twice
       name_and_updated_at = activities.map do |activity|

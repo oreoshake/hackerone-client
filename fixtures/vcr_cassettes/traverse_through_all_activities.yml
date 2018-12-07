@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.hackerone.com/v1/incremental/activities?first=25&handle=github&updated_at_after
+    uri: https://api.hackerone.com/v1/incremental/activities?handle=github&page%5Bsize%5D=25&updated_at_after
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       Authorization:
       - Basic NOPE
       User-Agent:
-      - Faraday v0.13.1
+      - Faraday v0.15.4
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 07 Dec 2017 11:20:42 GMT
+      - Fri, 07 Dec 2018 12:49:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,12 +31,12 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d1cd9fb34dc4cf47e72804e2f7cadd6b81512645641; expires=Fri, 07-Dec-18
-        11:20:41 GMT; path=/; Domain=api.hackerone.com; HttpOnly; Secure
+      - __cfduid=d8964a2510338197e9ad6b5dcad2b0b151544186993; expires=Sat, 07-Dec-19
+        12:49:53 GMT; path=/; Domain=api.hackerone.com; HttpOnly; Secure
       X-Request-Id:
-      - d0445113-cfbb-4907-8e6d-a93922e5c5c3
+      - 05d0fbda-1914-4073-84ef-069b7d12760b
       Etag:
-      - W/"dd2824639dd19b9d08e8a1c4692f556e"
+      - W/"08a55e675eec978a3773471d32205b98"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Strict-Transport-Security:
@@ -48,10 +48,10 @@ http_interactions:
         www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
         font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
         ''self'' data: cover-photos.hackerone-user-content.com hackathon-photos.hackerone-user-content.com
-        profile-photos.hackerone-user-content.com hackerone-attachments.s3.amazonaws.com;
-        media-src ''self'' hackerone-attachments.s3.amazonaws.com; script-src ''self''
-        www.google-analytics.com; style-src ''self'' ''unsafe-inline''; report-uri
-        https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+        profile-photos.hackerone-user-content.com hackerone-us-west-2-production-attachments.s3-us-west-2.amazonaws.com;
+        media-src ''self'' hackerone-us-west-2-production-attachments.s3-us-west-2.amazonaws.com;
+        script-src ''self'' www.google-analytics.com; style-src ''self'' ''unsafe-inline'';
+        report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Content-Type-Options:
@@ -65,57 +65,92 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Server:
-      - cloudflare-nginx
+      - cloudflare
       Cf-Ray:
-      - 3c9718dc4bd50755-AMS
+      - 48571d6459dabf8e-AMS
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"activity-bug-filed","id":"1223485","attributes":{"message":"","created_at":"2016-09-29T12:53:30.516Z","updated_at":"2016-09-29T12:53:30.516Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"3683","attributes":{"username":"demo-hacker","name":"Demo
-        Hacker","disabled":false,"created_at":"2014-03-17T20:14:25.383Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/003/683/93c0f225152f8f18a396f325eca530143719a729_small.png?1423472503","82x82":"https://profile-photos.hackerone-user-content.com/production/000/003/683/d38d82a37a6ac1f2df43b0d36ad8ee8d0acd68d1_medium.png?1423472503","110x110":"https://profile-photos.hackerone-user-content.com/production/000/003/683/6793a1566a8c8ec72a179c63bbd92c1af965a162_large.png?1423472503","260x260":"https://profile-photos.hackerone-user-content.com/production/000/003/683/0201a343075ea8f7feb7aff975c6a48cc53536c7_xtralarge.png?1423472503"}}}}}},{"type":"activity-comment","id":"1223486","attributes":{"message":"As
-        a team manager you can [edit your program](https://hackerone.com/github/edit)
-        and [invite other team members](https://hackerone.com/github/team_members).\n","created_at":"2016-09-29T12:53:30.638Z","updated_at":"2016-09-29T12:53:30.638Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"4954","attributes":{"username":"demo-member","name":"Demo
-        Member","disabled":false,"created_at":"2014-04-14T11:45:00.949Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/004/954/76e628d12eaacde79878b890df02c065f740b1a4_small.png?1423472456","82x82":"https://profile-photos.hackerone-user-content.com/production/000/004/954/75e4cf2599f591e618646429db57d986e496ccee_medium.png?1423472456","110x110":"https://profile-photos.hackerone-user-content.com/production/000/004/954/25f5c8af70323cacb2c2ffa17d68cac2500dc410_large.png?1423472456","260x260":"https://profile-photos.hackerone-user-content.com/production/000/004/954/d903c042cdc7798ad76684563624ee7ea071aed8_xtralarge.png?1423472456"}}}}}},{"type":"activity-user-assigned-to-bug","id":"1223487","attributes":{"message":"A
-        new report! @kerkkerkkekr, can you take a look at this?\n\n* Need more information?
-        *Change state: Needs more info*\n* Ready to get started on a fix? *Change
-        state: Triaged*\n* Job''s done? *Close report: Resolved*\n\nNeed a hand? Just
-        say the word and a HackerOne engineer will materialize, as if by magic.\n","created_at":"2016-09-29T12:53:30.780Z","updated_at":"2016-09-29T12:53:30.780Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"4954","attributes":{"username":"demo-member","name":"Demo
-        Member","disabled":false,"created_at":"2014-04-14T11:45:00.949Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/004/954/76e628d12eaacde79878b890df02c065f740b1a4_small.png?1423472456","82x82":"https://profile-photos.hackerone-user-content.com/production/000/004/954/75e4cf2599f591e618646429db57d986e496ccee_medium.png?1423472456","110x110":"https://profile-photos.hackerone-user-content.com/production/000/004/954/25f5c8af70323cacb2c2ffa17d68cac2500dc410_large.png?1423472456","260x260":"https://profile-photos.hackerone-user-content.com/production/000/004/954/d903c042cdc7798ad76684563624ee7ea071aed8_xtralarge.png?1423472456"}}}},"assigned_user":{"data":{"id":"114514","type":"user","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-comment","id":"1223489","attributes":{"message":"test\n","created_at":"2016-09-29T12:55:06.095Z","updated_at":"2016-09-29T12:55:06.095Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"114514","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bug-not-applicable","id":"1223490","attributes":{"message":"Automated
-        vulnerability scanners commonly have low priority issues and/or false positives.
-        Before submitting the results from a scanner, please take a moment to confirm
-        that the reported issues are actually valid and exploitable. In this specific
-        case, many cookies intentionally lack the `HttpOnly` flag so that they can
-        be accessed from JavaScript. This only introduces a potential risk if the
-        cookie in question contains session data or other sensitive information.\n","created_at":"2016-09-29T12:55:17.179Z","updated_at":"2016-09-29T12:55:17.179Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"114514","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-comment","id":"1223491","attributes":{"message":"Sorry,
-        I''ll avoid these types of reports in the future.\n","created_at":"2016-09-29T12:55:17.244Z","updated_at":"2016-09-29T12:55:17.244Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"3683","attributes":{"username":"demo-hacker","name":"Demo
-        Hacker","disabled":false,"created_at":"2014-03-17T20:14:25.383Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/003/683/93c0f225152f8f18a396f325eca530143719a729_small.png?1423472503","82x82":"https://profile-photos.hackerone-user-content.com/production/000/003/683/d38d82a37a6ac1f2df43b0d36ad8ee8d0acd68d1_medium.png?1423472503","110x110":"https://profile-photos.hackerone-user-content.com/production/000/003/683/6793a1566a8c8ec72a179c63bbd92c1af965a162_large.png?1423472503","260x260":"https://profile-photos.hackerone-user-content.com/production/000/003/683/0201a343075ea8f7feb7aff975c6a48cc53536c7_xtralarge.png?1423472503"}}}}}},{"type":"activity-bug-filed","id":"1223750","attributes":{"message":"","created_at":"2016-09-29T15:21:02.759Z","updated_at":"2016-09-29T15:21:02.759Z","internal":false},"relationships":{"actor":{"data":{"type":"user","id":"114514","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-reference-id-added","id":"1532364","attributes":{"message":"","created_at":"2017-03-10T14:03:20.780Z","updated_at":"2017-03-10T14:03:20.780Z","internal":true,"reference":"TEST-4","reference_url":"https://h1test.atlassian.net/browse/TEST-4"},"relationships":{"actor":{"data":{"type":"user","id":"114514","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-comment","id":"1540105","attributes":{"message":"The
-        [JIRA issue](https://h1test.atlassian.net/browse/TEST-4) associated with this
-        report was modified.\n\n- **Status**: changed from *Closed* to *Reopened*.\n-
-        **Resolution**: changed from *Done* to **.","created_at":"2017-03-14T13:42:54.857Z","updated_at":"2017-03-14T13:42:54.857Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"20889","attributes":{"username":"hackbot","name":"","disabled":false,"created_at":"2015-04-21T14:15:00.516Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/production/000/020/889/d4e1fd3399b43d7555eba2cc7b21c48fa4ffb4ae_small.png?1429625702","82x82":"https://profile-photos.hackerone-user-content.com/production/000/020/889/dd4834fa15b3684705d2af84f8f3acd23a52cd29_medium.png?1429625702","110x110":"https://profile-photos.hackerone-user-content.com/production/000/020/889/8afcf976d18ed73dc799259ac5f80ab0f81f1f22_large.png?1429625702","260x260":"https://profile-photos.hackerone-user-content.com/production/000/020/889/7df97703a6b5797e4e64373b9ee6b31a04f2e273_xtralarge.png?1429625702"}}}}}},{"type":"activity-nobody-assigned-to-bug","id":"1703337","attributes":{"message":null,"created_at":"2017-05-26T12:50:26.425Z","updated_at":"2017-05-26T12:50:26.425Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"171202","attributes":{"username":"api_v5tad85sqjf06ljgu7vjm","name":"","disabled":true,"created_at":"2017-05-26T12:45:03.089Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-nobody-assigned-to-bug","id":"1703338","attributes":{"message":null,"created_at":"2017-05-26T12:50:28.545Z","updated_at":"2017-05-26T12:50:28.545Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"171202","attributes":{"username":"api_v5tad85sqjf06ljgu7vjm","name":"","disabled":true,"created_at":"2017-05-26T12:45:03.089Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-suggested","id":"1946221","attributes":{"message":"api
-        test!","created_at":"2017-08-22T13:21:57.024Z","updated_at":"2017-08-22T13:21:57.024Z","internal":true,"bounty_amount":"1","bonus_amount":"0"},"relationships":{"actor":{"data":{"type":"user","id":"193855","attributes":{"username":"api_kiqgkxdhsux76a1t2a8k1","name":"","disabled":true,"created_at":"2017-08-22T13:18:29.084Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-awarded","id":"1946223","attributes":{"message":"sandbox!","created_at":"2017-08-22T13:22:55.331Z","updated_at":"2017-08-22T13:22:55.331Z","internal":false,"bounty_amount":"50"},"relationships":{"actor":{"data":{"type":"user","id":"193855","attributes":{"username":"api_kiqgkxdhsux76a1t2a8k1","name":"","disabled":true,"created_at":"2017-08-22T13:18:29.084Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-awarded","id":"1946450","attributes":{"message":"Thanks
-        for the great report!","created_at":"2017-08-22T15:03:46.193Z","updated_at":"2017-08-22T15:03:46.193Z","internal":false,"bounty_amount":"1,330","bonus_amount":"7"},"relationships":{"actor":{"data":{"type":"user","id":"193855","attributes":{"username":"api_kiqgkxdhsux76a1t2a8k1","name":"","disabled":true,"created_at":"2017-08-22T13:18:29.084Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-awarded","id":"1946460","attributes":{"message":"This
-        report is great, I think we should award a high bounty.","created_at":"2017-08-22T15:06:16.585Z","updated_at":"2017-08-22T15:06:16.585Z","internal":false,"bounty_amount":"5,000","bonus_amount":"2,500"},"relationships":{"actor":{"data":{"type":"user","id":"193855","attributes":{"username":"api_kiqgkxdhsux76a1t2a8k1","name":"","disabled":true,"created_at":"2017-08-22T13:18:29.084Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-suggested","id":"1946462","attributes":{"message":"This
-        report is great, I think we should award a high bounty.","created_at":"2017-08-22T15:06:29.310Z","updated_at":"2017-08-22T15:06:29.310Z","internal":true,"bounty_amount":"5,000","bonus_amount":"2,500"},"relationships":{"actor":{"data":{"type":"user","id":"193855","attributes":{"username":"api_kiqgkxdhsux76a1t2a8k1","name":"","disabled":true,"created_at":"2017-08-22T13:18:29.084Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-swag-awarded","id":"1946479","attributes":{"message":"Enjoy
-        this cool swag!","created_at":"2017-08-22T15:09:44.191Z","updated_at":"2017-08-22T15:09:44.191Z","internal":false},"relationships":{"actor":{"data":{"type":"program","id":"15567","attributes":{"handle":"github","created_at":"2016-09-29T12:52:30.755Z","updated_at":"2017-12-07T03:34:15.104Z"}}},"swag":{"data":{"id":"2057","type":"swag","attributes":{"sent":false,"created_at":"2017-08-22T15:09:44.176Z"}}}}},{"type":"activity-bounty-suggested","id":"1946481","attributes":{"message":"This
-        report is great, I think we should award a high bounty.","created_at":"2017-08-22T15:10:02.699Z","updated_at":"2017-08-22T15:10:02.699Z","internal":true,"bounty_amount":"5,000","bonus_amount":"2,500"},"relationships":{"actor":{"data":{"type":"user","id":"193855","attributes":{"username":"api_kiqgkxdhsux76a1t2a8k1","name":"","disabled":true,"created_at":"2017-08-22T13:18:29.084Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-awarded","id":"1959177","attributes":{"message":"Thanks
-        for the great report. Here''s your bounty!","created_at":"2017-08-28T09:15:14.581Z","updated_at":"2017-08-28T09:15:14.581Z","internal":false,"bounty_amount":"500","bonus_amount":"250"},"relationships":{"actor":{"data":{"type":"user","id":"195420","attributes":{"username":"api_i9w8kxzbitav5iot5tecd","name":"","disabled":true,"created_at":"2017-08-28T09:13:03.805Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-awarded","id":"1959178","attributes":{"message":"Thanks
-        for the great report. Here''s your bounty!","created_at":"2017-08-28T09:15:44.797Z","updated_at":"2017-08-28T09:15:44.797Z","internal":false,"bounty_amount":"500","bonus_amount":"250"},"relationships":{"actor":{"data":{"type":"user","id":"195420","attributes":{"username":"api_i9w8kxzbitav5iot5tecd","name":"","disabled":true,"created_at":"2017-08-28T09:13:03.805Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-suggested","id":"1959180","attributes":{"message":"This
-        report is great, I think we should award a high bounty","created_at":"2017-08-28T09:21:00.321Z","updated_at":"2017-08-28T09:21:00.321Z","internal":true,"bounty_amount":"5,000","bonus_amount":"2,500"},"relationships":{"actor":{"data":{"type":"user","id":"195420","attributes":{"username":"api_i9w8kxzbitav5iot5tecd","name":"","disabled":true,"created_at":"2017-08-28T09:13:03.805Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-swag-awarded","id":"1959183","attributes":{"message":"This
-        is the 5th report we received from you. We''d like to send you a shirt and
-        some stickers as a small thank-you!","created_at":"2017-08-28T09:22:30.759Z","updated_at":"2017-08-28T09:22:30.759Z","internal":false},"relationships":{"actor":{"data":{"type":"program","id":"15567","attributes":{"handle":"github","created_at":"2016-09-29T12:52:30.755Z","updated_at":"2017-12-07T03:34:15.104Z"}}},"swag":{"data":{"id":"2066","type":"swag","attributes":{"sent":false,"created_at":"2017-08-28T09:22:30.752Z"}}}}},{"type":"activity-comment","id":"2013988","attributes":{"message":"attachment
-        test {F223036}","created_at":"2017-09-22T11:16:01.234Z","updated_at":"2017-09-22T11:16:01.234Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"114514","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}},"attachments":{"data":[{"id":"223036","type":"attachment","attributes":{"expiring_url":"https://hackerone-attachments.s3.amazonaws.com/production/000/223/036/1de5763ba46272c006e580ed77a54849f00897da/no_fun_allowed.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Credential=ASIAIENMAGUODLNT7Y7A%2F20171207%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Date=20171207T112042Z\u0026X-Amz-Expires=3600\u0026X-Amz-Security-Token=FQoDYXdzEIz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDCcD%2BtaI50vSjaM%2B%2FiK3A%2FIQNveLUurXbSCni%2FS0YeW7tgrxeOcF%2FlysL95bxqdhCcRN9l2vXLKassGCpKiAAsPjeoM8FiTVFS5Rm%2FBopuzfQ2aKhRkD0lWne0yHq46RSlvyTpR4Gz3VE%2BPWYIvb2pDo1rv79VGd2GJT2xCKhJHpCmG7OckSsOvbT9tT42zWuzR5qYhQIuQHALH8S1EMDhOgIvLlu2xAfnOPfgxeixt68o0%2BkBb68zfiTT496OPgwxEEDZ%2B5dxHAbaUZs%2F4vUTPdUcmQ%2FHWdG5TeXEsylFylqsEKMKYLVKZh4N60Zn1Nf17MELrRiBYFxq8JvdT6gs4mYpATas9oRlAnXz8Mo02vexBhuV0xeBFMk%2FhUwNNaVyGJLEuyAw1EEtwo82ychlui3wwG5X0%2BFW7pc57mrqVmOGK39mL0H2fK01mhy%2BEWG2L4J5TkZ0B13I6DjaVwVMb0jnwjHTuhgDsS7Kyycxoktz3fMqPUofyIQmkz2FkfbtN5W1tjVFtnlpJAPF87nYRHW2qWoVcSjps9zsuwSXzOZlG7hV5UKw6g3Do9l78Ly36CX6z54KbA%2FylADltWOgao9wesoNAojq2k0QU%3D\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Signature=f45c2af07ffd691285d2eca214172446b0840583637dc5fda48cad1fba5869ee","created_at":"2017-09-22T11:15:45.677Z","file_name":"no_fun_allowed.jpg","content_type":"image/jpeg","file_size":86501}}]}}},{"type":"activity-user-assigned-to-bug","id":"2110465","attributes":{"message":null,"created_at":"2017-10-28T18:15:04.285Z","updated_at":"2017-10-28T18:15:04.285Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"212530","attributes":{"username":"api_givg6fpvnisu7pcxu4snoc9fxc","name":"","disabled":true,"created_at":"2017-10-28T17:46:26.037Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}},"assigned_user":{"data":{"id":"114514","type":"user","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-group-assigned-to-bug","id":"2198958","attributes":{"message":"","created_at":"2017-12-04T15:38:00.017Z","updated_at":"2017-12-04T15:38:00.017Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"114514","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}},"group":{"data":{"id":"16481","type":"group","attributes":{"name":"Standard","created_at":"2016-09-29T12:52:32.062Z","permissions":["report_management","reward_management"]}}}}}],"meta":{"max_updated_at":"2017-12-04T15:38:00.017Z"}}'
+      string: '{"data":[{"type":"activity-comment","id":"3785347","attributes":{"report_id":"458589","message":"Thanks
+        for your report!","created_at":"2018-06-07T16:28:25.832Z","updated_at":"2018-06-07T16:28:25.832Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-comment","id":"3785231","attributes":{"report_id":"458568","message":"Thanks
+        for your report!","created_at":"2018-06-08T02:27:46.616Z","updated_at":"2018-06-08T02:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-comment","id":"3785339","attributes":{"report_id":"458587","message":"Thanks
+        for your report!","created_at":"2018-06-08T04:28:24.021Z","updated_at":"2018-06-08T04:28:24.021Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-resolved","id":"3785232","attributes":{"report_id":"458568","message":"Best
+        lead you''ve ever done!","created_at":"2018-06-08T12:27:46.616Z","updated_at":"2018-06-08T12:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-not-applicable","id":"3785340","attributes":{"report_id":"458587","message":"This
+        is not a valid report\n","created_at":"2018-06-09T12:28:24.021Z","updated_at":"2018-06-09T12:28:24.021Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-informative","id":"3785348","attributes":{"report_id":"458589","message":"This
+        is not a valid report\n","created_at":"2018-06-13T12:28:25.832Z","updated_at":"2018-06-13T12:28:25.832Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-triaged","id":"3785235","attributes":{"report_id":"458569","message":"We''ll
+        certainly work on this amazing line.","created_at":"2018-06-16T21:27:46.616Z","updated_at":"2018-06-16T21:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-resolved","id":"3785236","attributes":{"report_id":"458569","message":"We
+        did it. Wow. Unbelievable. And first female ascent!","created_at":"2018-06-19T00:27:46.616Z","updated_at":"2018-06-19T00:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-triaged","id":"3785239","attributes":{"report_id":"458570","message":"Wow,
+        seriously? We''ll look into this.","created_at":"2018-06-25T10:27:46.616Z","updated_at":"2018-06-25T10:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-resolved","id":"3785240","attributes":{"report_id":"458570","message":"We
+        fixed the issue.","created_at":"2018-06-25T12:27:46.616Z","updated_at":"2018-06-25T12:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-comment","id":"3785243","attributes":{"report_id":"458571","message":"Thanks
+        for your report!","created_at":"2018-07-03T18:27:46.616Z","updated_at":"2018-07-03T18:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-resolved","id":"3785244","attributes":{"report_id":"458571","message":"Sent
+        it.","created_at":"2018-07-07T00:27:46.616Z","updated_at":"2018-07-07T00:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bounty-awarded","id":"3785246","attributes":{"report_id":"458571","message":"Nice
+        job.","created_at":"2018-07-08T00:27:46.616Z","updated_at":"2018-07-08T00:27:46.616Z","internal":false,"bounty_amount":"100"},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-comment","id":"3785249","attributes":{"report_id":"458572","message":"Thanks
+        for your report!","created_at":"2018-07-12T03:27:46.616Z","updated_at":"2018-07-12T03:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-resolved","id":"3785250","attributes":{"report_id":"458572","message":"Best
+        lead you''ve ever done!","created_at":"2018-07-16T12:27:46.616Z","updated_at":"2018-07-16T12:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bounty-awarded","id":"3785252","attributes":{"report_id":"458572","message":"Along
+        with clif bar sponsorship.","created_at":"2018-07-20T12:27:46.616Z","updated_at":"2018-07-20T12:27:46.616Z","internal":false,"bounty_amount":"500"},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-triaged","id":"3785255","attributes":{"report_id":"458573","message":"We''ll
+        certainly work on this amazing line.","created_at":"2018-07-20T12:27:46.616Z","updated_at":"2018-07-20T12:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-resolved","id":"3785256","attributes":{"report_id":"458573","message":"We
+        did it. Wow. Unbelievable. And first female ascent!","created_at":"2018-07-25T00:27:46.616Z","updated_at":"2018-07-25T00:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bounty-awarded","id":"3785258","attributes":{"report_id":"458573","message":"Along
+        with a lifetime supply of boba","created_at":"2018-07-27T00:27:46.616Z","updated_at":"2018-07-27T00:27:46.616Z","internal":false,"bounty_amount":"2,000"},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-triaged","id":"3785261","attributes":{"report_id":"458574","message":"Wow,
+        seriously? We''ll look into this.","created_at":"2018-07-29T00:27:46.616Z","updated_at":"2018-07-29T00:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-resolved","id":"3785262","attributes":{"report_id":"458574","message":"We
+        fixed the issue.","created_at":"2018-07-29T12:27:46.616Z","updated_at":"2018-07-29T12:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bounty-awarded","id":"3785264","attributes":{"report_id":"458574","message":"Peanut
+        butter and jelly sandwich for you.","created_at":"2018-08-04T12:27:46.616Z","updated_at":"2018-08-04T12:27:46.616Z","internal":false,"bounty_amount":"750"},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-comment","id":"3785267","attributes":{"report_id":"458575","message":"Thanks
+        for your report!","created_at":"2018-08-06T11:27:46.616Z","updated_at":"2018-08-06T11:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bug-resolved","id":"3785268","attributes":{"report_id":"458575","message":"Sent
+        it.","created_at":"2018-08-08T00:27:46.616Z","updated_at":"2018-08-08T00:27:46.616Z","internal":false},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}},{"type":"activity-bounty-awarded","id":"3785270","attributes":{"report_id":"458575","message":"Batteries
+        sold separately.","created_at":"2018-08-13T00:27:46.616Z","updated_at":"2018-08-13T00:27:46.616Z","internal":false,"bounty_amount":"500"},"relationships":{"actor":{"data":{"id":"37","type":"user","attributes":{"username":"martijn","name":"Martijn
+        Russchen","disabled":false,"created_at":"2013-08-05T18:55:33.797Z","profile_picture":{"62x62":"https://profile-photos.hackerone-user-content.com/000/000/037/466f9408a5948826de482fa0e609f6c30d135cca_small.jpg?1447264787","82x82":"https://profile-photos.hackerone-user-content.com/000/000/037/63c86d306b217f68ed4e6f1323fd08daf0001f01_medium.jpg?1447264787","110x110":"https://profile-photos.hackerone-user-content.com/000/000/037/f701c89fed5cd2b0acd5a537e97441206b37fc9d_large.jpg?1447264787","260x260":"https://profile-photos.hackerone-user-content.com/000/000/037/57bb7caf22083897361517f33c4e910523ec4901_xtralarge.jpg?1447264787"},"signal":-2.0,"impact":null,"reputation":94,"bio":"","website":null,"location":"Groningen,
+        The Netherlands"}}}}}],"meta":{"max_updated_at":"2019-01-13T17:46:48.426Z"},"links":{"self":"https://api.hackerone.com/v1/incremental/activities?handle=github&page%5Bsize%5D=25","next":"https://api.hackerone.com/v1/incremental/activities?handle=github&page%5Bnumber%5D=2&page%5Bsize%5D=25","last":"https://api.hackerone.com/v1/incremental/activities?handle=github&page%5Bnumber%5D=12&page%5Bsize%5D=25"}}'
     http_version: 
-  recorded_at: Thu, 07 Dec 2017 11:20:42 GMT
+  recorded_at: Fri, 07 Dec 2018 12:49:54 GMT
 - request:
     method: get
-    uri: https://api.hackerone.com/v1/incremental/activities?first=25&handle=github&updated_at_after=2017-12-04T15:38:00.017Z
+    uri: https://api.hackerone.com/v1/incremental/activities?handle=github&page%5Bsize%5D=25&updated_at_after=2019-01-13T17:46:48.426Z
     body:
       encoding: US-ASCII
       string: ''
@@ -123,7 +158,7 @@ http_interactions:
       Authorization:
       - Basic NOPE
       User-Agent:
-      - Faraday v0.13.1
+      - Faraday v0.15.4
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -136,7 +171,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 07 Dec 2017 11:20:43 GMT
+      - Fri, 07 Dec 2018 12:49:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -144,12 +179,12 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d7f2e9e687c54598f2e5daa3699e6a3181512645642; expires=Fri, 07-Dec-18
-        11:20:42 GMT; path=/; Domain=api.hackerone.com; HttpOnly; Secure
+      - __cfduid=d4019b514b3debf05a8c8ee4e9fb683471544186994; expires=Sat, 07-Dec-19
+        12:49:54 GMT; path=/; Domain=api.hackerone.com; HttpOnly; Secure
       X-Request-Id:
-      - bf815a7b-35a6-438d-8198-618dd9f163c3
+      - bec40413-58d9-4900-8e20-1536c078490a
       Etag:
-      - W/"f057e5758c4dd46ef847c8a49303a160"
+      - W/"3d2f0d36c731b53591b43c36c532db5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Strict-Transport-Security:
@@ -161,10 +196,10 @@ http_interactions:
         www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
         font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
         ''self'' data: cover-photos.hackerone-user-content.com hackathon-photos.hackerone-user-content.com
-        profile-photos.hackerone-user-content.com hackerone-attachments.s3.amazonaws.com;
-        media-src ''self'' hackerone-attachments.s3.amazonaws.com; script-src ''self''
-        www.google-analytics.com; style-src ''self'' ''unsafe-inline''; report-uri
-        https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+        profile-photos.hackerone-user-content.com hackerone-us-west-2-production-attachments.s3-us-west-2.amazonaws.com;
+        media-src ''self'' hackerone-us-west-2-production-attachments.s3-us-west-2.amazonaws.com;
+        script-src ''self'' www.google-analytics.com; style-src ''self'' ''unsafe-inline'';
+        report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Content-Type-Options:
@@ -178,89 +213,12 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Server:
-      - cloudflare-nginx
+      - cloudflare
       Cf-Ray:
-      - 3c9718e47b549d0e-AMS
+      - 48571d6d7cbac76b-AMS
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"activity-comment","id":"2201959","attributes":{"message":"this
-        is a comment","created_at":"2017-12-05T16:16:07.205Z","updated_at":"2017-12-05T16:16:07.205Z","internal":true},"relationships":{"actor":{"data":{"type":"user","id":"114514","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}},{"type":"activity-bounty-awarded","id":"2201960","attributes":{"message":"Here''s
-        a bounty!","created_at":"2017-12-05T16:16:27.757Z","updated_at":"2017-12-05T16:16:27.757Z","internal":false,"bounty_amount":"250"},"relationships":{"actor":{"data":{"type":"user","id":"114514","attributes":{"username":"kerkkerkkekr","name":"kerk
-        kerk","disabled":false,"created_at":"2016-09-29T12:52:29.551Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"}}}}}}],"meta":{"max_updated_at":"2017-12-05T16:16:27.757Z"}}'
+      string: '{"data":[],"meta":{"max_updated_at":null},"links":{}}'
     http_version: 
-  recorded_at: Thu, 07 Dec 2017 11:20:43 GMT
-- request:
-    method: get
-    uri: https://api.hackerone.com/v1/incremental/activities?first=25&handle=github&updated_at_after=2017-12-05T16:16:27.757Z
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic NOPE
-      User-Agent:
-      - Faraday v0.13.1
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 07 Dec 2017 11:20:44 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - __cfduid=d59112f789e4ddbe951f904df9b223f041512645643; expires=Fri, 07-Dec-18
-        11:20:43 GMT; path=/; Domain=api.hackerone.com; HttpOnly; Secure
-      X-Request-Id:
-      - '09aee1e6-00a2-4be0-8c7a-eac354c05341'
-      Etag:
-      - W/"79b5a37965df910984602c8925f27ef9"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      Expect-Ct:
-      - enforce, max-age=86400
-      Content-Security-Policy:
-      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
-        www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
-        font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
-        ''self'' data: cover-photos.hackerone-user-content.com hackathon-photos.hackerone-user-content.com
-        profile-photos.hackerone-user-content.com hackerone-attachments.s3.amazonaws.com;
-        media-src ''self'' hackerone-attachments.s3.amazonaws.com; script-src ''self''
-        www.google-analytics.com; style-src ''self'' ''unsafe-inline''; report-uri
-        https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - cloudflare-nginx
-      Cf-Ray:
-      - 3c9718e9ac932bc4-AMS
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[],"meta":{"max_updated_at":null}}'
-    http_version: 
-  recorded_at: Thu, 07 Dec 2017 11:20:44 GMT
+  recorded_at: Fri, 07 Dec 2018 12:49:55 GMT
 recorded_with: VCR 3.0.3

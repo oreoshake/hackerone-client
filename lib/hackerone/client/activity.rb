@@ -2,7 +2,7 @@ module HackerOne
   module Client
     module Activities
       class Activity
-        delegate :message, :created_at, :updated_at, to: :attributes
+        delegate :message, :report_id, :created_at, :updated_at, to: :attributes
         delegate :actor, to: :relationships
 
         def initialize(activity)
@@ -52,7 +52,13 @@ module HackerOne
         end
       end
 
+      class BugFiled < Activity
+      end
+
       class BugTriaged < Activity
+      end
+
+      class BugResolved < Activity
       end
 
       class ReferenceIdAdded < Activity
@@ -72,7 +78,9 @@ module HackerOne
         'activity-swag-awarded' => SwagAwarded,
         'activity-user-assigned-to-bug' => UserAssignedToBug,
         'activity-group-assigned-to-bug' => GroupAssignedToBug,
+        'activity-bug-filed' => BugFiled,
         'activity-bug-triaged' => BugTriaged,
+        'activity-bug-resolved' =>BugResolved,
         'activity-reference-id-added' => ReferenceIdAdded,
         'activity-comment' => CommentAdded,
         'activity-bounty-suggested' => BountySuggested

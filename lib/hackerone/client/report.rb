@@ -156,7 +156,7 @@ module HackerOne
           "reports/#{id}/swags",
           request_body: request_body
         )
-        Swag.new(response_body)
+        Swag.new(response_body, program)
       end
 
       def suggest_bounty(message:, amount:, bonus_amount: nil)

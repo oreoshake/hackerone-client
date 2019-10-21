@@ -12,6 +12,16 @@ module HackerOne
         )
       end
 
+      def make_put_request(url, request_body:, extract_data: true)
+        response = HackerOne::Client::Api.hackerone_api_connection.put do |req|
+          req.headers['Content-Type'] = 'application/json'
+          req.url url
+          req.body = { data: request_body }.to_json
+        end
+
+        parse_response(response, extract_data: extract_data)
+      end
+
       def make_post_request(url, request_body:, extract_data: true)
         response = HackerOne::Client::Api.hackerone_api_connection.post do |req|
           req.headers['Content-Type'] = 'application/json'

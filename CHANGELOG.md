@@ -1,3 +1,7 @@
+## [0.14.0] - 2019-10-28
+
+- [Add new swag API support](https://github.com/oreoshake/hackerone-client/pull/41) (@anglinb)
+
 ## [0.13.0] - 2018-10-19
 
 - [Fix issue with `#to_owasp` which would raise an error if an issue classification started with `CAPEC-`](https://github.com/oreoshake/hackerone-client/pull/39) (@rzhade3)

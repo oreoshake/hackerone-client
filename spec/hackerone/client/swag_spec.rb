@@ -20,7 +20,7 @@ RSpec.describe HackerOne::Client::Swag do
     end
   end
 
-  let (:swag){ swags[0] }
+  let(:swag) { swags[0] }
 
   it "returns a collection" do
     expect(swags).to be_kind_of(Array)
@@ -36,9 +36,7 @@ RSpec.describe HackerOne::Client::Swag do
     expect(swag.sent?).to be(false)
   end
 
-
   describe "address" do
-
     it "returns an address if present" do
       address = swag.address
       expect(address).to be_present

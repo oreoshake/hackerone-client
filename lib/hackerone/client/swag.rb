@@ -14,22 +14,18 @@ module HackerOne
       end
 
       def sent?
-        attributes.sent
+        !!attributes.sent
       end
 
       def user
         if user_relationship = relationships[:user]
           HackerOne::Client::User.new(user_relationship[:data])
-        else
-          nil
         end
       end
 
       def address
         if address_relationship = relationships[:address]
           HackerOne::Client::Address.new(address_relationship[:data])
-        else
-          nil
         end
       end
 

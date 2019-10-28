@@ -61,8 +61,7 @@ module HackerOne
           "programs/#{id}/swag",
           params: { page: { number: page_number, size: page_size } }
         )
-        program = self
-        response_body.map{|r| Swag.new(r, program) }
+        response_body.map{|r| Swag.new(r, self) }
       end
 
       private

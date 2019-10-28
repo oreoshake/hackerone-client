@@ -11,6 +11,7 @@ require_relative "client/user"
 require_relative "client/group"
 require_relative "client/structured_scope"
 require_relative "client/swag"
+require_relative "client/address"
 require_relative "client/bounty"
 require_relative "client/incremental/activities"
 

@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.hackerone.com/v1/programs/18969/swag/3377
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"swag","attributes":{"sent":true}}}'
+    headers:
+      Authorization:
+      - Basic NOPE
+      User-Agent:
+      - Faraday v0.17.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 21 Oct 2019 22:00:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d462d381b66fd12f1206f12f1234d8e3d1571695209; expires=Tue, 20-Oct-20
+        22:00:09 GMT; path=/; Domain=api.hackerone.com; HttpOnly; Secure
+      X-Request-Id:
+      - b5416764-3419-4a27-bd36-9cce7e6f4aa7
+      Etag:
+      - W/"2e21cfa10ed9d144353542ef658979e8"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - enforce, max-age=86400
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        www.youtube-nocookie.com; connect-src ''self'' www.google-analytics.com errors.hackerone.net;
+        font-src ''self''; form-action ''self''; frame-ancestors ''none''; img-src
+        ''self'' data: cover-photos.hackerone-user-content.com hackathon-photos.hackerone-user-content.com
+        profile-photos.hackerone-user-content.com hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com;
+        media-src ''self'' hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com;
+        script-src ''self'' www.google-analytics.com; style-src ''self'' ''unsafe-inline'';
+        report-uri https://errors.hackerone.net/api/30/csp-report/?sentry_key=61c1e2f50d21487c97a071737701f598'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 529680b549577fd8-SAN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"3377","type":"swag","attributes":{"sent":true,"created_at":"2018-12-13T04:06:32.994Z"},"relationships":{"user":{"data":{"id":"175595","type":"user","attributes":{"username":"anglinb_x0rsd","name":"Brian
+        Anglin","disabled":false,"created_at":"2017-06-13T18:42:14.025Z","profile_picture":{"62x62":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","82x82":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","110x110":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png","260x260":"/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"},"signal":null,"impact":null,"reputation":null,"bio":null,"website":null,"location":null,"hackerone_triager":false}}},"address":{"data":{"id":"7374","type":"address","attributes":{"name":"Brian
+        Anglin","street":" 88 Colin P Kelly Jr Street","city":"San Francisco","postal_code":"94107","state":"California","country":"United
+        States","created_at":"2019-10-21T20:50:40.159Z","tshirt_size":"M_Medium","phone_number":"555-555-5555"}}}}}'
+    http_version: 
+  recorded_at: Mon, 21 Oct 2019 22:00:10 GMT
+recorded_with: VCR 3.0.3

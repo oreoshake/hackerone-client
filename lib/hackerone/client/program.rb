@@ -56,6 +56,14 @@ module HackerOne
         )
       end
 
+      def swag(page_number: 1, page_size: 100)
+        response_body = make_get_request(
+          "programs/#{id}/swag",
+          params: { page: { number: page_number, size: page_size } }
+        )
+        response_body.map{|r| Swag.new(r, self) }
+      end
+
       private
 
       def members

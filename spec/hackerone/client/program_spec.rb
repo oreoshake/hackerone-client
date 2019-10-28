@@ -31,6 +31,16 @@ RSpec.describe HackerOne::Client::Program do
     end
   end
 
+  describe 'swag' do
+    it "returns the pending swag awards for the program" do
+      expect(
+        VCR.use_cassette(:swag) do
+          program.swag
+        end
+      ).to be_present
+    end
+  end
+
   describe '.incremental_activities' do
     it 'can traverse through the activities of a program' do
       incremental_activities = program.incremental_activities(updated_at_after: DateTime.new(2017, 12, 4, 15, 38), page_size: 3)

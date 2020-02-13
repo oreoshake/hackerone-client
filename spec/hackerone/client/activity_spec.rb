@@ -12,8 +12,8 @@ RSpec.describe HackerOne::Client::Activities do
           'created_at' => '2016-02-02T04:05:06.000Z',
           'updated_at' => '2016-02-02T04:05:06.000Z',
           'internal' => false,
-          'bounty_amount' => '500',
-          'bonus_amount' => '50'
+          'bounty_amount' => '500.00',
+          'bonus_amount' => '50.00'
         },
         'relationships' => {
           'actor' => {
@@ -31,18 +31,53 @@ RSpec.describe HackerOne::Client::Activities do
       }.with_indifferent_access
     end
 
+    before(:each) do
+      ENV.delete(HackerOne::Client::LENIENT_MODE_ENV_VARIABLE)
+    end
+
     it 'creates the activity type with attributes' do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
-      expect(activity.bounty_amount).to eq 500
-      expect(activity.bonus_amount).to eq 50
+      expect(activity.bounty_amount).to eq 500.00
+      expect(activity.bonus_amount).to eq 50.00
     end
 
     it 'does not fail when bounty or bonus amount is not given' do
       example = {
         'type' => 'activity-bounty-awarded',
         'attributes' => {}
+      }.with_indifferent_access
+
+      activity = HackerOne::Client::Activities.build example
+
+      expect(activity.bounty_amount).to eq 0
+      expect(activity.bonus_amount).to eq 0
+    end
+
+    it 'throws an error when bounty amount or bonus amount is malformed' do
+      example = {
+        'type' => 'activity-bounty-awarded',
+        'attributes' => {
+          'bounty_amount' => 'steve',
+          'bonus_amount' => 'harvey'
+        }
+      }.with_indifferent_access
+
+      activity = HackerOne::Client::Activities.build example
+
+      expect{ activity.bounty_amount }.to raise_error "Improperly formatted bounty amount"
+      expect{ activity.bonus_amount }.to raise_error "Improperly formatted bonus amount"
+    end
+
+    it 'returns 0 when bounty amount or bonus amount are malformed with lenient mode' do
+      ENV[HackerOne::Client::LENIENT_MODE_ENV_VARIABLE] = 'true'
+      example = {
+        'type' => 'activity-bounty-awarded',
+        'attributes' => {
+          'bounty_amount' => 'steve',
+          'bonus_amount' => 'harvey'
+        }
       }.with_indifferent_access
 
       activity = HackerOne::Client::Activities.build example

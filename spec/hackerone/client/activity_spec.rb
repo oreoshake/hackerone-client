@@ -12,8 +12,8 @@ RSpec.describe HackerOne::Client::Activities do
           'created_at' => '2016-02-02T04:05:06.000Z',
           'updated_at' => '2016-02-02T04:05:06.000Z',
           'internal' => false,
-          'bounty_amount' => '500',
-          'bonus_amount' => '50'
+          'bounty_amount' => '500.00',
+          'bonus_amount' => '50.00'
         },
         'relationships' => {
           'actor' => {
@@ -35,8 +35,8 @@ RSpec.describe HackerOne::Client::Activities do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
-      expect(activity.bounty_amount).to eq 500
-      expect(activity.bonus_amount).to eq 50
+      expect(activity.bounty_amount).to eq 500.00
+      expect(activity.bonus_amount).to eq 50.00
     end
 
     it 'does not fail when bounty or bonus amount is not given' do

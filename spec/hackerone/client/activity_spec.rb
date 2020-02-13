@@ -50,6 +50,21 @@ RSpec.describe HackerOne::Client::Activities do
       expect(activity.bounty_amount).to eq 0
       expect(activity.bonus_amount).to eq 0
     end
+
+    it 'returns 0 when bounty amount or bonus amount are malformed' do
+      example = {
+        'type' => 'activity-bounty-awarded',
+        'attributes' => {
+          'bounty_amount' => 'steve',
+          'bonus_amount' => 'harvey'
+        }
+      }.with_indifferent_access
+
+      activity = HackerOne::Client::Activities.build example
+
+      expect(activity.bounty_amount).to eq 0
+      expect(activity.bonus_amount).to eq 0
+    end
   end
 
   describe HackerOne::Client::Activities::SwagAwarded do

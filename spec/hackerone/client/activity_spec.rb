@@ -32,7 +32,7 @@ RSpec.describe HackerOne::Client::Activities do
     end
 
     before(:each) do
-      ENV.delete("HACKERONE_CLIENT_LENIENT_MODE")
+      ENV.delete(HackerOne::Client::LENIENT_MODE_ENV_VARIABLE)
     end
 
     it 'creates the activity type with attributes' do

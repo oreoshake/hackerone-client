@@ -29,7 +29,7 @@ module HackerOne
       class BountyAwarded < Activity
         def bounty_amount
           formatted_bounty_amount = attributes.bounty_amount || "0"
-          if ENV['HACKERONE_CLIENT_LENIENT_MODE']
+          if ENV[HackerOne::Client::LENIENT_MODE_ENV_VARIABLE]
             Float(formatted_bounty_amount) rescue 0
           else
             begin
@@ -42,7 +42,7 @@ module HackerOne
 
         def bonus_amount
           formatted_bonus_amount = attributes.bonus_amount || "0"
-          if ENV['HACKERONE_CLIENT_LENIENT_MODE']
+          if ENV[HackerOne::Client::LENIENT_MODE_ENV_VARIABLE]
             Float(formatted_bonus_amount) rescue 0
           else
             begin

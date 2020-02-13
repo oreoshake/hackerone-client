@@ -31,6 +31,10 @@ RSpec.describe HackerOne::Client::Activities do
       }.with_indifferent_access
     end
 
+    before(:each) do
+      ENV.delete("HACKERONE_CLIENT_LENIENT_MODE")
+    end
+
     it 'creates the activity type with attributes' do
       activity = HackerOne::Client::Activities.build example
 

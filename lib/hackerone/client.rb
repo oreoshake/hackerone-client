@@ -24,6 +24,8 @@ module HackerOne
     DEFAULT_HIGH_RANGE = 2500...4999
     DEFAULT_CRITICAL_RANGE = 5000...100_000_000
 
+    LENIENT_MODE_ENV_VARIABLE = 'HACKERONE_CLIENT_LENIENT_MODE'
+
     class << self
       ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
       attr_accessor :program

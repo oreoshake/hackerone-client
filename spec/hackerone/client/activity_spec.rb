@@ -71,7 +71,7 @@ RSpec.describe HackerOne::Client::Activities do
     end
 
     it 'returns 0 when bounty amount or bonus amount are malformed with lenient mode' do
-      ENV['HACKERONE_CLIENT_LENIENT_MODE'] = 'true'
+      ENV[HackerOne::Client::LENIENT_MODE_ENV_VARIABLE] = 'true'
       example = {
         'type' => 'activity-bounty-awarded',
         'attributes' => {

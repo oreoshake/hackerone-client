@@ -91,6 +91,12 @@ HackerOne::Client.high_range = 2500...5000
 HackerOne::Client.critical_range = 5000...100_000_000
 ```
 
+### Configuration
+
+In order to configure whether error handling is strict or lenient, set the `HACKERONE_CLIENT_LENIENT_MODE` variable.
+
+Setting this variable will make the client try to absorb errors, like a malformed bounty or bonus amount. Not setting this variable will cause the client to raise errors. 
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/oreoshake/hackerone-client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

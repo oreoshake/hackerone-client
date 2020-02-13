@@ -51,7 +51,23 @@ RSpec.describe HackerOne::Client::Activities do
       expect(activity.bonus_amount).to eq 0
     end
 
-    it 'returns 0 when bounty amount or bonus amount are malformed' do
+    it 'throws an error when bounty amount or bonus amount is malformed' do
+      example = {
+        'type' => 'activity-bounty-awarded',
+        'attributes' => {
+          'bounty_amount' => 'steve',
+          'bonus_amount' => 'harvey'
+        }
+      }.with_indifferent_access
+
+      activity = HackerOne::Client::Activities.build example
+
+      expect{ activity.bounty_amount }.to raise_error "Improperly formatted bounty amount"
+      expect{ activity.bonus_amount }.to raise_error "Improperly formatted bonus amount"
+    end
+
+    it 'returns 0 when bounty amount or bonus amount are malformed with lenient mode' do
+      ENV['HACKERONE_CLIENT_LENIENT_MODE'] = 'true'
       example = {
         'type' => 'activity-bounty-awarded',
         'attributes' => {

@@ -1,3 +1,7 @@
+## [0.14.1] - 2020-02-13
+
+- [Add support for float values in API responses](https://github.com/oreoshake/hackerone-client/pull/44) (@rzhade3)
+
 ## [0.14.0] - 2019-10-28
 
 - [Add new swag API support](https://github.com/oreoshake/hackerone-client/pull/41) (@anglinb)

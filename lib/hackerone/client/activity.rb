@@ -29,12 +29,12 @@ module HackerOne
       class BountyAwarded < Activity
         def bounty_amount
           formatted_bounty_amount = attributes.bounty_amount || "0"
-          formatted_bounty_amount.gsub(/[^\d\.]/, "").to_f
+          Float(formatted_bounty_amount) rescue 0
         end
 
         def bonus_amount
           formatted_bonus_amount = attributes.bonus_amount || "0"
-          formatted_bonus_amount.gsub(/[^\d\.]/, "").to_f
+          Float(formatted_bonus_amount) rescue 0
         end
       end
 

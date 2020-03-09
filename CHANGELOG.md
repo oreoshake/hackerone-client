@@ -1,3 +1,7 @@
+## [0.14.2] - 2020-03-09
+
+- [Don't lock development dependency versions](https://github.com/oreoshake/hackerone-client/pull/45) (@oreoshake)
+
 ## [0.14.1] - 2020-02-13
 
 - [Add support for float values in API responses](https://github.com/oreoshake/hackerone-client/pull/44) (@rzhade3)

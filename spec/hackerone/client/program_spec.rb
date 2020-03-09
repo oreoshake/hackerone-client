@@ -1,8 +1,6 @@
 require "spec_helper"
 
 RSpec.describe HackerOne::Client::Program do
-  let(:api) { HackerOne::Client::Api.new("github") }
-
   before(:all) do
     ENV["HACKERONE_TOKEN_NAME"] = "foo"
     ENV["HACKERONE_TOKEN"] = "bar"
@@ -26,6 +24,16 @@ RSpec.describe HackerOne::Client::Program do
       expect(
         VCR.use_cassette(:common_responses) do
           program.common_responses
+        end
+      ).to be_present
+    end
+  end
+
+  describe 'policy' do
+    it "updates the policy of the program" do
+      expect(
+        VCR.use_cassette(:update_policy) do
+          program.update_policy(policy: "Hello World, updating policy")
         end
       ).to be_present
     end

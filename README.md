@@ -47,7 +47,7 @@ program = HackerOne::Client::Program.find("insert-program-name-here")
 program.common_responses
 
 # Updates a program's policy
-program.update_policy(policy: "Please submit reproducible vulnerabilities")
+program.update_policy(policy: "Please submit valid vulnerabilities")
 ```
 
 ## State change hooks

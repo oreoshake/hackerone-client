@@ -45,6 +45,9 @@ program = HackerOne::Client::Program.find("insert-program-name-here")
 
 # returns all common responses
 program.common_responses
+
+# Updates a program's policy
+program.update_policy(policy: "Please submit reproducible vulnerabilities")
 ```
 
 ## State change hooks
@@ -95,7 +98,7 @@ HackerOne::Client.critical_range = 5000...100_000_000
 
 In order to configure whether error handling is strict or lenient, set the `HACKERONE_CLIENT_LENIENT_MODE` variable.
 
-Setting this variable will make the client try to absorb errors, like a malformed bounty or bonus amount. Not setting this variable will cause the client to raise errors. 
+Setting this variable will make the client try to absorb errors, like a malformed bounty or bonus amount. Not setting this variable will cause the client to raise errors.
 
 ## Contributing
 

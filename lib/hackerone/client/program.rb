@@ -49,6 +49,16 @@ module HackerOne
         groups.find { |group| group.name == groupname }
       end
 
+      def update_policy(policy:)
+        body = {
+          type: "program-policy",
+          attributes: {
+            policy: policy
+          }
+        }
+        make_put_request("programs/#{id}/policy", request_body: body)
+      end
+
       def common_responses(page_number: 1, page_size: 100)
         make_get_request(
           "programs/#{id}/common_responses",

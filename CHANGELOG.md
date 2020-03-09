@@ -1,3 +1,7 @@
+## [0.15.0] - 2020-03-09
+
+- [Add 'update program policy' API support](https://github.com/oreoshake/hackerone-client/pull/47) (@rzhade3)
+
 ## [0.14.2] - 2020-03-09
 
 - [Don't lock development dependency versions](https://github.com/oreoshake/hackerone-client/pull/45) (@oreoshake)

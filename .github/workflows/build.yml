@@ -1,18 +1,21 @@
 name: Build + Test
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
     name: Build + Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [ '2.4', '2.5', '2.6', '2.7']
 
     steps:
     - uses: actions/checkout@master
-    - name: Set up Ruby 2.6
+    - name: Set up Ruby ${{ matrix.ruby }}
       uses: actions/setup-ruby@v1
       with:
-        version: 2.6.x
-    - name: Build and test with Rake
+        ruby-version: ${{ matrix.ruby }}
+    - name: Build and test with Rake with Ruby ${{ matrix.ruby }}
       run: |
         gem install bundler --version '1.0.0'
         bundle install --jobs 4 --retry 3

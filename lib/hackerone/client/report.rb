@@ -24,6 +24,14 @@ module HackerOne
         duplicate
       ).map(&:to_sym).freeze
 
+      SEVERITY_RATINGS = %w(
+        none
+        low
+        medium
+        high
+        critical
+      ).freeze
+
       class << self
         def add_on_state_change_hook(proc)
           on_state_change_hooks << proc
@@ -60,6 +68,10 @@ module HackerOne
 
       def issue_tracker_reference_id
         attributes[:issue_tracker_reference_id]
+      end
+
+      def severity
+        attributes[:severity]
       end
 
       def state
@@ -157,6 +169,23 @@ module HackerOne
           request_body: request_body
         )
         Swag.new(response_body, program)
+      end
+
+      def update_severity(rating:)
+        raise ArgumentError, "Invalid severity rating" unless SEVERITY_RATINGS.include?(rating)
+
+        request_body = {
+          type: "severity",
+          attributes: {
+            rating: rating
+          }
+        }
+        response_body = make_post_request(
+          "reports/#{id}/severities",
+          request_body: request_body
+        )
+        @report[:attributes][:severity] = { rating: rating }
+        Activities.build(response_body)
       end
 
       def suggest_bounty(message:, amount:, bonus_amount: nil)

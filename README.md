@@ -29,6 +29,9 @@ report.add_report_reference(reference)
 # Triage an issue (add a reference and set state to :triaged)
 report.triage(reference)
 
+# Set the severity on a report (rating can be none, low, medium, high or critical)
+report.update_severity(rating: "high")
+
 # POST /reports/{id}/bounty_suggestions
 report.suggest_bounty(message: "I suggest $500 with a small bonus. Report is well-written.", amount: 500, bonus_amount: 50)
 

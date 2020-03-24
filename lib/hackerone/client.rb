@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "faraday"
 require "json"
 require "active_support/time"
@@ -24,7 +26,7 @@ module HackerOne
     DEFAULT_HIGH_RANGE = 2500...4999
     DEFAULT_CRITICAL_RANGE = 5000...100_000_000
 
-    LENIENT_MODE_ENV_VARIABLE = 'HACKERONE_CLIENT_LENIENT_MODE'
+    LENIENT_MODE_ENV_VARIABLE = "HACKERONE_CLIENT_LENIENT_MODE"
 
     REPORT_STATES = %w(
       new
@@ -116,7 +118,7 @@ module HackerOne
       def post(endpoint, body)
         response = with_retry do
           self.class.hackerone_api_connection.post do |req|
-            req.headers['Content-Type'] = 'application/json'
+            req.headers["Content-Type"] = "application/json"
             req.body = body.to_json
             req.url endpoint
           end
@@ -128,7 +130,7 @@ module HackerOne
       def get(endpoint, params = nil)
         response = with_retry do
           self.class.hackerone_api_connection.get do |req|
-            req.headers['Content-Type'] = 'application/json'
+            req.headers["Content-Type"] = "application/json"
             req.params = params || {}
             req.url endpoint
           end
@@ -143,7 +145,7 @@ module HackerOne
         elsif response.status.to_s.start_with?("5")
           raise RuntimeError, "API called failed, probably their fault: #{response.body}"
         elsif response.success?
-          response_body_json = JSON.parse(response.body, :symbolize_names => true)
+          response_body_json = JSON.parse(response.body, symbolize_names: true)
           if extract_data && response_body_json.key?(:data)
             response_body_json[:data]
           else
@@ -159,13 +161,13 @@ module HackerOne
           raise NotConfiguredError, "HACKERONE_TOKEN_NAME HACKERONE_TOKEN environment variables must be set"
         end
 
-        @connection ||= Faraday.new(:url => "https://api.hackerone.com/v1") do |faraday|
+        @connection ||= Faraday.new(url: "https://api.hackerone.com/v1") do |faraday|
           faraday.basic_auth(ENV["HACKERONE_TOKEN_NAME"], ENV["HACKERONE_TOKEN"])
           faraday.adapter Faraday.default_adapter
         end
       end
 
-      def with_retry(attempts=3, &block)
+      def with_retry(attempts = 3, &block)
         attempts_remaining = attempts
 
         begin

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe HackerOne::Client::Swag do
@@ -29,7 +31,7 @@ RSpec.describe HackerOne::Client::Swag do
 
   it "returns id" do
     expect(swag.id).to be_present
-    expect(swag.id).to eq('3377')
+    expect(swag.id).to eq("3377")
   end
 
   it "returns sent?" do

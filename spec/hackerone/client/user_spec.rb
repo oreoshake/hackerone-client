@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe HackerOne::Client::User do
@@ -6,7 +8,7 @@ RSpec.describe HackerOne::Client::User do
     ENV["HACKERONE_TOKEN"] = "bar"
   end
 
-  describe 'find' do
+  describe "find" do
     it "returns a user" do
       user = VCR.use_cassette(:user_find_fransrosen) do
         described_class.find "fransrosen"

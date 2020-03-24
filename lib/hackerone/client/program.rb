@@ -1,4 +1,6 @@
-require_relative './resource_helper'
+# frozen_string_literal: true
+
+require_relative "./resource_helper"
 
 module HackerOne
   module Client
@@ -71,7 +73,7 @@ module HackerOne
           "programs/#{id}/swag",
           params: { page: { number: page_number, size: page_size } }
         )
-        response_body.map{|r| Swag.new(r, self) }
+        response_body.map { |r| Swag.new(r, self) }
       end
 
       private

@@ -1,6 +1,8 @@
-require_relative './resource_helper'
-require_relative './weakness'
-require_relative './activity'
+# frozen_string_literal: true
+
+require_relative "./resource_helper"
+require_relative "./weakness"
+require_relative "./activity"
 
 module HackerOne
   module Client
@@ -118,7 +120,7 @@ module HackerOne
 
       # Bounty writeups just use the key, and not the label value.
       def writeup_classification
-        classification_label().split("-").first
+        classification_label.split("-").first
       end
 
       def activities
@@ -304,7 +306,7 @@ module HackerOne
         request_body[:id] = assignee_id if assignee_id
 
         response = HackerOne::Client::Api.hackerone_api_connection.put do |req|
-          req.headers['Content-Type'] = 'application/json'
+          req.headers["Content-Type"] = "application/json"
           req.url "reports/#{id}/assignee"
           req.body = { data: request_body }.to_json
         end

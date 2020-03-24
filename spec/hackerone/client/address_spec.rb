@@ -1,5 +1,7 @@
-require 'spec_helper'
-require 'active_support/core_ext/hash'
+# frozen_string_literal: true
+
+require "spec_helper"
+require "active_support/core_ext/hash"
 
 RSpec.describe HackerOne::Client::Address do
   let (:address_data) do
@@ -24,7 +26,7 @@ RSpec.describe HackerOne::Client::Address do
     }.with_indifferent_access
   end
 
-  it 'creates the address type with attributes' do
+  it "creates the address type with attributes" do
     address = HackerOne::Client::Address.new example
     expect(address.class).to eq described_class
     expect(address.id).to eq "7374"

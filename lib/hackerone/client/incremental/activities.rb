@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HackerOne
   module Client
     module Incremental
@@ -48,7 +50,7 @@ module HackerOne
 
         def current_page
           @current_page ||= make_get_request(
-            'incremental/activities',
+            "incremental/activities",
             extract_data: false,
             params: {
               handle: program.handle,

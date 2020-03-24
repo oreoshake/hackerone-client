@@ -1,4 +1,6 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
+
+source "https://rubygems.org"
 
 # Specify your gem's dependencies in hackerone-client.gemspec
 gemspec
@@ -14,7 +16,7 @@ group :test do
 end
 
 group :guard do
-  gem "growl", :require => RUBY_PLATFORM.include?('darwin') && 'growl'
-  gem "rb-fsevent", :require => RUBY_PLATFORM.include?('darwin') && 'rb-fsevent'
+  gem "growl", require: RUBY_PLATFORM.include?("darwin") && "growl"
   gem "guard-rspec"
+  gem "rb-fsevent", require: RUBY_PLATFORM.include?("darwin") && "rb-fsevent"
 end

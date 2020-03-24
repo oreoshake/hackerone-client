@@ -1,6 +1,8 @@
-require_relative './resource_helper'
-require_relative './weakness'
-require_relative './activity'
+# frozen_string_literal: true
+
+require_relative "./resource_helper"
+require_relative "./weakness"
+require_relative "./activity"
 
 module HackerOne
   module Client
@@ -23,6 +25,14 @@ module HackerOne
         informative
         duplicate
       ).map(&:to_sym).freeze
+
+      SEVERITY_RATINGS = %w(
+        none
+        low
+        medium
+        high
+        critical
+      ).freeze
 
       class << self
         def add_on_state_change_hook(proc)
@@ -60,6 +70,10 @@ module HackerOne
 
       def issue_tracker_reference_id
         attributes[:issue_tracker_reference_id]
+      end
+
+      def severity
+        attributes[:severity]
       end
 
       def state
@@ -118,7 +132,7 @@ module HackerOne
 
       # Bounty writeups just use the key, and not the label value.
       def writeup_classification
-        classification_label().split("-").first
+        classification_label.split("-").first
       end
 
       def activities
@@ -157,6 +171,23 @@ module HackerOne
           request_body: request_body
         )
         Swag.new(response_body, program)
+      end
+
+      def update_severity(rating:)
+        raise ArgumentError, "Invalid severity rating" unless SEVERITY_RATINGS.include?(rating)
+
+        request_body = {
+          type: "severity",
+          attributes: {
+            rating: rating
+          }
+        }
+        response_body = make_post_request(
+          "reports/#{id}/severities",
+          request_body: request_body
+        )
+        @report[:attributes][:severity] = { rating: rating }
+        Activities.build(response_body)
       end
 
       def suggest_bounty(message:, amount:, bonus_amount: nil)
@@ -304,7 +335,7 @@ module HackerOne
         request_body[:id] = assignee_id if assignee_id
 
         response = HackerOne::Client::Api.hackerone_api_connection.put do |req|
-          req.headers['Content-Type'] = 'application/json'
+          req.headers["Content-Type"] = "application/json"
           req.url "reports/#{id}/assignee"
           req.body = { data: request_body }.to_json
         end

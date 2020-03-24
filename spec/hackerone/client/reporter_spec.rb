@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe HackerOne::Client::Report do
@@ -25,7 +27,7 @@ RSpec.describe HackerOne::Client::Report do
 
   it "returns id" do
     expect(reporter.id).to be_present
-    expect(reporter.id).to eq('3683')
+    expect(reporter.id).to eq("3683")
   end
 
   it "returns disabled?" do

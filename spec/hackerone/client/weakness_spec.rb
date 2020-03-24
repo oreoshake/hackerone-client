@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe HackerOne::Client::Weakness do
@@ -5,7 +7,8 @@ RSpec.describe HackerOne::Client::Weakness do
     context "with invalid input" do
       it do
         expect { described_class.extract_cwe_number("1337")
-          .to raise_error StandardError::ArgumentError }
+          .to raise_error StandardError::ArgumentError
+        }
       end
     end
 
@@ -23,13 +26,13 @@ RSpec.describe HackerOne::Client::Weakness do
 
   describe "#to_cwe" do
     it "returns the external_id" do
-      expect(described_class.new(:external_id => "CWE-134").to_cwe)
+      expect(described_class.new(external_id: "CWE-134").to_cwe)
         .to eq("CWE-134")
     end
   end
 
   describe "#to_owasp" do
-    subject { described_class.new(:external_id => cwe).to_owasp }
+    subject { described_class.new(external_id: cwe).to_owasp }
 
     context "unmappable CWE" do
       let(:cwe) { "CWE-33" }
@@ -44,7 +47,7 @@ RSpec.describe HackerOne::Client::Weakness do
     end
 
     it "falls back to name matching when external ID is nil" do
-      classification = described_class.new(:external_id => nil, name: "Command Injection").to_owasp
+      classification = described_class.new(external_id: nil, name: "Command Injection").to_owasp
       expect(classification).to eq("A1-Injection")
     end
 

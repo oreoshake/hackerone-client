@@ -8,15 +8,28 @@ jobs:
     strategy:
       matrix:
         ruby: [ '2.4', '2.5', '2.6', '2.7']
-
     steps:
-    - uses: actions/checkout@master
-    - name: Set up Ruby ${{ matrix.ruby }}
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-    - name: Build and test with Rake with Ruby ${{ matrix.ruby }}
-      run: |
-        gem install bundler --version '1.0.0'
-        bundle install --jobs 4 --retry 3
-        bundle exec rake spec
+      - uses: actions/checkout@master
+      - name: Set up Ruby ${{ matrix.ruby }}
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Build and test with Rake with Ruby ${{ matrix.ruby }}
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake spec
+  lint:
+    name: Rubocop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - name: Run linters
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake rubocop

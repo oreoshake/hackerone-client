@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HackerOne
   module Client
     module ResourceHelper
@@ -14,7 +16,7 @@ module HackerOne
 
       def make_put_request(url, request_body:, extract_data: true)
         response = HackerOne::Client::Api.hackerone_api_connection.put do |req|
-          req.headers['Content-Type'] = 'application/json'
+          req.headers["Content-Type"] = "application/json"
           req.url url
           req.body = { data: request_body }.to_json
         end
@@ -24,7 +26,7 @@ module HackerOne
 
       def make_post_request(url, request_body:, extract_data: true)
         response = HackerOne::Client::Api.hackerone_api_connection.post do |req|
-          req.headers['Content-Type'] = 'application/json'
+          req.headers["Content-Type"] = "application/json"
           req.url url
           req.body = { data: request_body }.to_json
         end
@@ -34,7 +36,7 @@ module HackerOne
 
       def make_get_request(url, params: {}, extract_data: true)
         response = HackerOne::Client::Api.hackerone_api_connection.get do |req|
-          req.headers['Content-Type'] = 'application/json'
+          req.headers["Content-Type"] = "application/json"
           req.url url
           req.params = params
         end

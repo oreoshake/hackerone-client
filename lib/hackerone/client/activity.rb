@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HackerOne
   module Client
     module Activities
@@ -84,14 +86,14 @@ module HackerOne
       end
 
       ACTIVITY_TYPE_CLASS_MAPPING = {
-        'activity-bounty-awarded' => BountyAwarded,
-        'activity-swag-awarded' => SwagAwarded,
-        'activity-user-assigned-to-bug' => UserAssignedToBug,
-        'activity-group-assigned-to-bug' => GroupAssignedToBug,
-        'activity-bug-triaged' => BugTriaged,
-        'activity-reference-id-added' => ReferenceIdAdded,
-        'activity-comment' => CommentAdded,
-        'activity-bounty-suggested' => BountySuggested
+        "activity-bounty-awarded" => BountyAwarded,
+        "activity-swag-awarded" => SwagAwarded,
+        "activity-user-assigned-to-bug" => UserAssignedToBug,
+        "activity-group-assigned-to-bug" => GroupAssignedToBug,
+        "activity-bug-triaged" => BugTriaged,
+        "activity-reference-id-added" => ReferenceIdAdded,
+        "activity-comment" => CommentAdded,
+        "activity-bounty-suggested" => BountySuggested
       }.freeze
 
       def self.build(activity_data)

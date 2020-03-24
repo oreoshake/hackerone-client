@@ -1,29 +1,31 @@
-require 'spec_helper'
-require 'active_support/core_ext/hash'
+# frozen_string_literal: true
+
+require "spec_helper"
+require "active_support/core_ext/hash"
 
 RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::BountyAwarded do
     let(:example) do
       {
-        'id' => '1337',
-        'type' => 'activity-bounty-awarded',
-        'attributes' => {
-          'message' => 'Bounty Awarded!',
-          'created_at' => '2016-02-02T04:05:06.000Z',
-          'updated_at' => '2016-02-02T04:05:06.000Z',
-          'internal' => false,
-          'bounty_amount' => '500.00',
-          'bonus_amount' => '50.00'
+        "id" => "1337",
+        "type" => "activity-bounty-awarded",
+        "attributes" => {
+          "message" => "Bounty Awarded!",
+          "created_at" => "2016-02-02T04:05:06.000Z",
+          "updated_at" => "2016-02-02T04:05:06.000Z",
+          "internal" => false,
+          "bounty_amount" => "500.00",
+          "bonus_amount" => "50.00"
         },
-        'relationships' => {
-          'actor' => {
-            'data' => {
-              'id' => '1337',
-              'type' => 'program',
-              'attributes' => {
-                'handle' => 'security',
-                'created_at' => '2016-02-02T04:05:06.000Z',
-                'updated_at' => '2016-02-02T04:05:06.000Z'
+        "relationships" => {
+          "actor" => {
+            "data" => {
+              "id" => "1337",
+              "type" => "program",
+              "attributes" => {
+                "handle" => "security",
+                "created_at" => "2016-02-02T04:05:06.000Z",
+                "updated_at" => "2016-02-02T04:05:06.000Z"
               }
             }
           }
@@ -35,7 +37,7 @@ RSpec.describe HackerOne::Client::Activities do
       ENV.delete(HackerOne::Client::LENIENT_MODE_ENV_VARIABLE)
     end
 
-    it 'creates the activity type with attributes' do
+    it "creates the activity type with attributes" do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
@@ -43,10 +45,10 @@ RSpec.describe HackerOne::Client::Activities do
       expect(activity.bonus_amount).to eq 50.00
     end
 
-    it 'does not fail when bounty or bonus amount is not given' do
+    it "does not fail when bounty or bonus amount is not given" do
       example = {
-        'type' => 'activity-bounty-awarded',
-        'attributes' => {}
+        "type" => "activity-bounty-awarded",
+        "attributes" => {}
       }.with_indifferent_access
 
       activity = HackerOne::Client::Activities.build example
@@ -55,28 +57,28 @@ RSpec.describe HackerOne::Client::Activities do
       expect(activity.bonus_amount).to eq 0
     end
 
-    it 'throws an error when bounty amount or bonus amount is malformed' do
+    it "throws an error when bounty amount or bonus amount is malformed" do
       example = {
-        'type' => 'activity-bounty-awarded',
-        'attributes' => {
-          'bounty_amount' => 'steve',
-          'bonus_amount' => 'harvey'
+        "type" => "activity-bounty-awarded",
+        "attributes" => {
+          "bounty_amount" => "steve",
+          "bonus_amount" => "harvey"
         }
       }.with_indifferent_access
 
       activity = HackerOne::Client::Activities.build example
 
-      expect{ activity.bounty_amount }.to raise_error "Improperly formatted bounty amount"
-      expect{ activity.bonus_amount }.to raise_error "Improperly formatted bonus amount"
+      expect { activity.bounty_amount }.to raise_error "Improperly formatted bounty amount"
+      expect { activity.bonus_amount }.to raise_error "Improperly formatted bonus amount"
     end
 
-    it 'returns 0 when bounty amount or bonus amount are malformed with lenient mode' do
-      ENV[HackerOne::Client::LENIENT_MODE_ENV_VARIABLE] = 'true'
+    it "returns 0 when bounty amount or bonus amount are malformed with lenient mode" do
+      ENV[HackerOne::Client::LENIENT_MODE_ENV_VARIABLE] = "true"
       example = {
-        'type' => 'activity-bounty-awarded',
-        'attributes' => {
-          'bounty_amount' => 'steve',
-          'bonus_amount' => 'harvey'
+        "type" => "activity-bounty-awarded",
+        "attributes" => {
+          "bounty_amount" => "steve",
+          "bonus_amount" => "harvey"
         }
       }.with_indifferent_access
 
@@ -90,56 +92,56 @@ RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::SwagAwarded do
     let(:example) do
       {
-        'id' => '1337',
-        'type' => 'activity-swag-awarded',
-        'attributes' => {
-          'message' => 'Swag Awarded!',
-          'created_at' => '2016-02-02T04:05:06.000Z',
-          'updated_at' => '2016-02-02T04:05:06.000Z',
-          'internal' => false
+        "id" => "1337",
+        "type" => "activity-swag-awarded",
+        "attributes" => {
+          "message" => "Swag Awarded!",
+          "created_at" => "2016-02-02T04:05:06.000Z",
+          "updated_at" => "2016-02-02T04:05:06.000Z",
+          "internal" => false
         },
-        'relationships' => {
-          'actor' => {
-            'data' => {
-              'id' => '1337',
-              'type' => 'user',
-              'attributes' => {
-                'username' => 'api-example',
-                'name' => 'API Example',
-                'disabled' => false,
-                'created_at' => '2016-02-02T04:05:06.000Z',
-                'profile_picture' => {
-                  '62x62' => '/assets/avatars/default.png',
-                  '82x82' => '/assets/avatars/default.png',
-                  '110x110' => '/assets/avatars/default.png',
-                  '260x260' => '/assets/avatars/default.png'
+        "relationships" => {
+          "actor" => {
+            "data" => {
+              "id" => "1337",
+              "type" => "user",
+              "attributes" => {
+                "username" => "api-example",
+                "name" => "API Example",
+                "disabled" => false,
+                "created_at" => "2016-02-02T04:05:06.000Z",
+                "profile_picture" => {
+                  "62x62" => "/assets/avatars/default.png",
+                  "82x82" => "/assets/avatars/default.png",
+                  "110x110" => "/assets/avatars/default.png",
+                  "260x260" => "/assets/avatars/default.png"
                 }
               }
             }
           },
-          'swag' => {
-            'data' => {
-              'id' => '1337',
-              'type' => 'swag',
-              'attributes' => {
-                'sent' => false,
-                'created_at' => '2016-02-02T04:05:06.000Z'
+          "swag" => {
+            "data" => {
+              "id" => "1337",
+              "type" => "swag",
+              "attributes" => {
+                "sent" => false,
+                "created_at" => "2016-02-02T04:05:06.000Z"
               },
-              'relationships' => {
-                'address' => {
-                  'data' => {
-                    'id' => '1337',
-                    'type' => 'address',
-                    'attributes' => {
-                      'name' => 'Jane Doe',
-                      'street' => '535 Mission Street',
-                      'city' => 'San Francisco',
-                      'postal_code' => '94105',
-                      'state' => 'CA',
-                      'country' => 'United States of America',
-                      'created_at' => '2016-02-02T04:05:06.000Z',
-                      'tshirt_size' => 'Large',
-                      'phone_number' => '+1-510-000-0000'
+              "relationships" => {
+                "address" => {
+                  "data" => {
+                    "id" => "1337",
+                    "type" => "address",
+                    "attributes" => {
+                      "name" => "Jane Doe",
+                      "street" => "535 Mission Street",
+                      "city" => "San Francisco",
+                      "postal_code" => "94105",
+                      "state" => "CA",
+                      "country" => "United States of America",
+                      "created_at" => "2016-02-02T04:05:06.000Z",
+                      "tshirt_size" => "Large",
+                      "phone_number" => "+1-510-000-0000"
                     }
                   }
                 }
@@ -150,7 +152,7 @@ RSpec.describe HackerOne::Client::Activities do
       }.with_indifferent_access
     end
 
-    it 'creates the activity type with attributes' do
+    it "creates the activity type with attributes" do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
@@ -192,7 +194,7 @@ RSpec.describe HackerOne::Client::Activities do
       }.with_indifferent_access
     end
 
-    it 'creates the activity type with attributes' do
+    it "creates the activity type with attributes" do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
@@ -253,7 +255,7 @@ RSpec.describe HackerOne::Client::Activities do
       }.with_indifferent_access
     end
 
-    it 'creates the activity type with attributes' do
+    it "creates the activity type with attributes" do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
@@ -295,7 +297,7 @@ RSpec.describe HackerOne::Client::Activities do
       }.with_indifferent_access
     end
 
-    it 'creates the activity type with attributes' do
+    it "creates the activity type with attributes" do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
@@ -338,7 +340,7 @@ RSpec.describe HackerOne::Client::Activities do
       }.with_indifferent_access
     end
 
-    it 'creates the activity type with attributes' do
+    it "creates the activity type with attributes" do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class

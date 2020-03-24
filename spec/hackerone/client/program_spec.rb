@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe HackerOne::Client::Program do
@@ -12,14 +14,14 @@ RSpec.describe HackerOne::Client::Program do
     end
   end
 
-  describe 'find' do
+  describe "find" do
     it "returns a team as object when provided the handle" do
       expect(program.id).to eq("18969")
       expect(program.handle).to eq("github")
     end
   end
 
-  describe 'common responses' do
+  describe "common responses" do
     it "returns the common responses of the program" do
       expect(
         VCR.use_cassette(:common_responses) do
@@ -29,7 +31,7 @@ RSpec.describe HackerOne::Client::Program do
     end
   end
 
-  describe 'policy' do
+  describe "policy" do
     it "updates the policy of the program" do
       expect(
         VCR.use_cassette(:update_policy) do
@@ -39,7 +41,7 @@ RSpec.describe HackerOne::Client::Program do
     end
   end
 
-  describe 'swag' do
+  describe "swag" do
     it "returns the pending swag awards for the program" do
       expect(
         VCR.use_cassette(:swag) do
@@ -49,8 +51,8 @@ RSpec.describe HackerOne::Client::Program do
     end
   end
 
-  describe '.incremental_activities' do
-    it 'can traverse through the activities of a program' do
+  describe ".incremental_activities" do
+    it "can traverse through the activities of a program" do
       incremental_activities = program.incremental_activities(updated_at_after: DateTime.new(2017, 12, 4, 15, 38), page_size: 3)
 
       activities = []
@@ -65,16 +67,16 @@ RSpec.describe HackerOne::Client::Program do
       expect(group_assigned_to_bug)
         .to be_a HackerOne::Client::Activities::GroupAssignedToBug
       expect(group_assigned_to_bug.group).to be_present
-      expect(group_assigned_to_bug.group.name).to eq 'Standard'
+      expect(group_assigned_to_bug.group.name).to eq "Standard"
       expect(comment_added)
         .to be_a HackerOne::Client::Activities::CommentAdded
-      expect(comment_added.message).to eq 'this is a comment'
+      expect(comment_added.message).to eq "this is a comment"
       expect(bounty_awarded)
         .to be_a HackerOne::Client::Activities::BountyAwarded
       expect(bounty_awarded.message).to eq "Here's a bounty!"
     end
 
-    it 'can traverse through all activities of a program' do
+    it "can traverse through all activities of a program" do
       incremental_activities = program.incremental_activities
 
       activities = []

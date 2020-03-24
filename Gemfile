@@ -10,7 +10,7 @@ group :developement do
 end
 
 group :test do
-  gem "rubocop", "< 0.68"
+  gem "rubocop"
   gem "rubocop-github"
   gem "rubocop-performance"
 end

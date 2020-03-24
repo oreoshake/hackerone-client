@@ -86,7 +86,7 @@ RSpec.describe HackerOne::Client do
       begin
         HackerOne::Client.program = "github"
         VCR.use_cassette(:report_list_triaged) do
-          expect(HackerOne::Client::Api.new.reports(since: point_in_time, state: "triaged")).to_not be_empty
+          expect(HackerOne::Client::Api.new.reports(since: point_in_time, state: :triaged)).to_not be_empty
         end
       ensure
         HackerOne::Client.program = nil
@@ -95,7 +95,7 @@ RSpec.describe HackerOne::Client do
 
     it "returns triaged reports for a given program" do
       VCR.use_cassette(:report_list_triaged) do
-        expect(api.reports(since: point_in_time, state: "triaged")).to_not be_empty
+        expect(api.reports(since: point_in_time, state: :triaged)).to_not be_empty
       end
     end
   end

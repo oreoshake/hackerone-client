@@ -82,9 +82,9 @@ module HackerOne
       # state (optional): state that a report is in, by default new
       #
       # returns all open reports or an empty array
-      def reports(since: 3.days.ago, state: "new")
+      def reports(since: 3.days.ago, state: :new)
         raise ArgumentError, "Program cannot be nil" unless program
-        raise ArgumentError, "State is invalid" unless REPORT_STATES.include? state
+        raise ArgumentError, "State is invalid" unless REPORT_STATES.include?(state.to_s)
 
         response = self.class.hackerone_api_connection.get do |req|
           options = {

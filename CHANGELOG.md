@@ -1,6 +1,10 @@
+## [0.17.0] - 2020-03-23
+
+[Add support for updating the severity of an issue](https://github.com/oreoshake/hackerone-client/pull/50) (@rzhade3)
+
 ## [0.16.0] - 2020-03-23
 
-- [Add support for updating the severity of an issue](https://github.com/oreoshake/hackerone-client/pull/50) (@rzhade3)
+- Whooops, no change
 
 ## [0.15.0] - 2020-03-09
 

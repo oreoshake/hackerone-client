@@ -256,7 +256,7 @@ RSpec.describe HackerOne::Client::Report do
     end
 
     it "errors on invalid severity" do
-      expect{ report.update_severity(rating: "invalid") }.to raise_error "Invalid severity rating"
+      expect { report.update_severity(rating: "invalid") }.to raise_error "Invalid severity rating"
     end
   end
 end

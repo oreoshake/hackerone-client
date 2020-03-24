@@ -246,4 +246,17 @@ RSpec.describe HackerOne::Client::Report do
       expect(report.assignee.username).to eq "esjee"
     end
   end
+
+  describe "#severity" do
+    it "updates severity" do
+      VCR.use_cassette(:update_severity) do
+        report.update_severity(rating: "high")
+        expect(report.severity[:rating]).to eq("high")
+      end
+    end
+
+    it "errors on invalid severity" do
+      expect { report.update_severity(rating: "invalid") }.to raise_error "Invalid severity rating"
+    end
+  end
 end

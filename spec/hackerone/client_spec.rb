@@ -59,7 +59,7 @@ RSpec.describe HackerOne::Client do
       expect { HackerOne::Client::Api.new.reports }.to raise_error(ArgumentError)
     end
 
-    it "returns reports for a default program" do
+    it "returns new reports for a default program as default" do
       begin
         HackerOne::Client.program = "github"
         VCR.use_cassette(:report_list) do
@@ -70,7 +70,7 @@ RSpec.describe HackerOne::Client do
       end
     end
 
-    it "returns reports for a given program" do
+    it "returns new reports for a given program as default" do
       VCR.use_cassette(:report_list) do
         expect(api.reports(since: point_in_time)).to_not be_empty
       end
@@ -79,6 +79,23 @@ RSpec.describe HackerOne::Client do
     it "returns an empty array if no reports are found" do
       VCR.use_cassette(:empty_report_list) do
         expect(api.reports(since: point_in_time)).to be_empty
+      end
+    end
+
+    it "returns triaged reports for a default program" do
+      begin
+        HackerOne::Client.program = "github"
+        VCR.use_cassette(:report_list_triaged) do
+          expect(HackerOne::Client::Api.new.reports(since: point_in_time, state: "triaged")).to_not be_empty
+        end
+      ensure
+        HackerOne::Client.program = nil
+      end
+    end
+
+    it "returns triaged reports for a given program" do
+      VCR.use_cassette(:report_list_triaged) do
+        expect(api.reports(since: point_in_time, state: "triaged")).to_not be_empty
       end
     end
   end

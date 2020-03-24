@@ -5,8 +5,8 @@ A limited client library for interacting with HackerOne. Currently only supports
 ```ruby
 client = HackerOne::Client::Api.new("github")
 
-# GET '/reports' returns all reports in the "new" state for a given program
-client.reports
+# GET '/reports' returns all reports in a given state for a program, by default "new"
+client.reports(state: "new")
 
 # GET '/report/{id}' returns report data for a given report
 report = client.report(id)

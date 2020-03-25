@@ -28,6 +28,17 @@ module HackerOne
 
     LENIENT_MODE_ENV_VARIABLE = "HACKERONE_CLIENT_LENIENT_MODE"
 
+    REPORT_STATES = %w(
+      new
+      triaged
+      needs-more-info
+      resolved
+      not-applicable
+      informative
+      duplicate
+      spam
+    )
+
     class << self
       ATTRS = [:low_range, :medium_range, :high_range, :critical_range].freeze
       attr_accessor :program
@@ -66,17 +77,20 @@ module HackerOne
         end
       end
 
-      ## Returns all open reports, optionally with a time bound
+      ## Returns all reports in a given state, optionally with a time bound
       #
       # program: the HackerOne program to search on (configure globally with Hackerone::Client.program=)
       # since (optional): a time bound, don't include reports earlier than +since+. Must be a DateTime object.
+      # state (optional): state that a report is in, by default new
       #
       # returns all open reports or an empty array
-      def reports(since: 3.days.ago)
+      def reports(since: 3.days.ago, state: :new)
         raise ArgumentError, "Program cannot be nil" unless program
+        raise ArgumentError, "State is invalid" unless REPORT_STATES.include?(state.to_s)
+
         response = self.class.hackerone_api_connection.get do |req|
           options = {
-            "filter[state][]" => "new",
+            "filter[state][]" => state,
             "filter[program][]" => program,
             "filter[created_at__gt]" => since.iso8601
           }

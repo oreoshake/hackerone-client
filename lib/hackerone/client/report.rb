@@ -32,7 +32,7 @@ module HackerOne
         medium
         high
         critical
-      ).map(&:to_sym).freeze
+      ).freeze
 
       class << self
         def add_on_state_change_hook(proc)
@@ -174,7 +174,7 @@ module HackerOne
       end
 
       def update_severity(rating:)
-        raise ArgumentError, "Invalid severity rating" unless SEVERITY_RATINGS.include?(rating)
+        raise ArgumentError, "Invalid severity rating" unless SEVERITY_RATINGS.include?(rating.to_s)
 
         request_body = {
           type: "severity",

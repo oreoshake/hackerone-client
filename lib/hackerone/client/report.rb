@@ -32,7 +32,7 @@ module HackerOne
         medium
         high
         critical
-      ).freeze
+      ).map(&:to_sym).freeze
 
       class << self
         def add_on_state_change_hook(proc)

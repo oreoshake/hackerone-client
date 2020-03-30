@@ -174,7 +174,7 @@ module HackerOne
       end
 
       def update_severity(rating:)
-        raise ArgumentError, "Invalid severity rating" unless SEVERITY_RATINGS.include?(rating)
+        raise ArgumentError, "Invalid severity rating" unless SEVERITY_RATINGS.include?(rating.to_s)
 
         request_body = {
           type: "severity",

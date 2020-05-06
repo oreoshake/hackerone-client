@@ -56,6 +56,24 @@ RSpec.describe HackerOne::Client do
     end
   end
 
+  context "#create_report" do
+    it "raises an error if no program is supplied" do
+      expect { HackerOne::Client::Api.new.create_report(title: "hi", summary: "hi", impact: "string", severity_rating: "none", source: "api") }.to raise_error(ArgumentError)
+    end
+
+    it "creates a new report" do
+      VCR.use_cassette(:create_report) do
+        expect(api.create_report(title: "hi", summary: "hi", impact: "string", severity_rating: "none", source: "api")).to_not be_nil
+      end
+    end
+
+    it "raises an error if report was not created" do
+      VCR.use_cassette(:create_report_invalid) do
+        expect { api.create_report(title: "hi", summary: "hi", impact: "string", severity_rating: "invalid_severity", source: "api") }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
   context "#reports" do
     it "raises an error if no program is supplied" do
       expect { HackerOne::Client::Api.new.reports }.to raise_error(ArgumentError)

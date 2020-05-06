@@ -104,6 +104,35 @@ module HackerOne
         end
       end
 
+      ## Public: create a new report
+      #
+      # title: The title of the report
+      # summary: Summary of the report
+      # impact: Impact of the report
+      # severity_rating: severity of report, must be one of https://api.hackerone.com/reference/#severity-ratings
+      # source: where the report came from, i.e. API, Bugcrowd, etc.
+      #
+      # returns an Hackerone::Client::Report object or raises an error if
+      # error during creation
+      def create_report(title:, summary:, impact:, severity_rating:, source:)
+        raise ArgumentError, "Program cannot be nil" unless program
+
+        data = {
+          "data": {
+            "type": "report",
+            "attributes": {
+              "team_handle": program,
+              "title": title,
+              "vulnerability_information": summary,
+              "impact": impact,
+              "severity_rating": severity_rating,
+              "source": source
+            }
+          }
+        }
+        Report.new(post("reports", data))
+      end
+
       ## Public: retrieve a report
       #
       # id: the ID of a specific report

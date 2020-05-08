@@ -1,3 +1,7 @@
+## [0.19.0] - 2020-05-08
+
+[Add ability to create a report](https://github.com/oreoshake/hackerone-client/pull/57) (@rzhade3)
+
 ## [0.18.0] - 2020-03-23
 
 [Add ability to filter reports on states other than "new"](https://github.com/oreoshake/hackerone-client/pull/54) (@rzhade3)

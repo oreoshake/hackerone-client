@@ -11,7 +11,7 @@ end
 
 group :test do
   gem "rubocop"
-  gem "rubocop-github"
+  gem "rubocop-github", ">= 0.16.0"
   gem "rubocop-performance"
 end
 

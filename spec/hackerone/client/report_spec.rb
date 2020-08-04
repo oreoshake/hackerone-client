@@ -259,4 +259,15 @@ RSpec.describe HackerOne::Client::Report do
       expect { report.update_severity(rating: :invalid) }.to raise_error "Invalid severity rating"
     end
   end
+
+  describe "#lock" do
+    it "locks a report" do
+      VCR.use_cassette(:lock_report) do
+        # to lock a report once must first resolve it
+        expect(report.state_change(:resolved)).to_not be_nil
+        response = report.lock!
+        expect(response).to be_a(HackerOne::Client::Activities::ReportLocked)
+      end
+    end
+  end
 end

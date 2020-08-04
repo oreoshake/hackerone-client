@@ -292,6 +292,15 @@ module HackerOne
         HackerOne::Client::Activities.build(response_json)
       end
 
+      def lock!
+        body = {
+          type: "activity-comments-closed"
+        }
+
+        response_json = make_put_request("reports/#{id}/close_comments", request_body: body)
+        HackerOne::Client::Activities.build(response_json)
+      end
+
       def assign_to_user(name)
         member = program.find_member(name)
         _assign_to(member.user.id, :user)

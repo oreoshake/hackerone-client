@@ -269,5 +269,9 @@ RSpec.describe HackerOne::Client::Report do
         expect(response).to be_a(HackerOne::Client::Activities::ReportLocked)
       end
     end
+
+    it "raises an error if report isn't closed" do
+      expect { report.lock! }.to raise_error "Report must be closed before locking"
+    end
   end
 end

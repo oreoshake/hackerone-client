@@ -26,6 +26,14 @@ module HackerOne
         duplicate
       ).map(&:to_sym).freeze
 
+      RESOLVED_STATES = %w(
+        resolved
+        not-applicable
+        informative
+        duplicate
+        spam
+      ).map(&:to_sym).freeze
+
       SEVERITY_RATINGS = %w(
         none
         low
@@ -293,6 +301,10 @@ module HackerOne
       end
 
       def lock!
+        unless RESOLVED_STATES.include? self.state.to_sym
+          raise ArgumentError, "Report must be closed before locking"
+        end
+
         body = {
           type: "activity-comments-closed"
         }

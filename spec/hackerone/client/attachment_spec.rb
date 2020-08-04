@@ -22,7 +22,7 @@ RSpec.describe HackerOne::Client::Attachment do
     }.with_indifferent_access
   end
 
-  it "creates the address type with attributes" do
+  it "creates the attachment object with attributes" do
     attachment = HackerOne::Client::Attachment.new example
     expect(attachment.class).to eq described_class
     expect(attachment.id).to eq "1337"

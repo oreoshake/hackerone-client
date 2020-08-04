@@ -135,6 +135,12 @@ module HackerOne
         classification_label.split("-").first
       end
 
+      def attachments
+        @attachments ||= relationships.fetch(:attachments, {})
+            .fetch(:data, [])
+            .map { |attachment| HackerOne::Client::Attachment.new(attachment) }
+      end
+
       def activities
         if ships = relationships.fetch(:activities, {}).fetch(:data, [])
           ships.map do |activity_data|

@@ -14,6 +14,7 @@ require_relative "client/group"
 require_relative "client/structured_scope"
 require_relative "client/swag"
 require_relative "client/address"
+require_relative "client/attachment"
 require_relative "client/bounty"
 require_relative "client/incremental/activities"
 
@@ -112,7 +113,7 @@ module HackerOne
       # severity_rating: severity of report, must be one of https://api.hackerone.com/reference/#severity-ratings
       # source: where the report came from, i.e. API, Bugcrowd, etc.
       #
-      # returns an Hackerone::Client::Report object or raises an error if
+      # returns an HackerOne::Client::Report object or raises an error if
       # error during creation
       def create_report(title:, summary:, impact:, severity_rating:, source:)
         raise ArgumentError, "Program cannot be nil" unless program

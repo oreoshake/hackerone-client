@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "active_support/core_ext/hash"
 
 RSpec.describe HackerOne::Client::Activities do
   describe HackerOne::Client::Activities::BountyAwarded do

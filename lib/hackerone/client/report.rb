@@ -26,6 +26,14 @@ module HackerOne
         duplicate
       ).map(&:to_sym).freeze
 
+      RESOLVED_STATES = %w(
+        resolved
+        not-applicable
+        informative
+        duplicate
+        spam
+      ).map(&:to_sym).freeze
+
       SEVERITY_RATINGS = %w(
         none
         low
@@ -295,6 +303,19 @@ module HackerOne
         }
 
         response_json = make_post_request("reports/#{id}/activities", request_body: body)
+        HackerOne::Client::Activities.build(response_json)
+      end
+
+      def lock!
+        unless RESOLVED_STATES.include? self.state.to_sym
+          raise ArgumentError, "Report must be closed before locking"
+        end
+
+        body = {
+          type: "activity-comments-closed"
+        }
+
+        response_json = make_put_request("reports/#{id}/close_comments", request_body: body)
         HackerOne::Client::Activities.build(response_json)
       end
 

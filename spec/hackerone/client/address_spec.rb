@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "active_support/core_ext/hash"
 
 RSpec.describe HackerOne::Client::Address do
   let (:address_data) do

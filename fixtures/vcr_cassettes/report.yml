@@ -191,7 +191,28 @@ http_interactions:
             },
             "attachments": {
               "data": [
-
+                {
+                  "id": "936424",
+                  "type": "attachment",
+                  "attributes": {
+                    "expiring_url": "https://redacted.aws.s3.link",
+                    "created_at": "2020-08-04T18:34:09.446Z",
+                    "file_name": "2182_FtX8VdFq.jpg",
+                    "content_type": "image/jpeg",
+                    "file_size": 653695
+                  }
+                },
+                {
+                  "id": "936425",
+                  "type": "attachment",
+                  "attributes": {
+                    "expiring_url": "https://redacted.aws.s3.link",
+                    "created_at": "2020-08-04T18:34:28.970Z",
+                    "file_name": "swagger_parse.py",
+                    "content_type": "text/x-python-script",
+                    "file_size": 482
+                  }
+                }
               ]
             },
             "vulnerability_types": {

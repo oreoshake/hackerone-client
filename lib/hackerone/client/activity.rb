@@ -15,6 +15,12 @@ module HackerOne
           attributes.internal
         end
 
+        def attachments
+          @attachments ||= activity.relationships.fetch(:attachments, {})
+              .fetch(:data, [])
+              .map { |attachment| HackerOne::Client::Attachment.new(attachment) }
+        end
+
         private
 
         def relationships

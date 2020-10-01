@@ -207,6 +207,12 @@ RSpec.describe HackerOne::Client::Report do
     end
   end
 
+  describe "#attachments" do
+    it "returns a list of attachments" do
+      expect(report.attachments).to all(be_an(HackerOne::Client::Attachment))
+    end
+  end
+
 
   describe "#activities" do
     it "returns a list of activities" do

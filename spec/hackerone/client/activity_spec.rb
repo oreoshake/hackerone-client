@@ -28,6 +28,21 @@ RSpec.describe HackerOne::Client::Activities do
                 "updated_at" => "2016-02-02T04:05:06.000Z"
               }
             }
+          },
+          "attachments" => {
+            "data": [
+              {
+                "id": "1337",
+                "type": "attachment",
+                "attributes": {
+                  "expiring_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                  "created_at": "2020-02-02T00:00:00.000Z",
+                  "file_name": "root.rb",
+                  "content_type": "text/x-ruby",
+                  "file_size": 2871
+                }
+              }
+            ]
           }
         }
       }.with_indifferent_access
@@ -43,6 +58,7 @@ RSpec.describe HackerOne::Client::Activities do
       expect(activity.class).to eq described_class
       expect(activity.bounty_amount).to eq 500.00
       expect(activity.bonus_amount).to eq 50.00
+      expect(activity.attachments).to all(be_an(HackerOne::Client::Attachment))
     end
 
     it "does not fail when bounty or bonus amount is not given" do
@@ -147,6 +163,21 @@ RSpec.describe HackerOne::Client::Activities do
                 }
               }
             }
+          },
+          "attachments" => {
+            "data": [
+              {
+                "id": "1337",
+                "type": "attachment",
+                "attributes": {
+                  "expiring_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                  "created_at": "2020-02-02T00:00:00.000Z",
+                  "file_name": "root.rb",
+                  "content_type": "text/x-ruby",
+                  "file_size": 2871
+                }
+              }
+            ]
           }
         }
       }.with_indifferent_access
@@ -157,6 +188,7 @@ RSpec.describe HackerOne::Client::Activities do
 
       expect(activity.class).to eq described_class
       expect(activity.swag).to_not be_nil
+      expect(activity.attachments).to all(be_an(HackerOne::Client::Attachment))
     end
   end
 
@@ -189,6 +221,21 @@ RSpec.describe HackerOne::Client::Activities do
                 }
               }
             }
+          },
+          "attachments" => {
+            "data": [
+              {
+                "id": "1337",
+                "type": "attachment",
+                "attributes": {
+                  "expiring_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                  "created_at": "2020-02-02T00:00:00.000Z",
+                  "file_name": "root.rb",
+                  "content_type": "text/x-ruby",
+                  "file_size": 2871
+                }
+              }
+            ]
           }
         }
       }.with_indifferent_access
@@ -200,6 +247,7 @@ RSpec.describe HackerOne::Client::Activities do
       expect(activity.class).to eq described_class
       expect(activity.message).to_not be_nil
       expect(activity.internal).to_not be_nil
+      expect(activity.attachments).to all(be_an(HackerOne::Client::Attachment))
     end
   end
 
@@ -250,6 +298,21 @@ RSpec.describe HackerOne::Client::Activities do
                 }
               }
             }
+          },
+          "attachments" => {
+            "data": [
+              {
+                "id": "1337",
+                "type": "attachment",
+                "attributes": {
+                  "expiring_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                  "created_at": "2020-02-02T00:00:00.000Z",
+                  "file_name": "root.rb",
+                  "content_type": "text/x-ruby",
+                  "file_size": 2871
+                }
+              }
+            ]
           }
         }
       }.with_indifferent_access
@@ -260,6 +323,7 @@ RSpec.describe HackerOne::Client::Activities do
 
       expect(activity.class).to eq described_class
       expect(activity.assigned_user).to_not be_nil
+      expect(activity.attachments).to all(be_an(HackerOne::Client::Attachment))
     end
   end
 
@@ -292,6 +356,21 @@ RSpec.describe HackerOne::Client::Activities do
                 }
               }
             }
+          },
+          "attachments" => {
+            "data": [
+              {
+                "id": "1337",
+                "type": "attachment",
+                "attributes": {
+                  "expiring_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                  "created_at": "2020-02-02T00:00:00.000Z",
+                  "file_name": "root.rb",
+                  "content_type": "text/x-ruby",
+                  "file_size": 2871
+                }
+              }
+            ]
           }
         }
       }.with_indifferent_access
@@ -301,6 +380,7 @@ RSpec.describe HackerOne::Client::Activities do
       activity = HackerOne::Client::Activities.build example
 
       expect(activity.class).to eq described_class
+      expect(activity.attachments).to all(be_an(HackerOne::Client::Attachment))
     end
   end
 
@@ -335,6 +415,21 @@ RSpec.describe HackerOne::Client::Activities do
                 }
               }
             }
+          },
+          "attachments" => {
+            "data": [
+              {
+                "id": "1337",
+                "type": "attachment",
+                "attributes": {
+                  "expiring_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                  "created_at": "2020-02-02T00:00:00.000Z",
+                  "file_name": "root.rb",
+                  "content_type": "text/x-ruby",
+                  "file_size": 2871
+                }
+              }
+            ]
           }
         }
       }.with_indifferent_access
@@ -346,6 +441,7 @@ RSpec.describe HackerOne::Client::Activities do
       expect(activity.class).to eq described_class
       expect(activity.reference).to eq "reference"
       expect(activity.reference_url).to eq "https://example.com/reference"
+      expect(activity.attachments).to all(be_an(HackerOne::Client::Attachment))
     end
   end
 end

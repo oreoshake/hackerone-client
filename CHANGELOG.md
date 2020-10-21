@@ -1,3 +1,8 @@
+## [0.20.0] - 2020-10-21
+
+[Add ability to lock a report](https://github.com/oreoshake/hackerone-client/pull/59) (@rzhade3)
+[Add ability to list attachments on a report](https://github.com/oreoshake/hackerone-client/pull/58) (@rzhade3)
+
 ## [0.19.0] - 2020-05-08
 
 [Add ability to create a report](https://github.com/oreoshake/hackerone-client/pull/57) (@rzhade3)

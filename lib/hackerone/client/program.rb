@@ -76,6 +76,13 @@ module HackerOne
         response_body.map { |r| Swag.new(r, self) }
       end
 
+      def balance
+        response_body = make_get_request(
+         "programs/#{id}/billing/balance"
+       )
+       BillingBalance.new(response_body).balance
+      end
+
       private
 
       def members

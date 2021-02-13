@@ -17,6 +17,7 @@ require_relative "client/address"
 require_relative "client/attachment"
 require_relative "client/bounty"
 require_relative "client/incremental/activities"
+require_relative "client/billing_balance"
 require "active_support/core_ext/hash"
 
 module HackerOne

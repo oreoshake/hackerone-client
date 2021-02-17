@@ -54,6 +54,9 @@ program.common_responses
 
 # Updates a program's policy
 program.update_policy(policy: "Please submit valid vulnerabilities")
+
+# Gets a program's balance
+program.balance
 ```
 
 ## State change hooks

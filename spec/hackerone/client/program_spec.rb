@@ -95,4 +95,14 @@ RSpec.describe HackerOne::Client::Program do
       expect(name_and_updated_at.size).to eq name_and_updated_at.uniq.size
     end
   end
+
+  describe "balance" do
+    it "gets the balance of a program" do
+      expect(
+        VCR.use_cassette(:get_balance) do
+          program.balance
+        end
+      ).to eq("118386.40")
+    end
+  end
 end

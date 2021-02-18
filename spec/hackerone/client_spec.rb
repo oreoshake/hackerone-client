@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "time"
 
 RSpec.describe HackerOne::Client do
   let(:api) { HackerOne::Client::Api.new("github") }
@@ -120,6 +121,16 @@ RSpec.describe HackerOne::Client do
     it "returns triaged reports for a given program" do
       VCR.use_cassette(:report_list_triaged) do
         expect(api.reports(since: point_in_time, state: :triaged)).to_not be_empty
+      end
+    end
+
+    it "returns reports created before a certain date" do
+      VCR.use_cassette(:report_list_before) do
+        reports = api.reports(before: point_in_time, since: nil)
+        expect(reports).to_not be_empty
+        reports.map(&:created_at).each do |r|
+          expect(Time.parse(r)).to be < point_in_time
+        end
       end
     end
   end

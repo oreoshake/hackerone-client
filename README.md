@@ -9,7 +9,7 @@ client = HackerOne::Client::Api.new("github")
 client.create_report(title: "hi", summary: "hi", impact: "string", severity_rating: :high, source: "api")
 
 # GET '/reports' returns all reports in a given state for a program, by default :new
-client.reports(state: :new)
+client.reports(since: 10.days.ago, before: 1.day.ago, state: :new)
 
 # GET '/report/{id}' returns report data for a given report
 report = client.report(id)
